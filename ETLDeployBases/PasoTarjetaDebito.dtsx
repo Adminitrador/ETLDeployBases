@@ -1,0 +1,520 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/10/2019 3:36:39 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CLOUDAZU-BUILD1"
+  DTS:CreatorName="STAFF\leonsg"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{CA621974-C981-402C-9213-2574A6AD8E4E}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="PasoTarjetaDebito"
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{F2FAE72D-F9B6-41D0-8E78-505E99684AAC}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ServidorBddBatchDestino]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0A8B9689-AE6A-47EE-937B-D30FA91D998C}"
+      DTS:ObjectName="ServidorBddBatchDestino">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[User::vgStrBaseDatosDestino]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[User::vgStrPasswordDestino]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::vgStrServidorBddDestino]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="UserName">@[User::vgStrLoginDestino]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=cloudazu-batch.database.windows.net,1433;User ID=estructuras_usr;Initial Catalog=MaquitaCushunchicBATCH_DIC;Provider=SQLNCLI11;Auto Translate=false;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgVKAm+7f+0Ww7wvIM1UfBwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADhvbf/1SA4SvLMqKKpy2stAAAAAASAAACgAAAAEAAAAL/sjpT9QIxh2nXECIdLs3YYAAAApyPG/mFuFxl1Pjz/jQwklWji8oeCBw+OFAAAANx+Sxz+evr6TiRtAyhTIL8fE1bT</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ServidorBddBatchOrigen]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{FC8EE051-898D-409E-B731-B60B87A17BDC}"
+      DTS:ObjectName="ServidorBddBatchOrigen">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[User::vgStrBaseDatosOrigen]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[User::vgStrPasswordOrigen]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::vgStrServidorBddOrigen]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="UserName">@[User::vgStrLoginOrigen]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=cloudazu-mig1;User ID=denariusapp_usr;Initial Catalog=MaquitaCushunchicOds;Provider=SQLNCLI11;Auto Translate=false;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgVKAm+7f+0Ww7wvIM1UfBwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACpJmKpn8WaJeI1WFhereJkAAAAAASAAACgAAAAEAAAAEvITZhbAOARQPPY+tVqTywgAAAAOlAG36JRbsUF6/a7UN9tZpKLipDWvpNJZGa0fpsxxSsUAAAAfMcf64DjhpXvyFuYeWXqx+T/Tdk</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C3462A66-A6BD-471C-9EBC-C766C30F701E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrBaseDatosDestino">
+      <DTS:VariableValue
+        DTS:DataType="8">MaquitaCushunchicBATCH_DIC</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EF8E3821-DB0D-4AFE-942A-B326498B73D2}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrBaseDatosOrigen">
+      <DTS:VariableValue
+        DTS:DataType="8">MaquitaCushunchicOds</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5F18C503-65DD-4C69-844C-AA80F924940E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrLoginDestino">
+      <DTS:VariableValue
+        DTS:DataType="8">estructuras_usr</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8DA0C749-2931-47D5-9CA5-8E0D4C4F34FB}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrLoginOrigen">
+      <DTS:VariableValue
+        DTS:DataType="8">denariusapp_usr</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{349FDC75-57F4-4FFF-AEB3-BC5F1A89C5A6}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrPasswordDestino">
+      <DTS:VariableValue
+        DTS:DataType="8">M@tchpoint</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1F1CD7F4-E81B-4392-80AB-FD8FEFEA74D1}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrPasswordOrigen">
+      <DTS:VariableValue
+        DTS:DataType="8">denARius2017***</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{104D9DDF-E5B4-4AC9-8582-C3C33ECB117E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrServidorBddDestino">
+      <DTS:VariableValue
+        DTS:DataType="8">cloudazu-batch.database.windows.net,1433</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{19F205FC-A364-4163-8A93-02A19E450629}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrServidorBddOrigen">
+      <DTS:VariableValue
+        DTS:DataType="8">cloudazu-mig1</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{0354CD19-8D1B-4C6D-A083-9C615DFCD927}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - TarjetaDebitoD01"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - TarjetaDebitoD01"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[cumplimiento].[TarjetaDebitoD01]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - TarjetaDebitoD01.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ServidorBddBatchDestino]"
+                  connectionManagerRefId="Package.ConnectionManagers[ServidorBddBatchDestino]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - TarjetaDebitoD01.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - TarjetaDebitoD01.Inputs[Destination Input].Columns[numeroCuenta]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="numeroCuenta"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - TarjetaDebitoD01.Inputs[Destination Input].ExternalColumns[numeroCuenta]"
+                      lineageId="Package\Data Flow Task 1\Source - TarjetaDebitoD01.Outputs[OLE DB Source Output].Columns[numeroCuenta]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - TarjetaDebitoD01.Inputs[Destination Input].Columns[tipoTarjeta]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="tipoTarjeta"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - TarjetaDebitoD01.Inputs[Destination Input].ExternalColumns[tipoTarjeta]"
+                      lineageId="Package\Data Flow Task 1\Source - TarjetaDebitoD01.Outputs[OLE DB Source Output].Columns[tipoTarjeta]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - TarjetaDebitoD01.Inputs[Destination Input].ExternalColumns[numeroCuenta]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="numeroCuenta" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - TarjetaDebitoD01.Inputs[Destination Input].ExternalColumns[tipoTarjeta]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="tipoTarjeta" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - TarjetaDebitoD01.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - TarjetaDebitoD01.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - TarjetaDebitoD01.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - TarjetaDebitoD01.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - TarjetaDebitoD01.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - TarjetaDebitoD01.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - TarjetaDebitoD01"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source - TarjetaDebitoD01"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[cumplimiento].[TarjetaDebitoD01]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - TarjetaDebitoD01.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ServidorBddBatchOrigen]"
+                  connectionManagerRefId="Package.ConnectionManagers[ServidorBddBatchOrigen]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - TarjetaDebitoD01.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TarjetaDebitoD01.Outputs[OLE DB Source Output].Columns[numeroCuenta]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - TarjetaDebitoD01.Outputs[OLE DB Source Output].ExternalColumns[numeroCuenta]"
+                      length="20"
+                      lineageId="Package\Data Flow Task 1\Source - TarjetaDebitoD01.Outputs[OLE DB Source Output].Columns[numeroCuenta]"
+                      name="numeroCuenta"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TarjetaDebitoD01.Outputs[OLE DB Source Output].Columns[tipoTarjeta]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - TarjetaDebitoD01.Outputs[OLE DB Source Output].ExternalColumns[tipoTarjeta]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - TarjetaDebitoD01.Outputs[OLE DB Source Output].Columns[tipoTarjeta]"
+                      name="tipoTarjeta"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - TarjetaDebitoD01.Outputs[OLE DB Source Output].ExternalColumns[numeroCuenta]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="numeroCuenta" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - TarjetaDebitoD01.Outputs[OLE DB Source Output].ExternalColumns[tipoTarjeta]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="tipoTarjeta" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - TarjetaDebitoD01.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TarjetaDebitoD01.Outputs[OLE DB Source Error Output].Columns[numeroCuenta]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Data Flow Task 1\Source - TarjetaDebitoD01.Outputs[OLE DB Source Error Output].Columns[numeroCuenta]"
+                      name="numeroCuenta" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TarjetaDebitoD01.Outputs[OLE DB Source Error Output].Columns[tipoTarjeta]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - TarjetaDebitoD01.Outputs[OLE DB Source Error Output].Columns[tipoTarjeta]"
+                      name="tipoTarjeta" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TarjetaDebitoD01.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - TarjetaDebitoD01.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TarjetaDebitoD01.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - TarjetaDebitoD01.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task 1\Destination - TarjetaDebitoD01.Inputs[Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task 1\Source - TarjetaDebitoD01.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Data Flow Task 1"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task 1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="204,42"
+          Id="Package\Data Flow Task 1\Source - TarjetaDebitoD01"
+          TopLeft="16,5.5" />
+        <NodeLayout
+          Size="225,42"
+          Id="Package\Data Flow Task 1\Destination - TarjetaDebitoD01"
+          TopLeft="5.50000000000001,107.5" />
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+          TopLeft="118,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task 1\Destination - TarjetaDebitoD01">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task 1\Source - TarjetaDebitoD01">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

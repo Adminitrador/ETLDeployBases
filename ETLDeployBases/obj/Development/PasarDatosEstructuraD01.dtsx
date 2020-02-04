@@ -1,0 +1,2219 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/3/2017 10:25:42 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="STAFFUIO-LAPT32"
+  DTS:CreatorName="STAFF\leonsg"
+  DTS:DTSID="{18BAED47-A3BD-4B79-B72E-69C5A36BE640}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="12298"
+  DTS:ObjectName="PasarDatosEstructuraD01"
+  DTS:PackageType="5"
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{52EA6540-DBEA-4EB1-B4C7-0A57C5F3BDF6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ServidorBddBatchDestino]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{6CF52D12-B5A9-46EF-8A86-42B0482776C9}"
+      DTS:ObjectName="ServidorBddBatchDestino">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[User::vgStrBaseDatosDestino]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[User::vgStrPasswordDestino]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::vgStrServidorBddDestino]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="UserName">@[User::vgStrLoginDestino]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=cloudazu-batch.database.windows.net,1433;User ID=estructuras_usr;Initial Catalog=CooprogresoBATCH_OCT;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgVKAm+7f+0Ww7wvIM1UfBwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABULMtGIAPpNDtbjgIqFIAgAAAAAASAAACgAAAAEAAAAA9jZuWUtzHTErpIqli1VYwYAAAAggO0cEbxpZqXGeSlxUMZRl0cZ1KzQtrfFAAAACKpQ7TOY0I6ACO2iC1jRg/Oc95q</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ServidorBddBatchOrigen]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D077070D-8277-4596-849E-3A8F33D6C419}"
+      DTS:ObjectName="ServidorBddBatchOrigen">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[User::vgStrBaseDatosOrigen]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[User::vgStrPasswordOrigen]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::vgStrServidorBddOrigen]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="UserName">@[User::vgStrLoginOrigen]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=cloudazu-batch.database.windows.net,1433;User ID=estructuras_usr;Initial Catalog=CooprogresoBATCH_NOV;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgVKAm+7f+0Ww7wvIM1UfBwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAB87JElx9pbSBDCPZG2v2QlAAAAAASAAACgAAAAEAAAAIzrNL9qhHYw78Byc39kDqUYAAAAr4JZ7t2sVi2PeSdupRUEuM3/iWCB7HDkFAAAAIVLpTaM32Rb8FS3RZMTbE+3nyAe</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DEC31B5C-CC61-46CE-B0FA-0AFD49B64857}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgsCabecera">
+      <DTS:VariableValue
+        DTS:DataType="3">26592</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{725D948A-60B4-4775-A54F-923AB7A75944}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrBaseDatosDestino">
+      <DTS:VariableValue
+        DTS:DataType="8">CooprogresoBATCH_OCT</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8914033C-CB15-44F6-8817-83DA80D985E4}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrBaseDatosOrigen">
+      <DTS:VariableValue
+        DTS:DataType="8">CooprogresoBATCH_NOV</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BAF429DE-59B4-49B5-89AD-3FA9EE045B32}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrLoginDestino">
+      <DTS:VariableValue
+        DTS:DataType="8">estructuras_usr</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BDF27F41-9E9F-49BD-B570-A314416F1407}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrLoginOrigen">
+      <DTS:VariableValue
+        DTS:DataType="8">estructuras_usr</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8DB3CFD5-480E-4BD3-84C2-E3AE74D818DF}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrPasswordDestino">
+      <DTS:VariableValue
+        DTS:DataType="8">M@tchpoint</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{55789187-0511-4F40-A902-3FBE56716894}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrPasswordOrigen">
+      <DTS:VariableValue
+        DTS:DataType="8">M@tchpoint</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F28E2889-9DDD-4F58-8437-F30367AC83F9}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrServidorBddDestino">
+      <DTS:VariableValue
+        DTS:DataType="8">cloudazu-batch.database.windows.net,1433</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A93B82E9-3C89-4684-923F-638B3AC60317}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrServidorBddOrigen">
+      <DTS:VariableValue
+        DTS:DataType="8">cloudazu-batch.database.windows.net,1433</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Borrar tablas Destino D01"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{9096AA3E-C67F-4BE8-9D37-221E47DA1015}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Borrar tablas Destino D01"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{6CF52D12-B5A9-46EF-8A86-42B0482776C9}"
+          SQLTask:SqlStatementSource="delete from cumplimiento.DetalleEstructuraD01Nueva&#xA;where de_id_cabecera_estructura = ?&#xA;&#xA;delete from cumplimiento.CabeceraEstructura where ce_codigo_estructura = 'D01'&#xA;and where ce_id_cabecera_estructura = ?&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::vgsCabecera"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Cabecera Estructura D01"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0E331C3B-4133-4F64-9CB0-603944FC35BD}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Cabecera Estructura D01"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Cabecera Estructura D01\Destino Cabecera D01"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destino Cabecera D01"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[cumplimiento].[CabeceraEstructura]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ServidorBddBatchDestino]"
+                  connectionManagerRefId="Package.ConnectionManagers[ServidorBddBatchDestino]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].Columns[ce_id_cabecera_estructura]"
+                      cachedDataType="i4"
+                      cachedName="ce_id_cabecera_estructura"
+                      externalMetadataColumnId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].ExternalColumns[ce_id_cabecera_estructura]"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_id_cabecera_estructura]" />
+                    <inputColumn
+                      refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].Columns[ce_codigo_estructura]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="ce_codigo_estructura"
+                      externalMetadataColumnId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].ExternalColumns[ce_codigo_estructura]"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_codigo_estructura]" />
+                    <inputColumn
+                      refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].Columns[ce_fecha_periodo]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ce_fecha_periodo"
+                      externalMetadataColumnId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].ExternalColumns[ce_fecha_periodo]"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_fecha_periodo]" />
+                    <inputColumn
+                      refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].Columns[ce_numero_registros]"
+                      cachedDataType="i4"
+                      cachedName="ce_numero_registros"
+                      externalMetadataColumnId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].ExternalColumns[ce_numero_registros]"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_numero_registros]" />
+                    <inputColumn
+                      refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].Columns[ce_login_generacion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="ce_login_generacion"
+                      externalMetadataColumnId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].ExternalColumns[ce_login_generacion]"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_login_generacion]" />
+                    <inputColumn
+                      refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].Columns[ce_patrimonio_tecnico]"
+                      cachedDataType="numeric"
+                      cachedName="ce_patrimonio_tecnico"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].ExternalColumns[ce_patrimonio_tecnico]"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_patrimonio_tecnico]" />
+                    <inputColumn
+                      refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].Columns[ce_numero_oficinas]"
+                      cachedDataType="i4"
+                      cachedName="ce_numero_oficinas"
+                      externalMetadataColumnId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].ExternalColumns[ce_numero_oficinas]"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_numero_oficinas]" />
+                    <inputColumn
+                      refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].Columns[ce_codigo_inst_financiera]"
+                      cachedDataType="i4"
+                      cachedName="ce_codigo_inst_financiera"
+                      externalMetadataColumnId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].ExternalColumns[ce_codigo_inst_financiera]"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_codigo_inst_financiera]" />
+                    <inputColumn
+                      refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].Columns[ce_tipo_identificacion_informante]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="ce_tipo_identificacion_informante"
+                      externalMetadataColumnId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].ExternalColumns[ce_tipo_identificacion_informante]"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_tipo_identificacion_informante]" />
+                    <inputColumn
+                      refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].Columns[ce_ruc_informante]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="13"
+                      cachedName="ce_ruc_informante"
+                      externalMetadataColumnId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].ExternalColumns[ce_ruc_informante]"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_ruc_informante]" />
+                    <inputColumn
+                      refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].Columns[ce_codigo_operativo]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="ce_codigo_operativo"
+                      externalMetadataColumnId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].ExternalColumns[ce_codigo_operativo]"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_codigo_operativo]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].ExternalColumns[ce_id_cabecera_estructura]"
+                      dataType="i4"
+                      name="ce_id_cabecera_estructura" />
+                    <externalMetadataColumn
+                      refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].ExternalColumns[ce_codigo_estructura]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="ce_codigo_estructura" />
+                    <externalMetadataColumn
+                      refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].ExternalColumns[ce_fecha_periodo]"
+                      dataType="dbTimeStamp"
+                      name="ce_fecha_periodo" />
+                    <externalMetadataColumn
+                      refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].ExternalColumns[ce_numero_registros]"
+                      dataType="i4"
+                      name="ce_numero_registros" />
+                    <externalMetadataColumn
+                      refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].ExternalColumns[ce_login_generacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="ce_login_generacion" />
+                    <externalMetadataColumn
+                      refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].ExternalColumns[ce_patrimonio_tecnico]"
+                      dataType="numeric"
+                      name="ce_patrimonio_tecnico"
+                      precision="15"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].ExternalColumns[ce_numero_oficinas]"
+                      dataType="i4"
+                      name="ce_numero_oficinas" />
+                    <externalMetadataColumn
+                      refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].ExternalColumns[ce_codigo_inst_financiera]"
+                      dataType="i4"
+                      name="ce_codigo_inst_financiera" />
+                    <externalMetadataColumn
+                      refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].ExternalColumns[ce_tipo_identificacion_informante]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="ce_tipo_identificacion_informante" />
+                    <externalMetadataColumn
+                      refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].ExternalColumns[ce_ruc_informante]"
+                      codePage="1252"
+                      dataType="str"
+                      length="13"
+                      name="ce_ruc_informante" />
+                    <externalMetadataColumn
+                      refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input].ExternalColumns[ce_codigo_operativo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="ce_codigo_operativo" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cabecera Estructura D01\Destino Cabecera D01.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Destino Cabecera D01.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cabecera Estructura D01\Destino Cabecera D01.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cabecera Estructura D01\Origen Cabecera D01"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Origen Cabecera D01"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[cumplimiento].[CabeceraEstructura]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from cumplimiento.CabeceraEstructura  where ce_codigo_estructura = 'D01' and ce_id_cabecera_estructura = ?</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"0:Input",{DEC31B5C-CC61-46CE-B0FA-0AFD49B64857};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ServidorBddBatchOrigen]"
+                  connectionManagerRefId="Package.ConnectionManagers[ServidorBddBatchOrigen]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_id_cabecera_estructura]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].ExternalColumns[ce_id_cabecera_estructura]"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_id_cabecera_estructura]"
+                      name="ce_id_cabecera_estructura"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_codigo_estructura]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].ExternalColumns[ce_codigo_estructura]"
+                      length="10"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_codigo_estructura]"
+                      name="ce_codigo_estructura"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_fecha_periodo]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].ExternalColumns[ce_fecha_periodo]"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_fecha_periodo]"
+                      name="ce_fecha_periodo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_numero_registros]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].ExternalColumns[ce_numero_registros]"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_numero_registros]"
+                      name="ce_numero_registros"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_login_generacion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].ExternalColumns[ce_login_generacion]"
+                      length="15"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_login_generacion]"
+                      name="ce_login_generacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_patrimonio_tecnico]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].ExternalColumns[ce_patrimonio_tecnico]"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_patrimonio_tecnico]"
+                      name="ce_patrimonio_tecnico"
+                      precision="15"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_numero_oficinas]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].ExternalColumns[ce_numero_oficinas]"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_numero_oficinas]"
+                      name="ce_numero_oficinas"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_codigo_inst_financiera]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].ExternalColumns[ce_codigo_inst_financiera]"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_codigo_inst_financiera]"
+                      name="ce_codigo_inst_financiera"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_tipo_identificacion_informante]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].ExternalColumns[ce_tipo_identificacion_informante]"
+                      length="1"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_tipo_identificacion_informante]"
+                      name="ce_tipo_identificacion_informante"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_ruc_informante]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].ExternalColumns[ce_ruc_informante]"
+                      length="13"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_ruc_informante]"
+                      name="ce_ruc_informante"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_codigo_operativo]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].ExternalColumns[ce_codigo_operativo]"
+                      length="3"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].Columns[ce_codigo_operativo]"
+                      name="ce_codigo_operativo"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].ExternalColumns[ce_id_cabecera_estructura]"
+                      dataType="i4"
+                      name="ce_id_cabecera_estructura" />
+                    <externalMetadataColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].ExternalColumns[ce_codigo_estructura]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="ce_codigo_estructura" />
+                    <externalMetadataColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].ExternalColumns[ce_fecha_periodo]"
+                      dataType="dbTimeStamp"
+                      name="ce_fecha_periodo" />
+                    <externalMetadataColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].ExternalColumns[ce_numero_registros]"
+                      dataType="i4"
+                      name="ce_numero_registros" />
+                    <externalMetadataColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].ExternalColumns[ce_login_generacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="ce_login_generacion" />
+                    <externalMetadataColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].ExternalColumns[ce_patrimonio_tecnico]"
+                      dataType="numeric"
+                      name="ce_patrimonio_tecnico"
+                      precision="15"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].ExternalColumns[ce_numero_oficinas]"
+                      dataType="i4"
+                      name="ce_numero_oficinas" />
+                    <externalMetadataColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].ExternalColumns[ce_codigo_inst_financiera]"
+                      dataType="i4"
+                      name="ce_codigo_inst_financiera" />
+                    <externalMetadataColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].ExternalColumns[ce_tipo_identificacion_informante]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="ce_tipo_identificacion_informante" />
+                    <externalMetadataColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].ExternalColumns[ce_ruc_informante]"
+                      codePage="1252"
+                      dataType="str"
+                      length="13"
+                      name="ce_ruc_informante" />
+                    <externalMetadataColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output].ExternalColumns[ce_codigo_operativo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="ce_codigo_operativo" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ce_id_cabecera_estructura]"
+                      dataType="i4"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ce_id_cabecera_estructura]"
+                      name="ce_id_cabecera_estructura" />
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ce_codigo_estructura]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ce_codigo_estructura]"
+                      name="ce_codigo_estructura" />
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ce_fecha_periodo]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ce_fecha_periodo]"
+                      name="ce_fecha_periodo" />
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ce_numero_registros]"
+                      dataType="i4"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ce_numero_registros]"
+                      name="ce_numero_registros" />
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ce_login_generacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ce_login_generacion]"
+                      name="ce_login_generacion" />
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ce_patrimonio_tecnico]"
+                      dataType="numeric"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ce_patrimonio_tecnico]"
+                      name="ce_patrimonio_tecnico"
+                      precision="15"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ce_numero_oficinas]"
+                      dataType="i4"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ce_numero_oficinas]"
+                      name="ce_numero_oficinas" />
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ce_codigo_inst_financiera]"
+                      dataType="i4"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ce_codigo_inst_financiera]"
+                      name="ce_codigo_inst_financiera" />
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ce_tipo_identificacion_informante]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ce_tipo_identificacion_informante]"
+                      name="ce_tipo_identificacion_informante" />
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ce_ruc_informante]"
+                      codePage="1252"
+                      dataType="str"
+                      length="13"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ce_ruc_informante]"
+                      name="ce_ruc_informante" />
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ce_codigo_operativo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ce_codigo_operativo]"
+                      name="ce_codigo_operativo" />
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Cabecera Estructura D01.Paths[OLE DB Source Output]"
+              endId="Package\Cabecera Estructura D01\Destino Cabecera D01.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Cabecera Estructura D01\Origen Cabecera D01.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Detalle Estructura D01"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{BF7E6981-A4FA-45DF-877B-FCC03D8B7FF9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Detalle Estructura D01"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Detalle Estructura D01\Destino Detalle D01"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destino Detalle D01"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[cumplimiento].[DetalleEstructuraD01Nueva]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Detalle Estructura D01\Destino Detalle D01.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ServidorBddBatchDestino]"
+                  connectionManagerRefId="Package.ConnectionManagers[ServidorBddBatchDestino]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_id_detalle_estructura]"
+                      cachedDataType="i4"
+                      cachedName="de_id_detalle_estructura"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_id_detalle_estructura]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_id_detalle_estructura]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_id_cabecera_estructura]"
+                      cachedDataType="i4"
+                      cachedName="de_id_cabecera_estructura"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_id_cabecera_estructura]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_id_cabecera_estructura]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_tipo_identificacion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="de_tipo_identificacion"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_tipo_identificacion]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_tipo_identificacion]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_identificacion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="18"
+                      cachedName="de_identificacion"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_identificacion]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_identificacion]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_codigo_identificacion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="de_codigo_identificacion"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_codigo_identificacion]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_codigo_identificacion]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_tipo_cuenta]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="de_tipo_cuenta"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_tipo_cuenta]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_tipo_cuenta]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_bandas_maduracion]"
+                      cachedDataType="numeric"
+                      cachedName="de_bandas_maduracion"
+                      cachedPrecision="6"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_bandas_maduracion]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_bandas_maduracion]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_estado_operacion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="de_estado_operacion"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_estado_operacion]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_estado_operacion]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_numero_producto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="de_numero_producto"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_numero_producto]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_numero_producto]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_provincia]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="de_provincia"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_provincia]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_provincia]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_canton]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="de_canton"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_canton]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_canton]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_parroquia]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="de_parroquia"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_parroquia]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_parroquia]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_saldo_inicial]"
+                      cachedDataType="cy"
+                      cachedName="de_saldo_inicial"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_saldo_inicial]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_saldo_inicial]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_valor_ingresos]"
+                      cachedDataType="cy"
+                      cachedName="de_valor_ingresos"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_valor_ingresos]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_valor_ingresos]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_valor_egresos]"
+                      cachedDataType="cy"
+                      cachedName="de_valor_egresos"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_valor_egresos]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_valor_egresos]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_saldo]"
+                      cachedDataType="cy"
+                      cachedName="de_saldo"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_saldo]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_saldo]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_intereses]"
+                      cachedDataType="cy"
+                      cachedName="de_intereses"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_intereses]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_intereses]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_tasa_interes]"
+                      cachedDataType="numeric"
+                      cachedName="de_tasa_interes"
+                      cachedPrecision="4"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_tasa_interes]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_tasa_interes]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_numero_ingresos]"
+                      cachedDataType="i4"
+                      cachedName="de_numero_ingresos"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_numero_ingresos]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_numero_ingresos]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_numero_egresos]"
+                      cachedDataType="i4"
+                      cachedName="de_numero_egresos"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_numero_egresos]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_numero_egresos]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_fecha_ultima_transaccion]"
+                      cachedDataType="dbDate"
+                      cachedName="de_fecha_ultima_transaccion"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_fecha_ultima_transaccion]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_fecha_ultima_transaccion]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_fecha_emision]"
+                      cachedDataType="dbDate"
+                      cachedName="de_fecha_emision"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_fecha_emision]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_fecha_emision]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_fecha_vencimiento]"
+                      cachedDataType="dbDate"
+                      cachedName="de_fecha_vencimiento"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_fecha_vencimiento]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_fecha_vencimiento]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_plazo]"
+                      cachedDataType="i4"
+                      cachedName="de_plazo"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_plazo]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_plazo]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_codigo_oficina]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="de_codigo_oficina"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_codigo_oficina]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_codigo_oficina]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_pais_nacimiento]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="de_pais_nacimiento"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_pais_nacimiento]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_pais_nacimiento]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_tipo_deposito]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="de_tipo_deposito"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_tipo_deposito]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_tipo_deposito]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_estado_cuenta]"
+                      cachedDataType="i4"
+                      cachedName="de_estado_cuenta"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_estado_cuenta]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_estado_cuenta]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_fecha_cierre]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="de_fecha_cierre"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_fecha_cierre]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_fecha_cierre]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_causal_cierre]"
+                      cachedDataType="i4"
+                      cachedName="de_causal_cierre"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_causal_cierre]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_causal_cierre]" />
+                    <inputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].Columns[de_tarjeta_debito]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="de_tarjeta_debito"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_tarjeta_debito]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_tarjeta_debito]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_id_detalle_estructura]"
+                      dataType="i4"
+                      name="de_id_detalle_estructura" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_id_cabecera_estructura]"
+                      dataType="i4"
+                      name="de_id_cabecera_estructura" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_tipo_identificacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="de_tipo_identificacion" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_identificacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="18"
+                      name="de_identificacion" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_codigo_identificacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="de_codigo_identificacion" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_tipo_cuenta]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="de_tipo_cuenta" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_bandas_maduracion]"
+                      dataType="numeric"
+                      name="de_bandas_maduracion"
+                      precision="6" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_estado_operacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="de_estado_operacion" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_numero_producto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="de_numero_producto" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_provincia]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="de_provincia" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_canton]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="de_canton" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_parroquia]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="de_parroquia" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_saldo_inicial]"
+                      dataType="cy"
+                      name="de_saldo_inicial" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_valor_ingresos]"
+                      dataType="cy"
+                      name="de_valor_ingresos" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_valor_egresos]"
+                      dataType="cy"
+                      name="de_valor_egresos" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_saldo]"
+                      dataType="cy"
+                      name="de_saldo" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_intereses]"
+                      dataType="cy"
+                      name="de_intereses" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_tasa_interes]"
+                      dataType="numeric"
+                      name="de_tasa_interes"
+                      precision="4"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_numero_ingresos]"
+                      dataType="i4"
+                      name="de_numero_ingresos" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_numero_egresos]"
+                      dataType="i4"
+                      name="de_numero_egresos" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_fecha_ultima_transaccion]"
+                      dataType="dbDate"
+                      name="de_fecha_ultima_transaccion" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_fecha_emision]"
+                      dataType="dbDate"
+                      name="de_fecha_emision" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_fecha_vencimiento]"
+                      dataType="dbDate"
+                      name="de_fecha_vencimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_plazo]"
+                      dataType="i4"
+                      name="de_plazo" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_codigo_oficina]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="de_codigo_oficina" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_pais_nacimiento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="de_pais_nacimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_tipo_deposito]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="de_tipo_deposito" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_estado_cuenta]"
+                      dataType="i4"
+                      name="de_estado_cuenta" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_fecha_cierre]"
+                      dataType="dbTimeStamp"
+                      name="de_fecha_cierre" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_causal_cierre]"
+                      dataType="i4"
+                      name="de_causal_cierre" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input].ExternalColumns[de_tarjeta_debito]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="de_tarjeta_debito" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Detalle Estructura D01\Destino Detalle D01.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Detalle Estructura D01\Destino Detalle D01.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Destino Detalle D01.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Detalle Estructura D01\Destino Detalle D01.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Detalle Estructura D01\Origen Detalle D01"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Origen Detalle D01"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[cumplimiento].[DetalleEstructuraD01Nueva]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT * from cumplimiento.DetalleEstructuraD01Nueva where de_id_cabecera_estructura  = ?</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"0:Input",{DEC31B5C-CC61-46CE-B0FA-0AFD49B64857};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Detalle Estructura D01\Origen Detalle D01.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ServidorBddBatchOrigen]"
+                  connectionManagerRefId="Package.ConnectionManagers[ServidorBddBatchOrigen]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_id_detalle_estructura]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_id_detalle_estructura]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_id_detalle_estructura]"
+                      name="de_id_detalle_estructura"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_id_cabecera_estructura]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_id_cabecera_estructura]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_id_cabecera_estructura]"
+                      name="de_id_cabecera_estructura"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_tipo_identificacion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_tipo_identificacion]"
+                      length="1"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_tipo_identificacion]"
+                      name="de_tipo_identificacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_identificacion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_identificacion]"
+                      length="18"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_identificacion]"
+                      name="de_identificacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_codigo_identificacion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_codigo_identificacion]"
+                      length="15"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_codigo_identificacion]"
+                      name="de_codigo_identificacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_tipo_cuenta]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_tipo_cuenta]"
+                      length="1"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_tipo_cuenta]"
+                      name="de_tipo_cuenta"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_bandas_maduracion]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_bandas_maduracion]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_bandas_maduracion]"
+                      name="de_bandas_maduracion"
+                      precision="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_estado_operacion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_estado_operacion]"
+                      length="2"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_estado_operacion]"
+                      name="de_estado_operacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_numero_producto]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_numero_producto]"
+                      length="25"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_numero_producto]"
+                      name="de_numero_producto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_provincia]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_provincia]"
+                      length="2"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_provincia]"
+                      name="de_provincia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_canton]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_canton]"
+                      length="2"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_canton]"
+                      name="de_canton"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_parroquia]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_parroquia]"
+                      length="2"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_parroquia]"
+                      name="de_parroquia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_saldo_inicial]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_saldo_inicial]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_saldo_inicial]"
+                      name="de_saldo_inicial"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_valor_ingresos]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_valor_ingresos]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_valor_ingresos]"
+                      name="de_valor_ingresos"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_valor_egresos]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_valor_egresos]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_valor_egresos]"
+                      name="de_valor_egresos"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_saldo]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_saldo]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_saldo]"
+                      name="de_saldo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_intereses]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_intereses]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_intereses]"
+                      name="de_intereses"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_tasa_interes]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_tasa_interes]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_tasa_interes]"
+                      name="de_tasa_interes"
+                      precision="4"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_numero_ingresos]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_numero_ingresos]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_numero_ingresos]"
+                      name="de_numero_ingresos"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_numero_egresos]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_numero_egresos]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_numero_egresos]"
+                      name="de_numero_egresos"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_fecha_ultima_transaccion]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_fecha_ultima_transaccion]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_fecha_ultima_transaccion]"
+                      name="de_fecha_ultima_transaccion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_fecha_emision]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_fecha_emision]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_fecha_emision]"
+                      name="de_fecha_emision"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_fecha_vencimiento]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_fecha_vencimiento]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_fecha_vencimiento]"
+                      name="de_fecha_vencimiento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_plazo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_plazo]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_plazo]"
+                      name="de_plazo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_codigo_oficina]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_codigo_oficina]"
+                      length="10"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_codigo_oficina]"
+                      name="de_codigo_oficina"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_pais_nacimiento]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_pais_nacimiento]"
+                      length="4"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_pais_nacimiento]"
+                      name="de_pais_nacimiento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_tipo_deposito]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_tipo_deposito]"
+                      length="2"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_tipo_deposito]"
+                      name="de_tipo_deposito"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_estado_cuenta]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_estado_cuenta]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_estado_cuenta]"
+                      name="de_estado_cuenta"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_fecha_cierre]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_fecha_cierre]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_fecha_cierre]"
+                      name="de_fecha_cierre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_causal_cierre]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_causal_cierre]"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_causal_cierre]"
+                      name="de_causal_cierre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_tarjeta_debito]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_tarjeta_debito]"
+                      length="1"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].Columns[de_tarjeta_debito]"
+                      name="de_tarjeta_debito"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_id_detalle_estructura]"
+                      dataType="i4"
+                      name="de_id_detalle_estructura" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_id_cabecera_estructura]"
+                      dataType="i4"
+                      name="de_id_cabecera_estructura" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_tipo_identificacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="de_tipo_identificacion" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_identificacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="18"
+                      name="de_identificacion" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_codigo_identificacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="de_codigo_identificacion" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_tipo_cuenta]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="de_tipo_cuenta" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_bandas_maduracion]"
+                      dataType="numeric"
+                      name="de_bandas_maduracion"
+                      precision="6" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_estado_operacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="de_estado_operacion" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_numero_producto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="de_numero_producto" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_provincia]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="de_provincia" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_canton]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="de_canton" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_parroquia]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="de_parroquia" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_saldo_inicial]"
+                      dataType="cy"
+                      name="de_saldo_inicial" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_valor_ingresos]"
+                      dataType="cy"
+                      name="de_valor_ingresos" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_valor_egresos]"
+                      dataType="cy"
+                      name="de_valor_egresos" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_saldo]"
+                      dataType="cy"
+                      name="de_saldo" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_intereses]"
+                      dataType="cy"
+                      name="de_intereses" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_tasa_interes]"
+                      dataType="numeric"
+                      name="de_tasa_interes"
+                      precision="4"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_numero_ingresos]"
+                      dataType="i4"
+                      name="de_numero_ingresos" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_numero_egresos]"
+                      dataType="i4"
+                      name="de_numero_egresos" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_fecha_ultima_transaccion]"
+                      dataType="dbDate"
+                      name="de_fecha_ultima_transaccion" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_fecha_emision]"
+                      dataType="dbDate"
+                      name="de_fecha_emision" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_fecha_vencimiento]"
+                      dataType="dbDate"
+                      name="de_fecha_vencimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_plazo]"
+                      dataType="i4"
+                      name="de_plazo" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_codigo_oficina]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="de_codigo_oficina" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_pais_nacimiento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="de_pais_nacimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_tipo_deposito]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="de_tipo_deposito" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_estado_cuenta]"
+                      dataType="i4"
+                      name="de_estado_cuenta" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_fecha_cierre]"
+                      dataType="dbTimeStamp"
+                      name="de_fecha_cierre" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_causal_cierre]"
+                      dataType="i4"
+                      name="de_causal_cierre" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output].ExternalColumns[de_tarjeta_debito]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="de_tarjeta_debito" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_id_detalle_estructura]"
+                      dataType="i4"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_id_detalle_estructura]"
+                      name="de_id_detalle_estructura" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_id_cabecera_estructura]"
+                      dataType="i4"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_id_cabecera_estructura]"
+                      name="de_id_cabecera_estructura" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_tipo_identificacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_tipo_identificacion]"
+                      name="de_tipo_identificacion" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_identificacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="18"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_identificacion]"
+                      name="de_identificacion" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_codigo_identificacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_codigo_identificacion]"
+                      name="de_codigo_identificacion" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_tipo_cuenta]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_tipo_cuenta]"
+                      name="de_tipo_cuenta" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_bandas_maduracion]"
+                      dataType="numeric"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_bandas_maduracion]"
+                      name="de_bandas_maduracion"
+                      precision="6" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_estado_operacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_estado_operacion]"
+                      name="de_estado_operacion" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_numero_producto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_numero_producto]"
+                      name="de_numero_producto" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_provincia]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_provincia]"
+                      name="de_provincia" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_canton]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_canton]"
+                      name="de_canton" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_parroquia]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_parroquia]"
+                      name="de_parroquia" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_saldo_inicial]"
+                      dataType="cy"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_saldo_inicial]"
+                      name="de_saldo_inicial" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_valor_ingresos]"
+                      dataType="cy"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_valor_ingresos]"
+                      name="de_valor_ingresos" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_valor_egresos]"
+                      dataType="cy"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_valor_egresos]"
+                      name="de_valor_egresos" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_saldo]"
+                      dataType="cy"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_saldo]"
+                      name="de_saldo" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_intereses]"
+                      dataType="cy"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_intereses]"
+                      name="de_intereses" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_tasa_interes]"
+                      dataType="numeric"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_tasa_interes]"
+                      name="de_tasa_interes"
+                      precision="4"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_numero_ingresos]"
+                      dataType="i4"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_numero_ingresos]"
+                      name="de_numero_ingresos" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_numero_egresos]"
+                      dataType="i4"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_numero_egresos]"
+                      name="de_numero_egresos" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_fecha_ultima_transaccion]"
+                      dataType="dbDate"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_fecha_ultima_transaccion]"
+                      name="de_fecha_ultima_transaccion" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_fecha_emision]"
+                      dataType="dbDate"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_fecha_emision]"
+                      name="de_fecha_emision" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_fecha_vencimiento]"
+                      dataType="dbDate"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_fecha_vencimiento]"
+                      name="de_fecha_vencimiento" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_plazo]"
+                      dataType="i4"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_plazo]"
+                      name="de_plazo" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_codigo_oficina]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_codigo_oficina]"
+                      name="de_codigo_oficina" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_pais_nacimiento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_pais_nacimiento]"
+                      name="de_pais_nacimiento" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_tipo_deposito]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_tipo_deposito]"
+                      name="de_tipo_deposito" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_estado_cuenta]"
+                      dataType="i4"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_estado_cuenta]"
+                      name="de_estado_cuenta" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_fecha_cierre]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_fecha_cierre]"
+                      name="de_fecha_cierre" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_causal_cierre]"
+                      dataType="i4"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_causal_cierre]"
+                      name="de_causal_cierre" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_tarjeta_debito]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[de_tarjeta_debito]"
+                      name="de_tarjeta_debito" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Detalle Estructura D01.Paths[OLE DB Source Output]"
+              endId="Package\Detalle Estructura D01\Destino Detalle D01.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Detalle Estructura D01\Origen Detalle D01.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{C7A7205D-D547-454C-B483-2F0AF1A93662}"
+      DTS:From="Package\Borrar tablas Destino D01"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Cabecera Estructura D01" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{F06B58F7-14EF-4534-867D-A2DB98549B7A}"
+      DTS:From="Package\Cabecera Estructura D01"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Detalle Estructura D01" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Borrar tablas Destino D01"
+          TopLeft="96,45" />
+        <NodeLayout
+          Size="196,42"
+          Id="Package\Cabecera Estructura D01"
+          TopLeft="110,139" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Detalle Estructura D01"
+          TopLeft="111,221" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="196,87">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12,52"
+              Start="0,0"
+              End="12,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22"
+                    Point2="0,26"
+                    Point3="4,26" />
+                  <mssgle:LineSegment
+                    End="8,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8,26"
+                    Point2="12,26"
+                    Point3="12,30" />
+                  <mssgle:LineSegment
+                    End="12,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="205.75,181">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Cabecera Estructura D01">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Cabecera Estructura D01\Origen Cabecera D01"
+          TopLeft="153,87" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\Cabecera Estructura D01\Destino Cabecera D01"
+          TopLeft="158,175" />
+        <EdgeLayout
+          Id="Package\Cabecera Estructura D01.Paths[OLE DB Source Output]"
+          TopLeft="246,129">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cabecera Estructura D01\Destino Cabecera D01">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cabecera Estructura D01\Origen Cabecera D01">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Detalle Estructura D01">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Detalle Estructura D01\Origen Detalle D01"
+          TopLeft="153,87" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Detalle Estructura D01\Destino Detalle D01"
+          TopLeft="158,175" />
+        <EdgeLayout
+          Id="Package\Detalle Estructura D01.Paths[OLE DB Source Output]"
+          TopLeft="240.5,129">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Detalle Estructura D01\Destino Detalle D01">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Detalle Estructura D01\Origen Detalle D01">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

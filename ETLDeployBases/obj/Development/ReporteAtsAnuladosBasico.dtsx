@@ -1,0 +1,1814 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/13/2017 11:07:46 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="STAFFUIO-LAPT32"
+  DTS:CreatorName="STAFF\leonsg"
+  DTS:DTSID="{7827C7DC-4B95-4DBA-9221-EF73814C7C38}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="12298"
+  DTS:ObjectName="ReporteAtsAnuladosBasico"
+  DTS:PackageType="5"
+  DTS:VersionBuild="265"
+  DTS:VersionGUID="{FA5436D8-31DA-457E-89A2-9B40D5C6DFC1}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{7B159B5F-2B61-40D2-9613-3B5F0A16D08E}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:PropertyExpression
+        DTS:Name="ExcelFilePath">@[User::vgPathArchivo]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\cloudazu-proc1\EsquemaBatch\MaquitaCushunchic\Estructuras\Anulados.xls;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ServidorBddDestino]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{AC2F292D-795F-4AAD-BFE0-40D84150B254}"
+      DTS:ObjectName="ServidorBddDestino">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[User::vgStrBaseDatos]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[User::vgStrPassword]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::vgStrServidorBdd]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="UserName">@[User::vgStrLogin]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=cloudazu-sqlcc.database.windows.net,1433;User ID=denariusapp_usr;Initial Catalog=MaquitaCushunchic;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAR+ZsE+0Yjky5HbNKK5YIrwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABShM5qwLkJSzUNKrO5T+jOAAAAAASAAACgAAAAEAAAAESQu9TVdcQXs/0+QzfEgrogAAAAMxFK4VGHG3u+gxilVLxkPzlZa03ii3AYYf+tpKnsvqwUAAAAR7wkbITWG0qUM9d/6hzf4RGd/Ko</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="7"
+      DTS:DTSID="{373B3DE3-A952-4B0B-9506-D5A1226E99EC}"
+      DTS:ObjectName="fecha1">
+      <DTS:Property
+        DTS:DataType="7"
+        DTS:Name="ParameterValue">3/13/2017 5:37:00 PM</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BFFA6B20-E1F0-4E84-B24E-EF4879298FD7}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgPathArchivo">
+      <DTS:VariableValue
+        DTS:DataType="8">\\cloudazu-proc1\EsquemaBatch\MaquitaCushunchic\Estructuras\Anulados.xls</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{89B6A3CA-3AAD-4A3E-A610-79C4E580E3C5}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrBaseDatos">
+      <DTS:VariableValue
+        DTS:DataType="8">MaquitaCushunchic</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7837E647-A8C5-410C-AA3F-8AB2C93D231F}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrFechaProceso">
+      <DTS:VariableValue
+        DTS:DataType="8">04/01/2019</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DB92099C-9C93-4DBB-B36D-72D499216239}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrFechaProcesoHasta">
+      <DTS:VariableValue
+        DTS:DataType="8">04/30/2019</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{227DC366-8DF3-427C-96FC-9BE5E486A594}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrLogin">
+      <DTS:VariableValue
+        DTS:DataType="8">denariusapp_usr</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{065BACBF-BBBE-4D85-B5CD-011381642353}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrNombreArchivo">
+      <DTS:VariableValue
+        DTS:DataType="8">Anulados</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C5E05286-A19A-4FAD-A276-509EDA1463AA}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrPassword">
+      <DTS:VariableValue
+        DTS:DataType="8">denARius2017***</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CA08A93E-926B-4D17-B2EE-84EE1BE78245}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrPath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\leonsg\Desktop</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{05BE481E-026E-4371-8446-EDEFAD803768}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrServidorBdd">
+      <DTS:VariableValue
+        DTS:DataType="8">cloudazu-sqlcc.database.windows.net,1433</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\AtsConsultarAnuladosExcel"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3FB041EF-8EA3-4859-9176-EF1E36E2C38A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="AtsConsultarAnuladosExcel"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{AC2F292D-795F-4AAD-BFE0-40D84150B254}"
+          SQLTask:SqlStatementSource="Exec facturacion.ConsultarComprobantesAnulados&#xA;@i_fecha_desde               = ?,&#xA;@i_fecha_hasta                = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::vgStrFechaProceso"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::vgStrFechaProcesoHasta"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Averiguar existencia archivo"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Averigua si el archivo a crear existe o no y lo borra"
+      DTS:DTSID="{36E2E578-36A7-4686-9B37-F254E67A51F0}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Averiguar existencia archivo"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_0967c619aab444bf83bc1f44adc638c9"
+          VSTAMajorVersion="14"
+          VSTAMinorVersion="0"
+          Language="CSharp"
+          ReadOnlyVariables="User::vgStrFechaProceso,User::vgStrFechaProcesoHasta,User::vgStrNombreArchivo,User::vgStrPath"
+          ReadWriteVariables="User::vgPathArchivo">
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_0967c619aab444bf83bc1f44adc638c9")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_0967c619aab444bf83bc1f44adc638c9")]
+[assembly: AssemblyCopyright("Copyright @  2017")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_0967c619aab444bf83bc1f44adc638c9.Properties.Settings.get_Default():ST_0967c619aab444bf83bc1f44adc638c9.Properties.Sett" +
+    "ings")]
+
+namespace ST_0967c619aab444bf83bc1f44adc638c9.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
+/* The Script Task allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services control flow. 
+ * 
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script task. */
+#endregion
+
+
+#region Namespaces
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Windows.Forms;
+using System.IO;
+#endregion
+
+namespace ST_0967c619aab444bf83bc1f44adc638c9
+{
+    /// <summary>
+    /// ScriptMain is the entry point class of the script.  Do not change the name, attributes,
+    /// or parent of this class.
+    /// </summary>
+	[Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+	public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+	{
+        #region Help:  Using Integration Services variables and parameters in a script
+        /* To use a variable in this script, first ensure that the variable has been added to 
+         * either the list contained in the ReadOnlyVariables property or the list contained in 
+         * the ReadWriteVariables property of this script task, according to whether or not your
+         * code needs to write to the variable.  To add the variable, save this script, close this instance of
+         * Visual Studio, and update the ReadOnlyVariables and 
+         * ReadWriteVariables properties in the Script Transformation Editor window.
+         * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+         * 
+         * Example of reading from a variable:
+         *  DateTime startTime = (DateTime) Dts.Variables["System::StartTime"].Value;
+         * 
+         * Example of writing to a variable:
+         *  Dts.Variables["User::myStringVariable"].Value = "new value";
+         * 
+         * Example of reading from a package parameter:
+         *  int batchId = (int) Dts.Variables["$Package::batchId"].Value;
+         *  
+         * Example of reading from a project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].Value;
+         * 
+         * Example of reading from a sensitive project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].GetSensitiveValue();
+         * */
+
+        #endregion
+
+        #region Help:  Firing Integration Services events from a script
+        /* This script task can fire events for logging purposes.
+         * 
+         * Example of firing an error event:
+         *  Dts.Events.FireError(18, "Process Values", "Bad value", "", 0);
+         * 
+         * Example of firing an information event:
+         *  Dts.Events.FireInformation(3, "Process Values", "Processing has started", "", 0, ref fireAgain)
+         * 
+         * Example of firing a warning event:
+         *  Dts.Events.FireWarning(14, "Process Values", "No values received for input", "", 0);
+         * */
+        #endregion
+
+        #region Help:  Using Integration Services connection managers in a script
+        /* Some types of connection managers can be used in this script task.  See the topic 
+         * "Working with Connection Managers Programatically" for details.
+         * 
+         * Example of using an ADO.Net connection manager:
+         *  object rawConnection = Dts.Connections["Sales DB"].AcquireConnection(Dts.Transaction);
+         *  SqlConnection myADONETConnection = (SqlConnection)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Sales DB"].ReleaseConnection(rawConnection);
+         *
+         * Example of using a File connection manager
+         *  object rawConnection = Dts.Connections["Prices.zip"].AcquireConnection(Dts.Transaction);
+         *  string filePath = (string)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Prices.zip"].ReleaseConnection(rawConnection);
+         * */
+        #endregion
+
+
+		/// <summary>
+        /// This method is called when this script task executes in the control flow.
+        /// Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+        /// To open Help, press F1.
+        /// </summary>
+		public void Main()
+		{
+            // TODO: Add your code here
+
+            string varStrDirectorio = (string) Dts.Variables["vgStrPath"].Value;
+            string varStrFechaProceso = (string) Dts.Variables["vgStrFechaProceso"].Value;
+            string varStrFechaProcesoHasta = (string)Dts.Variables["vgStrFechaProcesoHasta"].Value;
+            string varStrNombreArchivo = (string) Dts.Variables["vgStrNombreArchivo"].Value;
+            string estructuraMes = "";
+            
+            if (varStrFechaProceso.Substring(0, 2).Trim() == varStrFechaProcesoHasta.Substring(0, 2).Trim())
+            {
+                if (varStrFechaProceso.Substring(3, 2) == varStrFechaProcesoHasta.Substring(3, 2))
+                {
+                    estructuraMes =  varStrFechaProceso.Substring(3, 2) + varStrFechaProceso.Substring(0, 2) + varStrFechaProceso.Substring(6, 4);
+                }
+                else
+                {
+                    estructuraMes = varStrFechaProceso.Substring(3, 2) + "_" + varStrFechaProcesoHasta.Substring(3, 2) + varStrFechaProceso.Substring(0, 2) + varStrFechaProceso.Substring(6, 4);
+                }                
+            }
+            else
+            {
+                estructuraMes = varStrFechaProceso.Substring(3, 2) + varStrFechaProceso.Substring(0, 2) + "_" + varStrFechaProcesoHasta.Substring(3, 2) + varStrFechaProcesoHasta.Substring(0, 2) + varStrFechaProceso.Substring(6, 4);
+            }
+
+            string varStrExisteArchivo = varStrDirectorio + varStrNombreArchivo + "_" + estructuraMes + ".xls";            
+            if (File.Exists(varStrExisteArchivo))
+            {
+                File.Delete(varStrExisteArchivo);
+            }
+
+            varStrExisteArchivo = varStrDirectorio + varStrNombreArchivo + "_" + estructuraMes + ".xlsx";
+
+            if (File.Exists(varStrExisteArchivo))
+            {
+                File.Delete(varStrExisteArchivo);
+            }
+
+            // MessageBox.Show("El valor es" + Dts.Variables["vgStrPath"].Value);
+            Dts.Variables["vgPathArchivo"].Value = varStrExisteArchivo;
+
+            Dts.TaskResult = (int)ScriptResults.Success;
+		}
+
+        #region ScriptResults declaration
+        /// <summary>
+        /// This enum provides a convenient shorthand within the scope of this class for setting the
+        /// result of the script.
+        /// 
+        /// This code was generated automatically.
+        /// </summary>
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+
+
+	}
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:Language>msBuild</msb:Language>
+		<msb:CodeName>ST_0967c619aab444bf83bc1f44adc638c9</msb:CodeName>
+		<msb:DisplayName>ST_0967c619aab444bf83bc1f44adc638c9</msb:DisplayName>
+		<msb:ProjectId>{6DD7C4B4-4527-44A8-B6F1-7336FC0D7660}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="ST_0967c619aab444bf83bc1f44adc638c9.csproj"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="ScriptMain.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="ST_0967c619aab444bf83bc1f44adc638c9.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D4222956-C4EC-4DE2-9C0D-1EEE1EA50DD3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ST_0967c619aab444bf83bc1f44adc638c9</RootNamespace>
+    <AssemblyName>ST_0967c619aab444bf83bc1f44adc638c9</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST130</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_0967c619aab444bf83bc1f44adc638c9.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_0967c619aab444bf83bc1f44adc638c9.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_0967c619aab444bf83bc1f44adc638c9.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_0967c619aab444bf83bc1f44adc638c9.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_0967c619aab444bf83bc1f44adc638c9.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_0967c619aab444bf83bc1f44adc638c9.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAD9mY1sAAAAAAAAAAOAAIiALATAAABIAAAAIAAAAAAAAujAA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAGgwAABPAAAAAEAAAHgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAwBAAAAAgAAAAEgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAHgEAAAAQAAAAAYAAAAUAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAACc
+MAAAAAAAAEgAAAACAAUA1CIAANwMAAABAAAAAAAAALAvAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABMwBgAPAgAAAQAAEQIoEAAACm8RAAAKcgEAAHBvEgAACm8T
+AAAKdBsAAAEKAigQAAAKbxEAAApyFQAAcG8SAAAKbxMAAAp0GwAAAQsCKBAAAApvEQAACnI5AABw
+bxIAAApvEwAACnQbAAABDAIoEAAACm8RAAAKcmcAAHBvEgAACm8TAAAKdBsAAAENco0AAHATBAcW
+GG8UAAAKbxUAAAoIFhhvFAAACm8VAAAKKBYAAAosfgcZGG8UAAAKCBkYbxQAAAooFgAACiwkBxkY
+bxQAAAoHFhhvFAAACgccGm8UAAAKKBcAAAoTBDiPAAAAG40bAAABJRYHGRhvFAAACqIlF3KPAABw
+oiUYCBkYbxQAAAqiJRkHFhhvFAAACqIlGgccGm8UAAAKoigYAAAKEwQrTByNGwAAASUWBxkYbxQA
+AAqiJRcHFhhvFAAACqIlGHKPAABwoiUZCBkYbxQAAAqiJRoIFhhvFAAACqIlGwccGm8UAAAKoigY
+AAAKEwQbjRsAAAElFgaiJRcJoiUYco8AAHCiJRkRBKIlGnKTAABwoigYAAAKEwURBSgZAAAKLAcR
+BSgaAAAKG40bAAABJRYGoiUXCaIlGHKPAABwoiUZEQSiJRpynQAAcKIoGAAAChMFEQUoGQAACiwH
+EQUoGgAACgIoEAAACm8RAAAKcqkAAHBvEgAAChEFbxsAAAoCKBAAAAoWbxwAAAoqHgIoHQAACioe
+AigeAAAKKq5+AQAABC0ecsUAAHDQAwAAAigfAAAKbyAAAApzIQAACoABAAAEfgEAAAQqGn4CAAAE
+Kh4CgAIAAAQqGn4DAAAEKh4CKCIAAAoqLnMIAAAGgAMAAAQqAAAAQlNKQgEAAQAAAAAADAAAAHY0
+LjAuMzAzMTkAAAAABQBsAAAA9AMAACN+AABgBAAApAUAACNTdHJpbmdzAAAAAAQKAAA4AQAAI1VT
+ADwLAAAQAAAAI0dVSUQAAABMCwAAkAEAACNCbG9iAAAAAAAAAAIAAAFXHaIBCQMAAAD6ATMAFgAA
+AQAAAB8AAAAFAAAABgAAAAkAAAABAAAAIgAAAAIAAAAQAAAAAQAAAAIAAAADAAAABAAAAAEAAAAE
+AAAAAQAAAAEAAAAAAJ0DAQAAAAAABgA7AnIEBgDKAnIEBgCHAV8EDwDmBAAABgC0ASAEBgAeAiAE
+BgD/ASAEBgCxAiAEBgBbAiAEBgB0AiAEBgDLASAEBgDmAQIDCgCPAkwDCgD/AEwDBgDaA84DBgBq
+AV8EBgBnBc4DBgBCBJIEBgAyBAsEDgAzAYcDDgCbAYcDDgAbAfYDBgBPAXIECgB1A0wDEgAoBaoA
+EgB4AKoABgAcA84DBgClAC4ABgDKAM4DBgCBAM4DBgCNBSAEAAAAACUAAAAAAAEAAQABABAA6wMB
+ADkAAQABAAAAEACZBPUERQABAAMAAAEQADIF9QRZAAMABwADAQAASwUAAD0ABAAKABEA3wOTABEA
+7wCXABEAaACbAAYGVwCfAFaAOwWiAFaAzwCiAFAgAAAAAIYA8QMGAAEAayIAAAAAhhhSBAYAAQBz
+IgAAAACDGFIEBgABAHsiAAAAAJMIPgSmAAEApyIAAAAAkwjXAKsAAQCuIgAAAACTCOMAsAABALYi
+AAAAAJYIbgW2AAIAvSIAAAAAhhhSBAYAAgDFIgAAAACRGFgEuwACAAAAAQD8AgkAUgQBABEAUgQG
+ABkAUgQKACkAUgQQADEAUgQQADkAUgQQAEEAUgQQAEkAUgQQAFEAUgQQAFkAUgQQAGEAUgQQAGkA
+UgQGAIEAUgQGAKkAUgQVALkAUgQGAHEAQwUkAMEAJAUpAMkAxQMuANEA6AI0ANkAIwM4ANkA1QM+
+ANkAlgVCANkAYAVIANkAYAVPAOEAWQVVAOEASAFaANEA8gJfAMEAegUBAHEAUgQGAIkAUgQGAOkA
+kwBkAOkAiQVrAJEAUgRwALEAUgQGAAgAFACJAAgAGACOACkAcwD2AC4ACwDOAC4AEwDXAC4AGwD2
+AC4AIwD/AC4AKwAoAS4AMwAoAS4AOwAoAS4AQwD/AC4ASwAuAS4AUwAoAS4AWwBFAUMAYwCOAEkA
+cwD2AGEAewCOAGMAawCOABsAAwABAAQAAwAAAEIEvwAAAPcAxAAAAHIFyQACAAQAAwACAAUABQAB
+AAYABQACAAcABwAEgAAAAQAAAIQaN2sAAAAAAAABAAAABAAAAAAAAAAAAAAAdwBfAAAAAAANAAAA
+AAAAAAAAAACAAC0DAAAAAAQAAAAAAAAAAAAAAHcAzgMAAAAADQAAAAAAAAAAAAAAgAA4AAAAAAAA
+AAAAAQAAAKMEAAAFAAIAAAAAAABTVF8wOTY3YzYxOWFhYjQ0NGJmODNiYzFmNDRhZGM2MzhjOQA8
+TW9kdWxlPgBTeXN0ZW0uSU8ATWljcm9zb2Z0LlNxbFNlcnZlci5NYW5hZ2VkRFRTAHZhbHVlX18A
+bXNjb3JsaWIAZGVmYXVsdEluc3RhbmNlAFZhcmlhYmxlAFJ1bnRpbWVUeXBlSGFuZGxlAEdldFR5
+cGVGcm9tSGFuZGxlAEZpbGUATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUnVudGltZQBUeXBlAEZh
+aWx1cmUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVzb3VyY2VDdWx0dXJlAFZTVEFSVFNjcmlw
+dE9iamVjdE1vZGVsQmFzZQBBcHBsaWNhdGlvblNldHRpbmdzQmFzZQBFZGl0b3JCcm93c2FibGVT
+dGF0ZQBEZWxldGUAQ29tcGlsZXJHZW5lcmF0ZWRBdHRyaWJ1dGUARGVidWdnZXJOb25Vc2VyQ29k
+ZUF0dHJpYnV0ZQBEZWJ1Z2dhYmxlQXR0cmlidXRlAEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBB
+c3NlbWJseVRpdGxlQXR0cmlidXRlAEFzc2VtYmx5VHJhZGVtYXJrQXR0cmlidXRlAFRhcmdldEZy
+YW1ld29ya0F0dHJpYnV0ZQBBc3NlbWJseUNvbmZpZ3VyYXRpb25BdHRyaWJ1dGUAQXNzZW1ibHlE
+ZXNjcmlwdGlvbkF0dHJpYnV0ZQBDb21waWxhdGlvblJlbGF4YXRpb25zQXR0cmlidXRlAEFzc2Vt
+Ymx5UHJvZHVjdEF0dHJpYnV0ZQBBc3NlbWJseUNvcHlyaWdodEF0dHJpYnV0ZQBTU0lTU2NyaXB0
+VGFza0VudHJ5UG9pbnRBdHRyaWJ1dGUAQXNzZW1ibHlDb21wYW55QXR0cmlidXRlAFJ1bnRpbWVD
+b21wYXRpYmlsaXR5QXR0cmlidXRlAGdldF9WYWx1ZQBzZXRfVmFsdWUAdmFsdWUAU3lzdGVtLlJ1
+bnRpbWUuVmVyc2lvbmluZwBTdHJpbmcAU3Vic3RyaW5nAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuU2Ny
+aXB0VGFzawBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5UYXNrcy5TY3JpcHRUYXNrAFNjcmlwdE9i
+amVjdE1vZGVsAFN5c3RlbS5Db21wb25lbnRNb2RlbABTVF8wOTY3YzYxOWFhYjQ0NGJmODNiYzFm
+NDRhZGM2MzhjOS5kbGwAZ2V0X0l0ZW0AU3lzdGVtAFRyaW0ARW51bQByZXNvdXJjZU1hbgBTY3Jp
+cHRNYWluAFN5c3RlbS5Db25maWd1cmF0aW9uAFN5c3RlbS5HbG9iYWxpemF0aW9uAFN5c3RlbS5S
+ZWZsZWN0aW9uAEN1bHR1cmVJbmZvAGdldF9SZXNvdXJjZU1hbmFnZXIALmN0b3IALmNjdG9yAFN5
+c3RlbS5EaWFnbm9zdGljcwBTeXN0ZW0uUnVudGltZS5Db21waWxlclNlcnZpY2VzAFN5c3RlbS5S
+ZXNvdXJjZXMAU1RfMDk2N2M2MTlhYWI0NDRiZjgzYmMxZjQ0YWRjNjM4YzkuUHJvcGVydGllcy5S
+ZXNvdXJjZXMucmVzb3VyY2VzAERlYnVnZ2luZ01vZGVzAFNUXzA5NjdjNjE5YWFiNDQ0YmY4M2Jj
+MWY0NGFkYzYzOGM5LlByb3BlcnRpZXMAZ2V0X1ZhcmlhYmxlcwBTZXR0aW5ncwBTdWNjZXNzAGdl
+dF9EdHMAU2NyaXB0UmVzdWx0cwBFeGlzdHMAQ29uY2F0AE9iamVjdABnZXRfRGVmYXVsdABzZXRf
+VGFza1Jlc3VsdABnZXRfQXNzZW1ibHkAb3BfRXF1YWxpdHkAAAAAE3YAZwBTAHQAcgBQAGEAdABo
+AAAjdgBnAFMAdAByAEYAZQBjAGgAYQBQAHIAbwBjAGUAcwBvAAAtdgBnAFMAdAByAEYAZQBjAGgA
+YQBQAHIAbwBjAGUAcwBvAEgAYQBzAHQAYQAAJXYAZwBTAHQAcgBOAG8AbQBiAHIAZQBBAHIAYwBo
+AGkAdgBvAAABAANfAAAJLgB4AGwAcwAACy4AeABsAHMAeAAAG3YAZwBQAGEAdABoAEEAcgBjAGgA
+aQB2AG8AAHFTAFQAXwAwADkANgA3AGMANgAxADkAYQBhAGIANAA0ADQAYgBmADgAMwBiAGMAMQBm
+ADQANABhAGQAYwA2ADMAOABjADkALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1AHIA
+YwBlAHMAAACutLd6wb9BR7DfHvxHcwqtAAQgAQEIAyAAAQUgAQEREQQgAQEOBSABARFRCAcGDg4O
+Dg4OBCAAEmEEIAASZQUgARJpHAMgABwFIAIOCAgDIAAOBQACAg4OBgADDg4ODgUAAQ4dDgQAAQIO
+BAABAQ4EIAEBHAYAARJ1EXkEIAASfQYgAgEOEn0It3pcVhk04IkIiYRdzYCAzJEEAAAAAAQBAAAA
+AwYSSQMGEk0DBhIQAgYIAwYRFAQAABJJBAAAEk0FAAEBEk0EAAASEAMAAAEECAASSQQIABJNBAgA
+EhAIAQAIAAAAAAAeAQABAFQCFldyYXBOb25FeGNlcHRpb25UaHJvd3MBCAEAAgAAAAAAKAEAI1NU
+XzA5NjdjNjE5YWFiNDQ0YmY4M2JjMWY0NGFkYzYzOGM5AAAFAQAAAAAWAQARQ29weXJpZ2h0IEAg
+IDIwMTcAAEkBABouTkVURnJhbWV3b3JrLFZlcnNpb249djQuNQEAVA4URnJhbWV3b3JrRGlzcGxh
+eU5hbWUSLk5FVCBGcmFtZXdvcmsgNC41ALQAAADOyu++AQAAAJEAAABsU3lzdGVtLlJlc291cmNl
+cy5SZXNvdXJjZVJlYWRlciwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0
+cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVu
+dGltZVJlc291cmNlU2V0AgAAAAAAAAAAAAAAUEFEUEFEULQAAACQMAAAAAAAAAAAAACqMAAAACAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAnDAAAAAAAAAAAAAAAABfQ29yRGxsTWFpbgBtc2NvcmVlLmRs
+bAAAAAAA/yUAIAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAA
+AEgAAABYQAAAGgQAAAAAAAAAAAAAGgQ0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8A
+AAAAAL0E7/4AAAEAAAABADdrhBoAAAEAN2uEGj8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABE
+AAAAAQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8A
+bgAAAAAAAACwBHoDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAAFYDAAABADAAMAAw
+ADAAMAA0AGIAMAAAABoAAQABAEMAbwBtAG0AZQBuAHQAcwAAAAAAAAAiAAEAAQBDAG8AbQBwAGEA
+bgB5AE4AYQBtAGUAAAAAAAAAAABwACQAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAA
+AAAAUwBUAF8AMAA5ADYANwBjADYAMQA5AGEAYQBiADQANAA0AGIAZgA4ADMAYgBjADEAZgA0ADQA
+YQBkAGMANgAzADgAYwA5AAAAPgAPAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAu
+ADYANwA4ADgALgAyADcANAA0ADcAAAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAA
+UwBUAF8AMAA5ADYANwBjADYAMQA5AGEAYQBiADQANAA0AGIAZgA4ADMAYgBjADEAZgA0ADQAYQBk
+AGMANgAzADgAYwA5AC4AZABsAGwAAABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQA
+AABDAG8AcAB5AHIAaQBnAGgAdAAgAEAAIAAgADIAMAAxADcAAAAqAAEAAQBMAGUAZwBhAGwAVABy
+AGEAZABlAG0AYQByAGsAcwAAAAAAAAAAAHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4A
+YQBtAGUAAABTAFQAXwAwADkANgA3AGMANgAxADkAYQBhAGIANAA0ADQAYgBmADgAMwBiAGMAMQBm
+ADQANABhAGQAYwA2ADMAOABjADkALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0A
+ZQAAAAAAUwBUAF8AMAA5ADYANwBjADYAMQA5AGEAYQBiADQANAA0AGIAZgA4ADMAYgBjADEAZgA0
+ADQAYQBkAGMANgAzADgAYwA5AAAAQgAPAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAA
+MQAuADAALgA2ADcAOAA4AC4AMgA3ADQANAA3AAAAAABGAA8AAQBBAHMAcwBlAG0AYgBsAHkAIABW
+AGUAcgBzAGkAbwBuAAAAMQAuADAALgA2ADcAOAA4AC4AMgA3ADQANAA3AAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAALwwAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Consulta y Genracion de Datos Anulados"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Consulta y genera los datos a ser presentados y exportados a Excel"
+      DTS:DTSID="{C6808F6C-6AD3-4865-B287-B3899F271DEA}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Consulta y Genracion de Datos Anulados"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Consulta y Genracion de Datos Anulados\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Inputs[Data Conversion Input].Columns[Cod]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Cod"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].Columns[Cod]" />
+                    <inputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Inputs[Data Conversion Input].Columns[No_Serie_1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="No_Serie_1"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].Columns[No_Serie_1]" />
+                    <inputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Inputs[Data Conversion Input].Columns[No_Serie_2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="No_Serie_2"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].Columns[No_Serie_2]" />
+                    <inputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Inputs[Data Conversion Input].Columns[No_Secuencial_desde]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="No_Secuencial_desde"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].Columns[No_Secuencial_desde]" />
+                    <inputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Inputs[Data Conversion Input].Columns[No_Secuencial_hasta]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="No_Secuencial_hasta"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].Columns[No_Secuencial_hasta]" />
+                    <inputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Inputs[Data Conversion Input].Columns[Numero_Autorizacion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="Numero_Autorizacion"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].Columns[Numero_Autorizacion]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Outputs[Data Conversion Output].Columns[Cod]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="3"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Outputs[Data Conversion Output].Columns[Cod]"
+                      name="Cod"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].Columns[Cod]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Outputs[Data Conversion Output].Columns[No_Serie_1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="4"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Outputs[Data Conversion Output].Columns[No_Serie_1]"
+                      name="No_Serie_1"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].Columns[No_Serie_1]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Outputs[Data Conversion Output].Columns[No_Serie_2]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="4"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Outputs[Data Conversion Output].Columns[No_Serie_2]"
+                      name="No_Serie_2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].Columns[No_Serie_2]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Outputs[Data Conversion Output].Columns[No_Secuencial_desde]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Outputs[Data Conversion Output].Columns[No_Secuencial_desde]"
+                      name="No_Secuencial_desde"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].Columns[No_Secuencial_desde]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Outputs[Data Conversion Output].Columns[No_Secuencial_hasta]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Outputs[Data Conversion Output].Columns[No_Secuencial_hasta]"
+                      name="No_Secuencial_hasta"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].Columns[No_Secuencial_hasta]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Outputs[Data Conversion Output].Columns[Numero_Autorizacion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="30"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Outputs[Data Conversion Output].Columns[Numero_Autorizacion]"
+                      name="Numero_Autorizacion"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].Columns[Numero_Autorizacion]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Consulta y Genracion de Datos Anulados\Excel Destination"
+              componentClassID="Microsoft.ExcelDestination"
+              contactInfo="Excel Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Excel Destination"
+              name="Excel Destination"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Anulados</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable">User::vgStrBaseDatos</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        IdCompra, Nombre_Proveedor, Cod_Sust, Tipo_ID, Parte_Rel, Tipo_Prove, Ruc_CI, Tipo_Comp, Fecha_R_Comp, Estab_Comp, Pto_E_Comp, N_sec_Comp, Fecha_E_Comp, No_Autoriz_Comp, 
+                         Base_no_obj_de_IVA, Base_Exenta_IVA, Base_0_IVA, Base_X_IVA, Monto_ICE, Monto_IVA, Pago_Local_Ext, Pais_Pago, Conv_doble_trib, Suj_Ret, Reg_menor_Imp, Base_Ret_IVA_No_Procede, 
+                         Base_Ret_IVA_0, Base_Ret_IVA_10, Valor_Ret_IVA_10, Base_Ret_IVA_20, Valor_Ret_IVA_20, Base_Ret_IVA_30, Valor_Ret_IVA_30, Base_Ret_IVA_70, Valor_Ret_IVA_70, Base_Ret_IVA_100, Valor_Ret_IVA_100, 
+                         Forma_Pago, Fecha_Pago_Dividendo, Impuesto_Pagado_Dividendo, Anio_Utilidad_Dividendo, Numero_Cajas_Banano, Precio_Caja_Banano, Estab_Ret, Pto_E_Ret, N_sec_Ret, No_Autoriz_Ret, Fecha_E_Ret, 
+                         Tipo_Modif, Estab_Modif, Pto_E_Modif, N_sec_Modif, No_Autoriz_Modif, codigo_Retencion_1, Base_Renta_1, Porcentaje_Renta_1, Valor_Renta_1, codigo_Retencion_2, Base_Renta_2, Porcentaje_Renta_2, 
+                         Valor_Renta_2, codigo_Retencion_3, Base_Renta_3, Porcentaje_Renta_3, Valor_Renta_3, codigo_Retencion_4, Base_Renta_4, Porcentaje_Renta_4, Valor_Renta_4, codigo_Retencion_5, Base_Renta_5, 
+                         Porcentaje_Renta_5, Valor_Renta_5, codigo_Retencion_6, Base_Renta_6, Porcentaje_Renta_6, Valor_Renta_6, codigo_Retencion_7, Base_Renta_7, Porcentaje_Renta_7, Valor_Renta_7, codigo_Retencion_8, 
+                         Base_Renta_8, Porcentaje_Renta_8, Valor_Renta_8, codigo_Retencion_9, Base_Renta_9, Porcentaje_Renta_9, Valor_Renta_9, codigo_Retencion_10, Base_Renta_10, Porcentaje_Renta_10, 
+                         Valor_Renta_10
+FROM            Compras</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Inputs[Excel Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="IgnoreFailure"
+                  hasSideEffects="true"
+                  name="Excel Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Inputs[Excel Destination Input].Columns[Cod]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="Cod"
+                      externalMetadataColumnId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Cod]"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Outputs[Data Conversion Output].Columns[Cod]" />
+                    <inputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Inputs[Excel Destination Input].Columns[No_Serie_1]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="No_Serie_1"
+                      externalMetadataColumnId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[No_Serie_1]"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Outputs[Data Conversion Output].Columns[No_Serie_1]" />
+                    <inputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Inputs[Excel Destination Input].Columns[No_Serie_2]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="No_Serie_2"
+                      externalMetadataColumnId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[No_Serie_2]"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Outputs[Data Conversion Output].Columns[No_Serie_2]" />
+                    <inputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Inputs[Excel Destination Input].Columns[No_Secuencial_desde]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="No_Secuencial_desde"
+                      externalMetadataColumnId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[No_Secuencial_desde]"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Outputs[Data Conversion Output].Columns[No_Secuencial_desde]" />
+                    <inputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Inputs[Excel Destination Input].Columns[No_Secuencial_hasta]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="No_Secuencial_hasta"
+                      externalMetadataColumnId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[No_Secuencial_hasta]"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Outputs[Data Conversion Output].Columns[No_Secuencial_hasta]" />
+                    <inputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Inputs[Excel Destination Input].Columns[Numero_Autorizacion]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Numero_Autorizacion"
+                      externalMetadataColumnId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Numero_Autorizacion]"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Outputs[Data Conversion Output].Columns[Numero_Autorizacion]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Cod]"
+                      dataType="wstr"
+                      length="255"
+                      name="Cod" />
+                    <externalMetadataColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[No_Serie_1]"
+                      dataType="wstr"
+                      length="255"
+                      name="No_Serie_1" />
+                    <externalMetadataColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[No_Serie_2]"
+                      dataType="wstr"
+                      length="255"
+                      name="No_Serie_2" />
+                    <externalMetadataColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[No_Secuencial_desde]"
+                      dataType="wstr"
+                      length="255"
+                      name="No_Secuencial_desde" />
+                    <externalMetadataColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[No_Secuencial_hasta]"
+                      dataType="wstr"
+                      length="255"
+                      name="No_Secuencial_hasta" />
+                    <externalMetadataColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Numero_Autorizacion]"
+                      dataType="wstr"
+                      length="255"
+                      name="Numero_Autorizacion" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Outputs[Excel Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Excel Destination Error Output"
+                  synchronousInputId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Inputs[Excel Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Consulta y Genracion de Datos Anulados\Tabla"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Tabla"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 
+Cod,	
+No_Serie_1,
+No_Serie_2,
+No_Secuencial_desde,
+No_Secuencial_hasta,
+Numero_Autorizacion
+FROM facturacion.tablaConsultaAnuladosAtsExcelBasico</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Consulta y Genracion de Datos Anulados\Tabla.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ServidorBddDestino]"
+                  connectionManagerRefId="Package.ConnectionManagers[ServidorBddDestino]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].Columns[Cod]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].ExternalColumns[Cod]"
+                      length="100"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].Columns[Cod]"
+                      name="Cod"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].Columns[No_Serie_1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].ExternalColumns[No_Serie_1]"
+                      length="100"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].Columns[No_Serie_1]"
+                      name="No_Serie_1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].Columns[No_Serie_2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].ExternalColumns[No_Serie_2]"
+                      length="100"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].Columns[No_Serie_2]"
+                      name="No_Serie_2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].Columns[No_Secuencial_desde]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].ExternalColumns[No_Secuencial_desde]"
+                      length="20"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].Columns[No_Secuencial_desde]"
+                      name="No_Secuencial_desde"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].Columns[No_Secuencial_hasta]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].ExternalColumns[No_Secuencial_hasta]"
+                      length="20"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].Columns[No_Secuencial_hasta]"
+                      name="No_Secuencial_hasta"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].Columns[Numero_Autorizacion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].ExternalColumns[Numero_Autorizacion]"
+                      length="200"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].Columns[Numero_Autorizacion]"
+                      name="Numero_Autorizacion"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].ExternalColumns[Cod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Cod" />
+                    <externalMetadataColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].ExternalColumns[No_Serie_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="No_Serie_1" />
+                    <externalMetadataColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].ExternalColumns[No_Serie_2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="No_Serie_2" />
+                    <externalMetadataColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].ExternalColumns[No_Secuencial_desde]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="No_Secuencial_desde" />
+                    <externalMetadataColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].ExternalColumns[No_Secuencial_hasta]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="No_Secuencial_hasta" />
+                    <externalMetadataColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output].ExternalColumns[Numero_Autorizacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="Numero_Autorizacion" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Error Output].Columns[Cod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Error Output].Columns[Cod]"
+                      name="Cod" />
+                    <outputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Error Output].Columns[No_Serie_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Error Output].Columns[No_Serie_1]"
+                      name="No_Serie_1" />
+                    <outputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Error Output].Columns[No_Serie_2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Error Output].Columns[No_Serie_2]"
+                      name="No_Serie_2" />
+                    <outputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Error Output].Columns[No_Secuencial_desde]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Error Output].Columns[No_Secuencial_desde]"
+                      name="No_Secuencial_desde" />
+                    <outputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Error Output].Columns[No_Secuencial_hasta]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Error Output].Columns[No_Secuencial_hasta]"
+                      name="No_Secuencial_hasta" />
+                    <outputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Error Output].Columns[Numero_Autorizacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Error Output].Columns[Numero_Autorizacion]"
+                      name="Numero_Autorizacion" />
+                    <outputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Consulta y Genracion de Datos Anulados.Paths[Data Conversion Output]"
+              endId="Package\Consulta y Genracion de Datos Anulados\Excel Destination.Inputs[Excel Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Consulta y Genracion de Datos Anulados.Paths[OLE DB Source Output]"
+              endId="Package\Consulta y Genracion de Datos Anulados\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\Consulta y Genracion de Datos Anulados\Tabla.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Crear Estructura Excel Anulados"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Crea la estructura de la tabla que se pegará en la hoja de calculo para el reporte"
+      DTS:DTSID="{0086F3B2-50D7-4122-B2EA-F153879AF6F1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Crear Estructura Excel Anulados"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{7B159B5F-2B61-40D2-9613-3B5F0A16D08E}"
+          SQLTask:SqlStatementSource="CREATE TABLE `Anulados` (&#xA;`Cod`     &#x9;&#x9;NVARCHAR(3),&#xA;`No_Serie_1`    &#x9;NVARCHAR(4),&#xA;`No_Serie_2`     &#x9;VARCHAR(4),&#xA;`No_Secuencial_desde`  &#x9;VARCHAR(10),&#xA;`No_Secuencial_hasta`  &#x9;VARCHAR(10),&#x9;&#xA;`Numero_Autorizacion`  &#x9;NVARCHAR(30)&#xA;)"
+          SQLTask:TypeConversionMode="None" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Obtener Path"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{1DD752D5-D595-4263-8060-A0A3D73C2439}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Obtener Path"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{AC2F292D-795F-4AAD-BFE0-40D84150B254}"
+          SQLTask:SqlStatementSource="select pa_valor  from dbo.Parametro&#xA;where pa_id_parametro = 183"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::vgStrPath" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{A79827C9-3248-4A25-AAE9-A519F38DF22A}"
+      DTS:From="Package\AtsConsultarAnuladosExcel"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Crear Estructura Excel Anulados" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{A448E113-5DA0-45FB-820A-499C134A49FA}"
+      DTS:From="Package\Averiguar existencia archivo"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\AtsConsultarAnuladosExcel" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{043B8C03-871D-4A19-9784-1B392A46508C}"
+      DTS:From="Package\Obtener Path"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Averiguar existencia archivo" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{1D203BFE-38BC-4F9E-83D6-88E29B7AC6B3}"
+      DTS:From="Package\Crear Estructura Excel Anulados"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Consulta y Genracion de Datos Anulados" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="205,42"
+          Id="Package\AtsConsultarAnuladosExcel"
+          TopLeft="111,160" />
+        <NodeLayout
+          Size="211,42"
+          Id="Package\Averiguar existencia archivo"
+          TopLeft="109,69" />
+        <NodeLayout
+          Size="270,42"
+          Id="Package\Consulta y Genracion de Datos Anulados"
+          TopLeft="82,345" />
+        <NodeLayout
+          Size="229,42"
+          Id="Package\Crear Estructura Excel Anulados"
+          TopLeft="104,256" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\Obtener Path"
+          TopLeft="129,0" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="216,202">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54"
+              Start="0,0"
+              End="0,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="214,111">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="217.5,42">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27"
+              Start="0,0"
+              End="0,19.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="217.75,298">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Consulta y Genracion de Datos Anulados">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Consulta y Genracion de Datos Anulados\Excel Destination"
+          TopLeft="322,235" />
+        <NodeLayout
+          Size="105,42"
+          Id="Package\Consulta y Genracion de Datos Anulados\Tabla"
+          TopLeft="310,35" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Consulta y Genracion de Datos Anulados\Data Conversion"
+          TopLeft="307,132" />
+        <EdgeLayout
+          Id="Package\Consulta y Genracion de Datos Anulados.Paths[OLE DB Source Output]"
+          TopLeft="362.5,77">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="22.5,55"
+              Start="0,0"
+              End="22.5,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.5"
+                    Point2="0,27.5"
+                    Point3="4,27.5" />
+                  <mssgle:LineSegment
+                    End="18.5,27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="18.5,27.5"
+                    Point2="22.5,27.5"
+                    Point3="22.5,31.5" />
+                  <mssgle:LineSegment
+                    End="22.5,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Consulta y Genracion de Datos Anulados.Paths[Data Conversion Output]"
+          TopLeft="385,174">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="16.5,61"
+              Start="0,0"
+              End="16.5,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.5"
+                    Point2="0,30.5"
+                    Point3="4,30.5" />
+                  <mssgle:LineSegment
+                    End="12.5,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12.5,30.5"
+                    Point2="16.5,30.5"
+                    Point3="16.5,34.5" />
+                  <mssgle:LineSegment
+                    End="16.5,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Consulta y Genracion de Datos Anulados\Excel Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Consulta y Genracion de Datos Anulados\Tabla">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

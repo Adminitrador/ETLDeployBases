@@ -1,0 +1,857 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/4/2014 12:15:28 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="STAFFUIO-LAPT16"
+  DTS:CreatorName="STAFF\leonsg"
+  DTS:DTSID="{836AB717-D555-46B5-AFB6-8FDAA3CA0FEC}"
+  DTS:EnableConfig="True"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="12298"
+  DTS:ObjectName="FacturacionGeneracionDocumentosLote2"
+  DTS:PackageType="5"
+  DTS:VersionBuild="111"
+  DTS:VersionGUID="{E6126099-5E89-4015-BE50-B1DE902E33D2}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Conexion]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{BFA0BC62-9624-42CF-A352-26659A71AF99}"
+      DTS:ObjectName="Conexion">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[User::vgStrBaseDatos]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::vgStrServidor]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=clouduio-bddf1;Initial Catalog=Denariusadmin;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-FacturacionGeneracionDocumentosLote-{BFA0BC62-9624-42CF-A352-26659A71AF99}localhost.Denariuservis;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ConexionCore]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{22FC07F1-B06F-4BFC-9BA5-0F397BCD36BD}"
+      DTS:ObjectName="ConexionCore">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[User::vgStrBaseCore]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::vgStrServidor]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=clouduio-bddf1;Initial Catalog=DenariusCore;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-FacturacionGeneracionDocumentosLote-{22FC07F1-B06F-4BFC-9BA5-0F397BCD36BD}localhost.DenariusCore;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HTTP Connection Manager]"
+      DTS:CreationName="HTTP"
+      DTS:DTSID="{964E9591-E458-4E4C-B88C-249AE35383C5}"
+      DTS:ObjectName="HTTP Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="https://staffuio-apli01:41998/ServiciosFacturacion.svc">
+          <DTS:HttpConnection
+            DTS:ServerURL="https://staffuio-apli01:41998/ServiciosFacturacion.svc">
+            <DTS:Property
+              DTS:Name="ServerPassword"
+              Sensitive="1"
+              Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAFkSg6wXBy0m4Ca+fyqNCHwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACHkzmMWU5VmvVg3pheYtmaAAAAAASAAACgAAAAEAAAAH+9fv44HhJz5vqVdAGLgYgIAAAAi4CzdpZwru4UAAAAodoJ1TPDbKEbj2qonC2SRc2tV/o</DTS:Property>
+            <DTS:Property
+              DTS:Name="ProxyPassword"
+              Sensitive="1"
+              Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAFkSg6wXBy0m4Ca+fyqNCHwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABgd0NDy3wctd3fyU810vi+AAAAAASAAACgAAAAEAAAAGUW1Xyzb7yh74dDhb5zw2gIAAAAZk7bIxzmSm4UAAAAFsdxZ8Q041iFDtRcyHYECS466F4</DTS:Property>
+          </DTS:HttpConnection>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0A5A95B6-3039-497C-8305-90C93820E769}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgContador">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B0AA47FC-BAFD-46F7-9777-73838CD73641}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgDocumento">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FA1140CE-75F6-454F-A6DE-4C10EB93C6C4}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgEmisor">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{57C402C6-B96A-403D-83C2-1582518361F1}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgEstado">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{20664DD1-CB3D-47F9-A40B-EA9D558778C3}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgIdTipoDocumento">
+      <DTS:VariableValue
+        DTS:DataType="3">1602</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5A473289-8710-4132-A89A-7B8E564F5573}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgInformacionTributaria">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{78C2BA89-0BCE-404E-8C0A-787FF63423F3}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgMaximo">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{38D23427-9624-4F98-AD0D-5B5028236034}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgMensaje">
+      <DTS:VariableValue
+        DTS:DataType="8">""</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B2F375FB-C04C-4FC2-9AAD-16C4BD5F2547}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgMinimo">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9430304D-3594-48E8-B7B1-9A0B2180151C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgNumeroDocumentosPorProcesar">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7C4B19DC-EBDA-476A-9010-E4F3E0A104D9}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgOrganizacion">
+      <DTS:VariableValue
+        DTS:DataType="8">""</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{698DCB9D-45FA-43A8-AE57-56DD858A2F94}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrBaseCore">
+      <DTS:VariableValue
+        DTS:DataType="8">DenariusCore</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B154C99F-4327-4F01-A71B-C3FD2255E259}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrBaseDatos">
+      <DTS:VariableValue
+        DTS:DataType="8">Denariusadmin</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8DB72F9E-DB92-4D16-BBA0-8BD0AB0A7AC8}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrServidor">
+      <DTS:VariableValue
+        DTS:DataType="8">clouduio-bddf1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F8C5C71C-BBC8-4A66-914B-C51F05231BB8}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgTenant">
+      <DTS:VariableValue
+        DTS:DataType="3">2</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3E3A72B6-67BD-457E-BAD5-72FB23F810CD}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgTipoDocumento">
+      <DTS:VariableValue
+        DTS:DataType="8">""</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0FC9E7B4-7AC2-4CE8-B87D-8BF6CC7AF3B1}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgTotal">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E670B029-FD24-4BBB-B12C-DC0E25160D27}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgTotalInicial">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FD2A4B78-DA0E-4C25-B8FC-8AA11346F815}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgUsuario">
+      <DTS:VariableValue
+        DTS:DataType="8">troyan</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{377133A1-9CF3-4959-B89D-FD3AC9C31F79}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgVerificador">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Bucle para el proceso de envío al SRI"
+      DTS:CreationName="STOCK:FORLOOP"
+      DTS:Description="For Loop Container"
+      DTS:DTSID="{FDEB9564-0A57-4516-988B-252100272088}"
+      DTS:EvalExpression="@vgTotal &gt;0"
+      DTS:ExecutableType="STOCK:FORLOOP"
+      DTS:InitExpression="@vgTotal = @vgTotalInicial"
+      DTS:LocaleID="-1"
+      DTS:MaxConcurrent="1"
+      DTS:ObjectName="Bucle para el proceso de envío al SRI">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Bucle para el proceso de envío al SRI\Bucle para el escaneno de registros"
+          DTS:AssignExpression="@vgContador = @vgContador +1"
+          DTS:CreationName="STOCK:FORLOOP"
+          DTS:Description="For Loop Container"
+          DTS:DTSID="{EC8A31A5-35C6-4C9F-90C8-35345991DCD4}"
+          DTS:EvalExpression="@vgContador&lt;= @vgMaximo"
+          DTS:ExecutableType="STOCK:FORLOOP"
+          DTS:InitExpression="@vgContador = @vgMinimo"
+          DTS:LocaleID="-1"
+          DTS:MaxConcurrent="1"
+          DTS:ObjectName="Bucle para el escaneno de registros">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Bucle para el proceso de envío al SRI\Bucle para el escaneno de registros\Obtencion de datos para generacion de Documentos Electronicos"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{CBE8E1BF-94E5-4DEA-8E39-BD3C0196DD38}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Obtencion de datos para generacion de Documentos Electronicos"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{BFA0BC62-9624-42CF-A352-26659A71AF99}"
+                  SQLTask:SqlStatementSource="SELECT        i.it_id_informacion_tributaria, d.do_id_documento, i.it_id_emisor, &#xA;                         CASE i.it_id_codigo_documento WHEN 1602 THEN 'F' WHEN 1603 THEN 'N' WHEN 1604 THEN 'D' WHEN 1605 THEN 'G' ELSE 'C' END AS tipo&#xA;FROM            facturacion.Documento AS d INNER JOIN&#xA;                         facturacion.InformacionTributaria AS i ON d.do_id_informacion_tributaria = i.it_id_informacion_tributaria INNER JOIN&#xA;                         DetalleCatalogo AS dc ON i.it_id_estado = dc.dc_id_detalle_catalogo&#xA;WHERE        (i.it_id_estado IN (1730,1742)) AND (d.do_id_documento = ?)"
+                  SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ResultBinding
+                    SQLTask:ResultName="0"
+                    SQLTask:DtsVariableName="User::vgInformacionTributaria" />
+                  <SQLTask:ResultBinding
+                    SQLTask:ResultName="1"
+                    SQLTask:DtsVariableName="User::vgDocumento" />
+                  <SQLTask:ResultBinding
+                    SQLTask:ResultName="2"
+                    SQLTask:DtsVariableName="User::vgEmisor" />
+                  <SQLTask:ResultBinding
+                    SQLTask:ResultName="3"
+                    SQLTask:DtsVariableName="User::vgTipoDocumento" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="0"
+                    SQLTask:DtsVariableName="User::vgContador"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="131"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Bucle para el proceso de envío al SRI\Bucle para el escaneno de registros\Verifica si el registro esta pendiente"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{6B2FB58E-7B6F-496C-865D-15EB7D10A3B1}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Verifica si el registro esta pendiente"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{BFA0BC62-9624-42CF-A352-26659A71AF99}"
+                  SQLTask:BypassPrepare="False"
+                  SQLTask:SqlStatementSource="SELECT        count(*)&#xA;FROM            facturacion.Documento AS d INNER JOIN&#xA;                         facturacion.InformacionTributaria AS i ON d.do_id_informacion_tributaria = i.it_id_informacion_tributaria INNER JOIN&#xA;                         DetalleCatalogo AS dc ON i.it_id_estado = dc.dc_id_detalle_catalogo&#xA;WHERE        (i.it_id_estado IN (1730,1742)) AND (d.do_id_documento = ?)"
+                  SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ResultBinding
+                    SQLTask:ResultName="0"
+                    SQLTask:DtsVariableName="User::vgVerificador" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="0"
+                    SQLTask:DtsVariableName="User::vgContador"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="131"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Bucle para el proceso de envío al SRI\Bucle para el escaneno de registros\Web Service Task Para acceder a procesos de facturacion"
+              DTS:CreationName="Microsoft.WebServiceTask"
+              DTS:Description="Web Service Task"
+              DTS:DTSID="{0FB7F3D4-7A68-4BEF-A46C-F3707E1AA2D3}"
+              DTS:ExecutableType="Microsoft.WebServiceTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Web Service Task Para acceder a procesos de facturacion"
+              DTS:TaskContact="Web Service Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <WSTask:WebServiceTaskData
+                  WSTask:ConnectionName="{964E9591-E458-4E4C-B88C-249AE35383C5}"
+                  WSTask:Service="ServiciosFacturacion"
+                  WSTask:WSDLFile="\\clouduio-proc2\EsquemaBatch\Ejecutables\Facturacion\Facturacion.wsdl"
+                  WSTask:OutputType="Variable"
+                  WSTask:OutputLocation="User::vgMensaje" xmlns:WSTask="www.microsoft.com/sqlserver/dts/tasks/webservicetask">
+                  <WSTask:MethodInfo
+                    WSTask:MethodName="GenerarDocumento"
+                    WSTask:MessageName="">
+                    <WSTask:Documentation></WSTask:Documentation>
+                    <WSTask:ParamInfo
+                      WSTask:Name="IdInformacionTributaria"
+                      WSTask:Datatype="int"
+                      WSTask:ParamType="Variable"
+                      WSTask:SeqNumber="0">
+                      <WSTask:VariableValue>User::vgInformacionTributaria</WSTask:VariableValue>
+                    </WSTask:ParamInfo>
+                    <WSTask:ParamInfo
+                      WSTask:Name="IdInformacionTributariaSpecified"
+                      WSTask:Datatype="boolean"
+                      WSTask:ParamType="Primitive"
+                      WSTask:SeqNumber="1">
+                      <WSTask:PrimitiveValue>true</WSTask:PrimitiveValue>
+                    </WSTask:ParamInfo>
+                    <WSTask:ParamInfo
+                      WSTask:Name="IdDocumento"
+                      WSTask:Datatype="int"
+                      WSTask:ParamType="Variable"
+                      WSTask:SeqNumber="2">
+                      <WSTask:VariableValue>User::vgDocumento</WSTask:VariableValue>
+                    </WSTask:ParamInfo>
+                    <WSTask:ParamInfo
+                      WSTask:Name="IdDocumentoSpecified"
+                      WSTask:Datatype="boolean"
+                      WSTask:ParamType="Primitive"
+                      WSTask:SeqNumber="3">
+                      <WSTask:PrimitiveValue>true</WSTask:PrimitiveValue>
+                    </WSTask:ParamInfo>
+                    <WSTask:ParamInfo
+                      WSTask:Name="IdEmisor"
+                      WSTask:Datatype="int"
+                      WSTask:ParamType="Variable"
+                      WSTask:SeqNumber="4">
+                      <WSTask:VariableValue>User::vgEmisor</WSTask:VariableValue>
+                    </WSTask:ParamInfo>
+                    <WSTask:ParamInfo
+                      WSTask:Name="IdEmisorSpecified"
+                      WSTask:Datatype="boolean"
+                      WSTask:ParamType="Primitive"
+                      WSTask:SeqNumber="5">
+                      <WSTask:PrimitiveValue>true</WSTask:PrimitiveValue>
+                    </WSTask:ParamInfo>
+                    <WSTask:ParamInfo
+                      WSTask:Name="TipoDocumento"
+                      WSTask:Datatype="string"
+                      WSTask:ParamType="Variable"
+                      WSTask:SeqNumber="6">
+                      <WSTask:VariableValue>User::vgTipoDocumento</WSTask:VariableValue>
+                    </WSTask:ParamInfo>
+                    <WSTask:ParamInfo
+                      WSTask:Name="Organizacion"
+                      WSTask:Datatype="string"
+                      WSTask:ParamType="Variable"
+                      WSTask:SeqNumber="7">
+                      <WSTask:VariableValue>User::vgOrganizacion</WSTask:VariableValue>
+                    </WSTask:ParamInfo>
+                    <WSTask:ParamInfo
+                      WSTask:Name="Usuario"
+                      WSTask:Datatype="string"
+                      WSTask:ParamType="Variable"
+                      WSTask:SeqNumber="8">
+                      <WSTask:VariableValue>User::vgUsuario</WSTask:VariableValue>
+                    </WSTask:ParamInfo>
+                  </WSTask:MethodInfo>
+                </WSTask:WebServiceTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Bucle para el proceso de envío al SRI\Bucle para el escaneno de registros.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{994F789F-0C88-4CC4-967F-71CDAA474955}"
+              DTS:EvalOp="1"
+              DTS:Expression="@[User::vgVerificador] &gt;0"
+              DTS:From="Package\Bucle para el proceso de envío al SRI\Bucle para el escaneno de registros\Verifica si el registro esta pendiente"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\Bucle para el proceso de envío al SRI\Bucle para el escaneno de registros\Obtencion de datos para generacion de Documentos Electronicos" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Bucle para el proceso de envío al SRI\Bucle para el escaneno de registros.PrecedenceConstraints[Constraint 1]"
+              DTS:CreationName=""
+              DTS:DTSID="{46630EE9-0AA4-42D5-8634-581AD73EDCBF}"
+              DTS:From="Package\Bucle para el proceso de envío al SRI\Bucle para el escaneno de registros\Obtencion de datos para generacion de Documentos Electronicos"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 1"
+              DTS:To="Package\Bucle para el proceso de envío al SRI\Bucle para el escaneno de registros\Web Service Task Para acceder a procesos de facturacion" />
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Bucle para el proceso de envío al SRI\Sacar el minimo y el maximo secuencial  de Registros a escanear"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{CEB7D491-2031-4E45-9480-95C626F6A8A5}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Sacar el minimo y el maximo secuencial  de Registros a escanear"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{BFA0BC62-9624-42CF-A352-26659A71AF99}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="SELECT        MIN(d.do_id_documento) AS Expr1, MAX(d.do_id_documento) AS Expr2&#xA;FROM            facturacion.Documento AS d INNER JOIN&#xA;                         facturacion.InformacionTributaria AS i ON d.do_id_informacion_tributaria = i.it_id_informacion_tributaria INNER JOIN&#xA;                         DetalleCatalogo AS dc ON i.it_id_estado = dc.dc_id_detalle_catalogo&#xA;WHERE        (i.it_id_estado IN (1730,1742))&#xA;        AND it_id_codigo_documento = ?"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::vgMinimo" />
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="1"
+                SQLTask:DtsVariableName="User::vgMaximo" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::vgIdTipoDocumento"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Bucle para el proceso de envío al SRI\Sacar el total de registros final"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{7AE6EFA0-1C3F-49FC-92BC-D272BF9C9BE4}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Sacar el total de registros final"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{7D38494C-090B-47B7-A277-6B8A8343E432}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="Variable">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{BFA0BC62-9624-42CF-A352-26659A71AF99}"
+              SQLTask:SqlStatementSource="SELECT count(1) as Expr3&#xA;FROM facturacion.InformacionTributaria&#xA;WHERE it_id_estado IN (1730,1742)&#xA;  AND it_id_codigo_documento = ?"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::vgTotal" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::vgIdTipoDocumento"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Bucle para el proceso de envío al SRI.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{40E61D70-9D06-4FEC-9AB6-F910D75B6C2E}"
+          DTS:From="Package\Bucle para el proceso de envío al SRI\Bucle para el escaneno de registros"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Bucle para el proceso de envío al SRI\Sacar el total de registros final" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Bucle para el proceso de envío al SRI.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{6286D2F0-2DE8-4607-B9F8-0014C66A72B6}"
+          DTS:From="Package\Bucle para el proceso de envío al SRI\Sacar el minimo y el maximo secuencial  de Registros a escanear"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Bucle para el proceso de envío al SRI\Bucle para el escaneno de registros" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Obtener datos de tenant"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{6B440E0D-77AD-43F9-99A3-3AE37E2EE611}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Obtener datos de tenant"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{22FC07F1-B06F-4BFC-9BA5-0F397BCD36BD}"
+          SQLTask:SqlStatementSource="SELECT        te_nombre_organizacion&#xA;FROM            dbo.Tenant&#xA;WHERE        (te_id_tenant = ?)"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::vgOrganizacion" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::vgTenant"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Sacar el total de registros"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{348E3AB2-9946-453C-925F-220A6E47C711}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sacar el total de registros"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{F161F84A-9E5F-4556-801D-0382DAB36032}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="Variable">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{BFA0BC62-9624-42CF-A352-26659A71AF99}"
+          SQLTask:SqlStatementSource="SELECT count(1) as Expr3&#xA;FROM facturacion.InformacionTributaria&#xA;WHERE it_id_estado IN (1730,1742)&#xA;  AND it_id_codigo_documento = ?"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::vgTotalInicial" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::vgIdTipoDocumento"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{2B85BA6D-42EE-4505-95AA-6F45CFECEB02}"
+      DTS:From="Package\Obtener datos de tenant"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Sacar el total de registros" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{2CAB715B-BD68-4A5F-AE25-BFA82ACC4B4C}"
+      DTS:From="Package\Sacar el total de registros"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Bucle para el proceso de envío al SRI" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="215,63"
+          Id="Package\Bucle para el proceso de envío al SRI\Bucle para el escaneno de registros\Obtencion de datos para generacion de Documentos Electronicos"
+          TopLeft="45.2452830188679,120.924528301887" />
+        <NodeLayout
+          Size="212,44"
+          Id="Package\Bucle para el proceso de envío al SRI\Bucle para el escaneno de registros\Verifica si el registro esta pendiente"
+          TopLeft="44.754716981132,22.4716981132076" />
+        <NodeLayout
+          Size="350,42"
+          Id="Package\Bucle para el proceso de envío al SRI\Bucle para el escaneno de registros\Web Service Task Para acceder a procesos de facturacion"
+          TopLeft="47.8113207547169,218.622641509434" />
+        <EdgeLayout
+          Id="Package\Bucle para el proceso de envío al SRI\Bucle para el escaneno de registros.PrecedenceConstraints[Constraint]"
+          TopLeft="150.566037735849,66.3962264150944">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="2,54.5283018867925"
+              Start="0,0"
+              End="2,47.0283018867925">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.245283018868" />
+                  <mssgle:LineSegment
+                    End="2,27.245283018868" />
+                  <mssgle:LineSegment
+                    End="2,47.0283018867925" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-7,32.245283018868,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Bucle para el proceso de envío al SRI\Bucle para el escaneno de registros.PrecedenceConstraints[Constraint 1]"
+          TopLeft="152.745283018868,183.924528301887">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="70.066037735849,34.698113207547"
+              Start="0,0"
+              End="70.066037735849,27.198113207547">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.3490566037735" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.3490566037735"
+                    Point2="0,17.3490566037735"
+                    Point3="4,17.3490566037735" />
+                  <mssgle:LineSegment
+                    End="66.066037735849,17.3490566037735" />
+                  <mssgle:CubicBezierSegment
+                    Point1="66.066037735849,17.3490566037735"
+                    Point2="70.066037735849,17.3490566037735"
+                    Point3="70.066037735849,21.3490566037735" />
+                  <mssgle:LineSegment
+                    End="70.066037735849,27.198113207547" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43.924528301886795"
+          IsExpanded="True"
+          PanelSize="403,316"
+          Size="403,360"
+          Id="Package\Bucle para el proceso de envío al SRI\Bucle para el escaneno de registros"
+          TopLeft="45.433962264151,105.641509433962" />
+        <NodeLayout
+          Size="246,44"
+          Id="Package\Bucle para el proceso de envío al SRI\Sacar el minimo y el maximo secuencial  de Registros a escanear"
+          TopLeft="98.7924528301886,22.1320754716981" />
+        <NodeLayout
+          Size="239,44"
+          Id="Package\Bucle para el proceso de envío al SRI\Sacar el total de registros final"
+          TopLeft="74.6415094339623,480.433962264151" />
+        <EdgeLayout
+          Id="Package\Bucle para el proceso de envío al SRI.PrecedenceConstraints[Constraint]"
+          TopLeft="193.547169811321,439.301886792453">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0.415094339622669,41.132075471698"
+              Start="0,0"
+              End="0.415094339622669,33.632075471698">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.566037735849" />
+                  <mssgle:LineSegment
+                    End="0.415094339622669,20.566037735849" />
+                  <mssgle:LineSegment
+                    End="0.415094339622669,33.632075471698" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Bucle para el proceso de envío al SRI.PrecedenceConstraints[Constraint 1]"
+          TopLeft="221.584905660377,66.0566037735849">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-28.0377358490566,39.5849056603773"
+              Start="0,0"
+              End="-28.0377358490566,32.0849056603773">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.7735849056604" />
+                  <mssgle:LineSegment
+                    End="-28.0377358490566,19.7735849056604" />
+                  <mssgle:LineSegment
+                    End="-28.0377358490566,32.0849056603773" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43.924528301886795"
+          IsExpanded="True"
+          PanelSize="417,554"
+          Size="417,598"
+          Id="Package\Bucle para el proceso de envío al SRI"
+          TopLeft="5.5,180.216981132075" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\Obtener datos de tenant"
+          TopLeft="107.462264150943,5.5" />
+        <NodeLayout
+          Size="195,44"
+          Id="Package\Sacar el total de registros"
+          TopLeft="92.6698113207547,93.122641509434" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="175.349056603774,49.4245283018868">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14.6415094339623,43.6981132075472"
+              Start="0,0"
+              End="14.6415094339623,36.1981132075472">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.8490566037736" />
+                  <mssgle:LineSegment
+                    End="14.6415094339623,21.8490566037736" />
+                  <mssgle:LineSegment
+                    End="14.6415094339623,36.1981132075472" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="148.481132075472,137.047169811321">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="65.2830188679245,43.1698113207547"
+              Start="0,0"
+              End="65.2830188679245,35.6698113207547">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.377358490566" />
+                  <mssgle:LineSegment
+                    End="65.2830188679245,32.377358490566" />
+                  <mssgle:LineSegment
+                    End="65.2830188679245,35.6698113207547" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

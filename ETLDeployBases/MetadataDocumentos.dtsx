@@ -1,0 +1,1019 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/19/2017 4:23:09 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="STAFFUIO-LAPT31"
+  DTS:CreatorName="STAFF\palize"
+  DTS:DTSID="{89480439-EE2F-419E-A09C-9DE50AE26283}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="12298"
+  DTS:ObjectName="MetadataDocumentos"
+  DTS:PackageType="5"
+  DTS:VersionBuild="39"
+  DTS:VersionGUID="{5219F114-6714-4A5C-BC70-BC1F01327E8F}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Servidor ODSOut destino]"
+      DTS:CreationName="ADO.NET:SQL"
+      DTS:DTSID="{5C6EE76B-880D-477F-9297-4D4908FC45C9}"
+      DTS:ObjectName="Servidor ODSOut destino">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[User::BaseDestino]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=cloudazu-mig1;User ID=denariusapp_usr;Initial Catalog=AlianzaDelValleOdsOut;Connect Timeout=30;Application Name=&quot;SSIS-CarteraReportesEnLinea-{5C6EE76B-880D-477F-9297-4D4908FC45C9}Servidor ODSOut destino&quot;;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAQQ6kWYi7U0ydsJG3GIRuogAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADI3XUsEmPmoLwuMYqTnDW/AAAAAASAAACgAAAAEAAAAL3rTYrjhjUo57TjRsD90UsgAAAAUTY/u3zDSEhsLA68J5CQRE4i5b4jtX7B5w8od50eZKkUAAAA3TSAbo4y/MEmd4C5DnuxM/I/xYk</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Servidor Origen]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{8E4F5204-10BB-44C3-AE84-F32BF1533A7C}"
+      DTS:ObjectName="Servidor Origen">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[User::BaseOrigen]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[User::ClaveOrigen]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::ServidorOrigen]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="UserName">@[User::UsuarioOrigen]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=cloudazu-sqlcp1.database.windows.net;User ID=denariusapp_usr;Initial Catalog=AlianzaDelValle;Persist Security Info=True;Application Name=SSIS-CarteraReportesEnLinea-{8E4F5204-10BB-44C3-AE84-F32BF1533A7C}cloudazu-sqlcp1.database.windows.net.AlianzaDelValle.denariu;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAQQ6kWYi7U0ydsJG3GIRuogAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAhyGbimaiFtGJCQTpUS9kVAAAAAASAAACgAAAAEAAAAO0BeX5sDFX2Kbk9ow3K27ogAAAAOzI7J+n3h22JFhs+w6nNIXl0I9xx5elyCn3EMiOJqGcUAAAALsiWlyrG9sbae/LlXLCK6AF916I</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3F696009-27EB-4358-ADCD-9B55D7747274}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="BaseDestino">
+      <DTS:VariableValue
+        DTS:DataType="8">AlianzaDelValleOdsOut</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3631CF17-B656-40E5-953E-465F1CB611DF}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="BaseOrigen">
+      <DTS:VariableValue
+        DTS:DataType="8">AlianzaDelValle</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7C94F44D-3AC3-4CDD-9016-50542A47387E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ClaveDestino">
+      <DTS:VariableValue
+        DTS:DataType="8">Denarius.11</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1A04B972-D770-476E-849C-6C1E6B8B696B}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ClaveOrigen">
+      <DTS:VariableValue
+        DTS:DataType="8">denARius2017***</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5D0F9C23-4F04-452C-BA3C-EEBCD9FC5F26}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ServidorDestino">
+      <DTS:VariableValue
+        DTS:DataType="8">cloudazu-mig1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A8F25FD5-7352-46BB-ADAB-58655A54D218}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ServidorOrigen">
+      <DTS:VariableValue
+        DTS:DataType="8">cloudazu-sqlcp1.database.windows.net</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C9D96364-4622-4DE1-BC4B-EFBD7D98332E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="UsuarioDestino">
+      <DTS:VariableValue
+        DTS:DataType="8">alianzavalle</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{627A4D91-3661-4457-BC83-D8081FDAF670}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="UsuarioOrigen">
+      <DTS:VariableValue
+        DTS:DataType="8">denariusapp_usr</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Actualizacion Reporte colocacion en linea"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{492BBC62-8029-48F3-A5AC-FB52BF5E7391}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Actualizacion Reporte colocacion en linea"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="Destino de datos MetadatosDocumento"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"documentos"."MetadatosDocumento"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Servidor ODSOut destino]"
+                  connectionManagerRefId="Package.ConnectionManagers[Servidor ODSOut destino]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].Columns[md_id_metadatos_documento]"
+                      cachedDataType="i4"
+                      cachedName="md_id_metadatos_documento"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[IdMetadatosDocumento]"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_id_metadatos_documento]" />
+                    <inputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].Columns[md_tipo_documento]"
+                      cachedDataType="wstr"
+                      cachedLength="350"
+                      cachedName="md_tipo_documento"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[TipoDocumento]"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_tipo_documento]" />
+                    <inputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].Columns[md_identificacion]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="md_identificacion"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[Identificacion]"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_identificacion]" />
+                    <inputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].Columns[md_estado_civil]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="md_estado_civil"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[EstadoCivil]"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_estado_civil]" />
+                    <inputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].Columns[md_profesion]"
+                      cachedDataType="wstr"
+                      cachedLength="350"
+                      cachedName="md_profesion"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[Profesion]"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_profesion]" />
+                    <inputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].Columns[md_asesor_financiero]"
+                      cachedDataType="wstr"
+                      cachedLength="220"
+                      cachedName="md_asesor_financiero"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[AsesorFinanciero]"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_asesor_financiero]" />
+                    <inputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].Columns[md_numero_cargas]"
+                      cachedDataType="i4"
+                      cachedName="md_numero_cargas"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[NumeroCargas]"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_numero_cargas]" />
+                    <inputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].Columns[md_representante_legal]"
+                      cachedDataType="wstr"
+                      cachedLength="220"
+                      cachedName="md_representante_legal"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[RepresentanteLegal]"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_representante_legal]" />
+                    <inputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].Columns[md_funcionario_vinculado]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="md_funcionario_vinculado"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[FuncionarioVinculado]"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_funcionario_vinculado]" />
+                    <inputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].Columns[md_fecha_emision_documento]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="md_fecha_emision_documento"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[FechaEmisionDocumento]"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_fecha_emision_documento]" />
+                    <inputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].Columns[md_numero_cuenta]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="md_numero_cuenta"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[NumeroCuenta]"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_numero_cuenta]" />
+                    <inputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].Columns[md_subproducto]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="md_subproducto"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[Subproducto]"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_subproducto]" />
+                    <inputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].Columns[md_estado]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="md_estado"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[Estado]"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_estado]" />
+                    <inputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].Columns[md_rol_cliente]"
+                      cachedDataType="wstr"
+                      cachedLength="350"
+                      cachedName="md_rol_cliente"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[RolCliente]"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_rol_cliente]" />
+                    <inputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].Columns[md_numero_solicitud_credito]"
+                      cachedDataType="i4"
+                      cachedName="md_numero_solicitud_credito"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[NumeroSolicitudCredito]"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_numero_solicitud_credito]" />
+                    <inputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].Columns[md_estado_operacion]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="md_estado_operacion"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[EstadoOperacion]"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_estado_operacion]" />
+                    <inputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].Columns[md_numero_operacion_cartera]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="md_numero_operacion_cartera"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[NumeroOperacionCartera]"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_numero_operacion_cartera]" />
+                    <inputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].Columns[md_fecha_registro]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="md_fecha_registro"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[FechaRegistro]"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_fecha_registro]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[IdMetadatosDocumento]"
+                      dataType="i4"
+                      name="IdMetadatosDocumento" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[TipoDocumento]"
+                      dataType="wstr"
+                      length="350"
+                      name="TipoDocumento" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[Identificacion]"
+                      dataType="wstr"
+                      length="20"
+                      name="Identificacion" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[EstadoCivil]"
+                      dataType="wstr"
+                      length="50"
+                      name="EstadoCivil" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[Profesion]"
+                      dataType="wstr"
+                      length="350"
+                      name="Profesion" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[AsesorFinanciero]"
+                      dataType="wstr"
+                      length="220"
+                      name="AsesorFinanciero" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[NumeroCargas]"
+                      dataType="i4"
+                      name="NumeroCargas" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[RepresentanteLegal]"
+                      dataType="wstr"
+                      length="220"
+                      name="RepresentanteLegal" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[FuncionarioVinculado]"
+                      dataType="wstr"
+                      length="50"
+                      name="FuncionarioVinculado" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[FechaEmisionDocumento]"
+                      dataType="dbTimeStamp"
+                      name="FechaEmisionDocumento" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[NumeroCuenta]"
+                      dataType="wstr"
+                      length="18"
+                      name="NumeroCuenta" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[Subproducto]"
+                      dataType="wstr"
+                      length="30"
+                      name="Subproducto" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[Estado]"
+                      dataType="wstr"
+                      length="30"
+                      name="Estado" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[RolCliente]"
+                      dataType="wstr"
+                      length="350"
+                      name="RolCliente" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[NumeroSolicitudCredito]"
+                      dataType="i4"
+                      name="NumeroSolicitudCredito" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[EstadoOperacion]"
+                      dataType="wstr"
+                      length="30"
+                      name="EstadoOperacion" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[NumeroOperacionCartera]"
+                      dataType="wstr"
+                      length="18"
+                      name="NumeroOperacionCartera" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input].ExternalColumns[FechaRegistro]"
+                      dataType="dbTimeStamp"
+                      name="FechaRegistro" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="Origen Datos MetadatosDocumento"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec [cartera].[GenerarReporteCarteraEnLinea]</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."MetadatosDocumento"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Servidor Origen]"
+                  connectionManagerRefId="Package.ConnectionManagers[Servidor Origen]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_id_metadatos_documento]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_id_metadatos_documento]"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_id_metadatos_documento]"
+                      name="md_id_metadatos_documento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_tipo_documento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_tipo_documento]"
+                      length="350"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_tipo_documento]"
+                      name="md_tipo_documento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_identificacion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_identificacion]"
+                      length="20"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_identificacion]"
+                      name="md_identificacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_estado_civil]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_estado_civil]"
+                      length="50"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_estado_civil]"
+                      name="md_estado_civil"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_profesion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_profesion]"
+                      length="350"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_profesion]"
+                      name="md_profesion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_asesor_financiero]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_asesor_financiero]"
+                      length="220"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_asesor_financiero]"
+                      name="md_asesor_financiero"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_numero_cargas]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_numero_cargas]"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_numero_cargas]"
+                      name="md_numero_cargas"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_representante_legal]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_representante_legal]"
+                      length="220"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_representante_legal]"
+                      name="md_representante_legal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_funcionario_vinculado]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_funcionario_vinculado]"
+                      length="50"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_funcionario_vinculado]"
+                      name="md_funcionario_vinculado"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_fecha_emision_documento]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_fecha_emision_documento]"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_fecha_emision_documento]"
+                      name="md_fecha_emision_documento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_numero_cuenta]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_numero_cuenta]"
+                      length="18"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_numero_cuenta]"
+                      name="md_numero_cuenta"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_subproducto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_subproducto]"
+                      length="30"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_subproducto]"
+                      name="md_subproducto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_estado]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_estado]"
+                      length="30"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_estado]"
+                      name="md_estado"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_rol_cliente]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_rol_cliente]"
+                      length="350"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_rol_cliente]"
+                      name="md_rol_cliente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_numero_solicitud_credito]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_numero_solicitud_credito]"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_numero_solicitud_credito]"
+                      name="md_numero_solicitud_credito"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_estado_operacion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_estado_operacion]"
+                      length="30"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_estado_operacion]"
+                      name="md_estado_operacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_numero_operacion_cartera]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_numero_operacion_cartera]"
+                      length="18"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_numero_operacion_cartera]"
+                      name="md_numero_operacion_cartera"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_fecha_registro]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_fecha_registro]"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].Columns[md_fecha_registro]"
+                      name="md_fecha_registro"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_id_metadatos_documento]"
+                      dataType="i4"
+                      name="md_id_metadatos_documento" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_tipo_documento]"
+                      dataType="wstr"
+                      length="350"
+                      name="md_tipo_documento" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_identificacion]"
+                      dataType="wstr"
+                      length="20"
+                      name="md_identificacion" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_estado_civil]"
+                      dataType="wstr"
+                      length="50"
+                      name="md_estado_civil" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_profesion]"
+                      dataType="wstr"
+                      length="350"
+                      name="md_profesion" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_asesor_financiero]"
+                      dataType="wstr"
+                      length="220"
+                      name="md_asesor_financiero" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_numero_cargas]"
+                      dataType="i4"
+                      name="md_numero_cargas" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_representante_legal]"
+                      dataType="wstr"
+                      length="220"
+                      name="md_representante_legal" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_funcionario_vinculado]"
+                      dataType="wstr"
+                      length="50"
+                      name="md_funcionario_vinculado" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_fecha_emision_documento]"
+                      dataType="dbTimeStamp"
+                      name="md_fecha_emision_documento" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_numero_cuenta]"
+                      dataType="wstr"
+                      length="18"
+                      name="md_numero_cuenta" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_subproducto]"
+                      dataType="wstr"
+                      length="30"
+                      name="md_subproducto" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_estado]"
+                      dataType="wstr"
+                      length="30"
+                      name="md_estado" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_rol_cliente]"
+                      dataType="wstr"
+                      length="350"
+                      name="md_rol_cliente" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_numero_solicitud_credito]"
+                      dataType="i4"
+                      name="md_numero_solicitud_credito" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_estado_operacion]"
+                      dataType="wstr"
+                      length="30"
+                      name="md_estado_operacion" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_numero_operacion_cartera]"
+                      dataType="wstr"
+                      length="18"
+                      name="md_numero_operacion_cartera" />
+                    <externalMetadataColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output].ExternalColumns[md_fecha_registro]"
+                      dataType="dbTimeStamp"
+                      name="md_fecha_registro" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_id_metadatos_documento]"
+                      dataType="i4"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_id_metadatos_documento]"
+                      name="md_id_metadatos_documento" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_tipo_documento]"
+                      dataType="wstr"
+                      length="350"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_tipo_documento]"
+                      name="md_tipo_documento" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_identificacion]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_identificacion]"
+                      name="md_identificacion" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_estado_civil]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_estado_civil]"
+                      name="md_estado_civil" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_profesion]"
+                      dataType="wstr"
+                      length="350"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_profesion]"
+                      name="md_profesion" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_asesor_financiero]"
+                      dataType="wstr"
+                      length="220"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_asesor_financiero]"
+                      name="md_asesor_financiero" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_numero_cargas]"
+                      dataType="i4"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_numero_cargas]"
+                      name="md_numero_cargas" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_representante_legal]"
+                      dataType="wstr"
+                      length="220"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_representante_legal]"
+                      name="md_representante_legal" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_funcionario_vinculado]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_funcionario_vinculado]"
+                      name="md_funcionario_vinculado" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_fecha_emision_documento]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_fecha_emision_documento]"
+                      name="md_fecha_emision_documento" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_numero_cuenta]"
+                      dataType="wstr"
+                      length="18"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_numero_cuenta]"
+                      name="md_numero_cuenta" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_subproducto]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_subproducto]"
+                      name="md_subproducto" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_estado]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_estado]"
+                      name="md_estado" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_rol_cliente]"
+                      dataType="wstr"
+                      length="350"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_rol_cliente]"
+                      name="md_rol_cliente" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_numero_solicitud_credito]"
+                      dataType="i4"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_numero_solicitud_credito]"
+                      name="md_numero_solicitud_credito" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_estado_operacion]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_estado_operacion]"
+                      name="md_estado_operacion" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_numero_operacion_cartera]"
+                      dataType="wstr"
+                      length="18"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_numero_operacion_cartera]"
+                      name="md_numero_operacion_cartera" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_fecha_registro]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[md_fecha_registro]"
+                      name="md_fecha_registro" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Actualizacion Reporte colocacion en linea.Paths[ADO NET Source Output]"
+              endId="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento.Inputs[ADO NET Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Limpiar tablas"
+      DTS:CreationName="Microsoft.DbMaintenanceTSQLExecuteTask"
+      DTS:Description="Execute T-SQL Statement Task"
+      DTS:DTSID="{3B61AC4C-65D9-4ACB-A1B0-24BABCB11406}"
+      DTS:ExecutableType="Microsoft.DbMaintenanceTSQLExecuteTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpiar tablas"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5C6EE76B-880D-477F-9297-4D4908FC45C9}"
+          SQLTask:SqlStatementSource="truncate table documentos.MetadatosDocumento&#xA;go&#xA;"
+          SQLTask:ServerVersion="9"
+          SQLTask:ExtendedLogging="True"
+          SQLTask:LocalConnectionForLogging=""
+          SQLTask:TaskName=""
+          SQLTask:IgnoreDatabasesInNotOnlineState="False" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{3F3F8A0F-E39B-4DBD-9265-ACAB2235E452}"
+      DTS:From="Package\Limpiar tablas"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Actualizacion Reporte colocacion en linea" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="272,42"
+          Id="Package\Actualizacion Reporte colocacion en linea"
+          TopLeft="365,171" />
+        <NodeLayout
+          Size="145,42"
+          Id="Package\Limpiar tablas"
+          TopLeft="430,63" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="501.75,105">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66"
+              Start="0,0"
+              End="0,58.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Actualizacion Reporte colocacion en linea">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="264,42"
+          Id="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento"
+          TopLeft="353,236" />
+        <NodeLayout
+          Size="246,42"
+          Id="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento"
+          TopLeft="358,74" />
+        <EdgeLayout
+          Id="Package\Actualizacion Reporte colocacion en linea.Paths[ADO NET Source Output]"
+          TopLeft="483,116">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,120"
+              Start="0,0"
+              End="0,112.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,112.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Actualizacion Reporte colocacion en linea\Destino de datos MetadatosDocumento">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Actualizacion Reporte colocacion en linea\Origen Datos MetadatosDocumento">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

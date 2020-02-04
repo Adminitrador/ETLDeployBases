@@ -1,0 +1,3074 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/30/2018 4:21:34 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CLOUDAZU-BUILD1"
+  DTS:CreatorName="STAFF\tapiaf"
+  DTS:DTSID="{4909B9A8-23E0-4534-A524-D2CE4E16A7A8}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="GenerarEstructuraTINS"
+  DTS:PackageType="5"
+  DTS:VersionBuild="199"
+  DTS:VersionGUID="{CFC2B7F8-5447-48E8-8886-A02845BE4DDE}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Carga Datos Cabecera]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{6EC33109-EF7E-48F1-ACEE-C0B289286E15}"
+      DTS:ObjectName="Carga Datos Cabecera">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath] + "\\" +  @[User::vgStrNombreArchivo] +  @[User::vgStrCodigoSib]+SUBSTRING(  @[User::vgStrFechaConsulta] , 9, 2 ) +SUBSTRING(  @[User::vgStrFechaConsulta] , 6, 2 ) +SUBSTRING(  @[User::vgStrFechaConsulta] , 1, 4 )+".txt"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\leonsg\Desktop\New folder\\TINS112716012020.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Fecha"
+              DTS:DTSID="{777601D1-00F5-40F8-8CD9-D5C526B46957}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="4"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Codigo"
+              DTS:DTSID="{BCF842ED-FBDB-42A3-A670-81020A86559D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Registros"
+              DTS:DTSID="{A0990294-63C0-49D4-8AEB-5AACE36557D2}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Carga Datos Detalle]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{837030DD-9236-49DD-ADE2-BC47DF1B7192}"
+      DTS:ObjectName="Carga Datos Detalle">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath] + "\\" +  @[User::vgStrNombreArchivo] +  @[User::vgStrCodigoSib]+SUBSTRING(  @[User::vgStrFechaConsulta] , 9, 2 ) +SUBSTRING(  @[User::vgStrFechaConsulta] , 6, 2 ) +SUBSTRING(  @[User::vgStrFechaConsulta] , 1, 4 )+".txt"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\leonsg\Desktop\New folder\\TINS112716012020.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="segmentoCredito"
+              DTS:DTSID="{535ED972-302D-4B7C-BBE4-92EF7B5B41D6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="codCatalogoCtas"
+              DTS:DTSID="{99A55717-FE49-4A0B-A9D7-EAA32A530AAD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="codOperacionCredito"
+              DTS:DTSID="{EF3BD108-2818-4D06-AB4B-B321A6EF59C3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="fechaConcesionOperacion"
+              DTS:DTSID="{1236A51C-7E48-4EE5-9E5E-05E43DE855D5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="codMomeda"
+              DTS:DTSID="{152DA7B9-313E-45B2-A2D2-AA8DE122E628}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="plazo"
+              DTS:DTSID="{09774DA2-0E8A-4782-BBDB-846D7917306C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="tirNominalAnual"
+              DTS:DTSID="{B69C9B0B-5F96-4956-AAFE-59A15249D2D9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="tasaEfectivaAnual"
+              DTS:DTSID="{604915DF-8159-45D4-8F43-909213071ACD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="cantidadOperaciones"
+              DTS:DTSID="{8862BB1C-BC18-4F5B-A72F-D74E466BCFFC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="frecuenciaPago"
+              DTS:DTSID="{4771922F-DAF0-43FF-A5C9-0579486F3810}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="periodoAjuste"
+              DTS:DTSID="{AB5151F0-8853-4390-A7F2-2C26210E86AF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="valorPrincipal"
+              DTS:DTSID="{9A15DECD-56A1-4666-B7B7-09D30E3051C8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="numerocreditosvigentes"
+              DTS:DTSID="{3027F9F3-54D5-4071-8967-2B9737CB86EC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="saldocreditosvigentes"
+              DTS:DTSID="{A2062363-460D-40B9-B9AF-561B6EF93B35}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="nivelVentasPrestatario"
+              DTS:DTSID="{FE90334C-9F18-4FAC-B670-10D818B1F4C0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="clasificacionCinc"
+              DTS:DTSID="{99F927E3-694E-43B7-BFFF-503E83E4A374}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="destinoFinancieroCredito"
+              DTS:DTSID="{1EAFE730-12D1-4A78-A1F6-6895015ACD07}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="destinoCreditoHipotecario"
+              DTS:DTSID="{ACE648A5-39F6-4AD2-9FF7-55A043754CE2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="tiposComsumo"
+              DTS:DTSID="{107486CF-0C32-49E3-BAFD-A9BC8EABABE8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="tipoGarantia"
+              DTS:DTSID="{CAEB402C-4584-4D74-BB4E-A34E69440FA2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="valorComercialVivienda"
+              DTS:DTSID="{ABA1CF3B-0DDC-40BE-8976-23E771F0D3F1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="valorMetroCuadradoVivienda"
+              DTS:DTSID="{8B047A66-E90D-4D6B-B8FC-7907C20D51FF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="intrumentada"
+              DTS:DTSID="{C82EC15A-5F63-4555-A856-951BBF0536DC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="identificacionPrestarioDep"
+              DTS:DTSID="{11C08FA2-BFC2-47DE-9A29-0F6C44798A8B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="tipoIdentificacionPrestario"
+              DTS:DTSID="{36D4D989-4412-4099-8A2E-652295ED2FAB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="clasePrestario"
+              DTS:DTSID="{FD3822C4-CEB0-4AB3-9C02-AA8D09318142}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="tasaReferencialAjuste"
+              DTS:DTSID="{9551D91B-59D6-4EAE-AB91-9482D313B3C9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="cupoTatalTarjetaCre"
+              DTS:DTSID="{8D06D9D9-D47A-435E-8700-D017FA5A61B6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="provincia"
+              DTS:DTSID="{128483FF-340B-4890-A987-73051991DD16}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="canton"
+              DTS:DTSID="{98DD5E7B-0919-45FA-AEAE-4877228937B5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="aniosAntiguedadVivienda"
+              DTS:DTSID="{F29FE815-951A-41C8-BD34-94E3ACA5A032}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="valorEncaje"
+              DTS:DTSID="{966AD76E-75A0-4624-8C87-E8CADFFFE3E3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="genero"
+              DTS:DTSID="{E2F62013-0A70-4674-B4B4-65EAF0D78064}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="edad"
+              DTS:DTSID="{720F31CF-8364-4C88-8AC9-63F5EF2059F4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="valorasociado"
+              DTS:DTSID="{5316C92B-1655-4CD0-929D-CB3985B99DDF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="valoradicional"
+              DTS:DTSID="{70542B1C-146E-40FF-B114-D02B540E163D}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ConexionBdd]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3C32CA8F-395B-48EE-AE12-0355451158CA}"
+      DTS:ObjectName="ConexionBdd">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[User::vgStrBaseDatosOrigen]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[User::vgStrPasswordOrigen]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::vgStrServidorBddOrigen]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="UserName">@[User::vgStrLoginOrigen]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=cloudazu-sqlcc.database.windows.net,1433;User ID=denariusapp_usr;Initial Catalog=CooprogresoTemp;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgVKAm+7f+0Ww7wvIM1UfBwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABk9N5QCYBjloFwzo8hOx4eAAAAAASAAACgAAAAEAAAAN5y42shNHq+65V2lEnBJAAgAAAAq4ykOz1WVi7npmkbdHpHl2bfeWg5cl3NeqPP4aeh6GYUAAAAfCmEArsRzwgpc53AIDNM5foCdmU</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0F503FD2-61C1-4787-ABFB-DD8F6516E523}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrBaseDatosOrigen">
+      <DTS:VariableValue
+        DTS:DataType="8">CooprogresoTemp</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{64A960A3-7DDB-430E-87F3-7B01DC6AB122}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrCodigoSib">
+      <DTS:VariableValue
+        DTS:DataType="8">1127</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8AE6FA10-B644-438E-85B4-366C1AFAE304}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrFechaConsulta">
+      <DTS:VariableValue
+        DTS:DataType="8">2020-01-16</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{37A4C11F-273D-4D1D-9613-70334CE0939A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrFechaGeneracion">
+      <DTS:VariableValue
+        DTS:DataType="8">2020-01-22</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0BC04ABC-D18C-4998-ADF9-032410CAC6A6}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrLoginOrigen">
+      <DTS:VariableValue
+        DTS:DataType="8">denariusapp_usr</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C5D32BB7-EC2C-4ED0-9E8C-EE177971A9C4}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrNombreArchivo">
+      <DTS:VariableValue
+        DTS:DataType="8">TINS</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CCE02A5D-C45B-4304-BEF5-0332507C76C3}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrPasswordOrigen">
+      <DTS:VariableValue
+        DTS:DataType="8">denARius2017***</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3815F886-1820-4622-B3D6-DD76ACD6A573}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrPath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\leonsg\Desktop\New folder\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AD4A9248-35DC-490F-A6C4-5296A281270C}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrServidorBddOrigen">
+      <DTS:VariableValue
+        DTS:DataType="8">cloudazu-sqlcc.database.windows.net,1433</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9E3D043D-9005-4DFD-AAA2-072D8256C496}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrTenant">
+      <DTS:VariableValue
+        DTS:DataType="3">5</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Carga Datos Detalle"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1DFF302A-7422-43FE-A029-62DFF69568BB}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga Datos Detalle"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carga Datos Detalle\Carga Origen Detalle"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Carga Origen Detalle"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT RTRIM(LTRIM(Convert(varchar, dr_segmento_credito))) as 'segmentoCredito' , RTRIM(LTRIM(Convert(varchar, dr_codigo_catalogo_cuentas_sbs))) as 'codCatalogoCtas', 
+RTRIM(LTRIM(Convert(varchar, dr_codigo_operacion_credito))) as 'codOperacionCredito', RTRIM(LTRIM(Convert(varchar(10), dr_fecha_concesion_operacion,103))) as 'fechaConcesionOperacion', 
+RTRIM(LTRIM(Convert(varchar, dr_codigo_moneda))) as 'codMomeda', RTRIM(LTRIM(Convert(varchar, dr_plazo))) as 'plazo', 
+RTRIM(LTRIM(Convert(varchar, ISNULL(dr_tir_nominal_anual,0)))) as 'tirNominalAnual', RTRIM(LTRIM(Convert(varchar, ISNULL(dr_tasa_efectiva_anual,0)))) as 'tasaEfectivaAnual', 
+RTRIM(LTRIM(Convert(varchar, dr_cantidad_operaciones))) as 'cantidadOperaciones', RTRIM(LTRIM(Convert(varchar, dr_frecuencia_pago))) as 'frecuenciaPago', 
+RTRIM(LTRIM(Convert(varchar, dr_periodo_reajuste))) as'periodoAjuste', RTRIM(LTRIM(Convert(varchar, ISNULL(dr_valor_del_principal,0)))) as 'valorPrincipal', 
+RTRIM(LTRIM(Convert(varchar,ISNULL(dr_nivel_ventas_prestatario,0)))) as 'nivelVentasPrestatario', 
+RTRIM(LTRIM(Convert(varchar,ISNULL(dr_numero_creditos_vigentes,0)))) as 'numerocreditosvigentes', 
+RTRIM(LTRIM(Convert(varchar,ISNULL(dr_saldo_creditos_vigentes,0)))) as 'saldocreditosvigentes', 
+RTRIM(LTRIM(Convert(varchar, ISNULL(dr_clasificacion_cicn,'0')))) as 'clasificacionCinc', RTRIM(LTRIM(Convert(varchar, ISNULL(dr_destino_financiero_credito,'')))) as 'destinoFinancieroCredito', 
+RTRIM(LTRIM(Convert(varchar, ISNULL(dr_destino_credito_hipotecario,'')))) as 'destinoCreditoHipotecario', RTRIM(LTRIM(Convert(varchar, ISNULL(dr_tipos_consumo,'')))) as 'tiposComsumo', 
+RTRIM(LTRIM(Convert(varchar, ISNULL(dr_tipo_garantia,'')))) as 'tipoGarantia', RTRIM(LTRIM(Convert(varchar, ISNULL(dr_valor_comercial_vivienda,0)))) as 'valorComercialVivienda', 
+RTRIM(LTRIM(Convert(varchar, ISNULL(dr_valor_metro_cuadrado_vivienda,0)))) as 'valorMetroCuadradoVivienda', RTRIM(LTRIM(Convert(varchar, dr_instrumentada_a_traves_de))) as 'intrumentada', 
+RTRIM(LTRIM(Convert(varchar, ISNULL(dr_identificacion_prestatario_depositante,'')))) as 'identificacionPrestarioDep', RTRIM(LTRIM(Convert(varchar, ISNULL(dr_tipo_identificacion_prestatario,'')))) as 'tipoIdentificacionPrestario', 
+RTRIM(LTRIM(Convert(varchar, ISNULL(dr_clase_prestatario,'')))) as 'clasePrestario', RTRIM(LTRIM(Convert(varchar, ISNULL(dr_tasa_referencial_reajustes,'')))) as 'tasaReferencialAjuste', 
+RTRIM(LTRIM(Convert(varchar, dr_cupo_total_tarjeta_credito))) as 'cupoTatalTarjetaCre', RTRIM(LTRIM(Convert(varchar, ISNULL(dr_provincia,'')))) as 'provincia', 
+RTRIM(LTRIM(Convert(varchar, ISNULL(dr_canton,'')))) as 'canton', RTRIM(LTRIM(Convert(varchar, ISNULL(dr_anios_antiguedad_vivienda,0)))) as 'aniosAntiguedadVivienda',
+RTRIM(LTRIM(Convert(varchar, ISNULL(dr_valor_encaje,0)))) as 'valorEncaje',
+RTRIM(LTRIM(Convert(varchar, ISNULL(dr_genero,0)))) as 'genero',
+RTRIM(LTRIM(Convert(varchar, ISNULL(dr_edad,0)))) as 'edad',
+RTRIM(LTRIM(Convert(varchar, ISNULL(dr_valor_asociado,0)))) as 'valorasociado',
+RTRIM(LTRIM(Convert(varchar, ISNULL(dr_valor_adicional,0)))) as 'valoradicional'
+FROM cumplimiento.detalleestructuraTINS
+WHERE dr_id_cabecera_estructura = (SELECT ce_id_cabecera_estructura FROM cumplimiento.cabeceraestructura
+WHERE ce_codigo_estructura = 'TINS'  
+AND ce_fecha_periodo = ?)</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"Parameter0:Input",{8AE6FA10-B644-438E-85B4-366C1AFAE304};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Datos Detalle\Carga Origen Detalle.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ConexionBdd]"
+                  connectionManagerRefId="Package.ConnectionManagers[ConexionBdd]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[segmentoCredito]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[segmentoCredito]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[segmentoCredito]"
+                      name="segmentoCredito"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[codCatalogoCtas]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[codCatalogoCtas]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[codCatalogoCtas]"
+                      name="codCatalogoCtas"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[codOperacionCredito]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[codOperacionCredito]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[codOperacionCredito]"
+                      name="codOperacionCredito"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[fechaConcesionOperacion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[fechaConcesionOperacion]"
+                      length="10"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[fechaConcesionOperacion]"
+                      name="fechaConcesionOperacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[codMomeda]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[codMomeda]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[codMomeda]"
+                      name="codMomeda"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[plazo]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[plazo]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[plazo]"
+                      name="plazo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[tirNominalAnual]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[tirNominalAnual]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[tirNominalAnual]"
+                      name="tirNominalAnual"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[tasaEfectivaAnual]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[tasaEfectivaAnual]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[tasaEfectivaAnual]"
+                      name="tasaEfectivaAnual"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[cantidadOperaciones]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[cantidadOperaciones]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[cantidadOperaciones]"
+                      name="cantidadOperaciones"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[frecuenciaPago]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[frecuenciaPago]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[frecuenciaPago]"
+                      name="frecuenciaPago"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[periodoAjuste]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[periodoAjuste]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[periodoAjuste]"
+                      name="periodoAjuste"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[valorPrincipal]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[valorPrincipal]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[valorPrincipal]"
+                      name="valorPrincipal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[nivelVentasPrestatario]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[nivelVentasPrestatario]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[nivelVentasPrestatario]"
+                      name="nivelVentasPrestatario"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[numerocreditosvigentes]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[numerocreditosvigentes]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[numerocreditosvigentes]"
+                      name="numerocreditosvigentes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[saldocreditosvigentes]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[saldocreditosvigentes]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[saldocreditosvigentes]"
+                      name="saldocreditosvigentes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[clasificacionCinc]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[clasificacionCinc]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[clasificacionCinc]"
+                      name="clasificacionCinc"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[destinoFinancieroCredito]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[destinoFinancieroCredito]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[destinoFinancieroCredito]"
+                      name="destinoFinancieroCredito"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[destinoCreditoHipotecario]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[destinoCreditoHipotecario]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[destinoCreditoHipotecario]"
+                      name="destinoCreditoHipotecario"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[tiposComsumo]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[tiposComsumo]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[tiposComsumo]"
+                      name="tiposComsumo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[tipoGarantia]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[tipoGarantia]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[tipoGarantia]"
+                      name="tipoGarantia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[valorComercialVivienda]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[valorComercialVivienda]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[valorComercialVivienda]"
+                      name="valorComercialVivienda"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[valorMetroCuadradoVivienda]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[valorMetroCuadradoVivienda]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[valorMetroCuadradoVivienda]"
+                      name="valorMetroCuadradoVivienda"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[intrumentada]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[intrumentada]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[intrumentada]"
+                      name="intrumentada"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[identificacionPrestarioDep]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[identificacionPrestarioDep]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[identificacionPrestarioDep]"
+                      name="identificacionPrestarioDep"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[tipoIdentificacionPrestario]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[tipoIdentificacionPrestario]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[tipoIdentificacionPrestario]"
+                      name="tipoIdentificacionPrestario"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[clasePrestario]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[clasePrestario]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[clasePrestario]"
+                      name="clasePrestario"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[tasaReferencialAjuste]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[tasaReferencialAjuste]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[tasaReferencialAjuste]"
+                      name="tasaReferencialAjuste"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[cupoTatalTarjetaCre]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[cupoTatalTarjetaCre]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[cupoTatalTarjetaCre]"
+                      name="cupoTatalTarjetaCre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[provincia]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[provincia]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[provincia]"
+                      name="provincia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[canton]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[canton]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[canton]"
+                      name="canton"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[aniosAntiguedadVivienda]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[aniosAntiguedadVivienda]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[aniosAntiguedadVivienda]"
+                      name="aniosAntiguedadVivienda"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[valorEncaje]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[valorEncaje]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[valorEncaje]"
+                      name="valorEncaje"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[genero]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[genero]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[genero]"
+                      name="genero"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[edad]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[edad]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[edad]"
+                      name="edad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[valorasociado]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[valorasociado]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[valorasociado]"
+                      name="valorasociado"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[valoradicional]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[valoradicional]"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[valoradicional]"
+                      name="valoradicional"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[segmentoCredito]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="segmentoCredito" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[codCatalogoCtas]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="codCatalogoCtas" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[codOperacionCredito]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="codOperacionCredito" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[fechaConcesionOperacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="fechaConcesionOperacion" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[codMomeda]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="codMomeda" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[plazo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="plazo" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[tirNominalAnual]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="tirNominalAnual" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[tasaEfectivaAnual]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="tasaEfectivaAnual" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[cantidadOperaciones]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="cantidadOperaciones" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[frecuenciaPago]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="frecuenciaPago" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[periodoAjuste]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="periodoAjuste" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[valorPrincipal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="valorPrincipal" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[nivelVentasPrestatario]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="nivelVentasPrestatario" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[clasificacionCinc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="clasificacionCinc" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[destinoFinancieroCredito]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="destinoFinancieroCredito" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[destinoCreditoHipotecario]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="destinoCreditoHipotecario" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[tiposComsumo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="tiposComsumo" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[tipoGarantia]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="tipoGarantia" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[valorComercialVivienda]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="valorComercialVivienda" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[valorMetroCuadradoVivienda]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="valorMetroCuadradoVivienda" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[intrumentada]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="intrumentada" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[identificacionPrestarioDep]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="identificacionPrestarioDep" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[tipoIdentificacionPrestario]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="tipoIdentificacionPrestario" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[clasePrestario]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="clasePrestario" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[tasaReferencialAjuste]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="tasaReferencialAjuste" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[cupoTatalTarjetaCre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="cupoTatalTarjetaCre" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[provincia]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="provincia" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[canton]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="canton" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[aniosAntiguedadVivienda]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="aniosAntiguedadVivienda" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[valorEncaje]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="valorEncaje" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[numerocreditosvigentes]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="numerocreditosvigentes" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[saldocreditosvigentes]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="saldocreditosvigentes" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[genero]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="genero" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[edad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="edad" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[valorasociado]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="valorasociado" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].ExternalColumns[valoradicional]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="valoradicional" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[segmentoCredito]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[segmentoCredito]"
+                      name="segmentoCredito" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[codCatalogoCtas]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[codCatalogoCtas]"
+                      name="codCatalogoCtas" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[codOperacionCredito]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[codOperacionCredito]"
+                      name="codOperacionCredito" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[fechaConcesionOperacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[fechaConcesionOperacion]"
+                      name="fechaConcesionOperacion" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[codMomeda]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[codMomeda]"
+                      name="codMomeda" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[plazo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[plazo]"
+                      name="plazo" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[tirNominalAnual]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[tirNominalAnual]"
+                      name="tirNominalAnual" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[tasaEfectivaAnual]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[tasaEfectivaAnual]"
+                      name="tasaEfectivaAnual" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[cantidadOperaciones]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[cantidadOperaciones]"
+                      name="cantidadOperaciones" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[frecuenciaPago]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[frecuenciaPago]"
+                      name="frecuenciaPago" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[periodoAjuste]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[periodoAjuste]"
+                      name="periodoAjuste" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[valorPrincipal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[valorPrincipal]"
+                      name="valorPrincipal" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[nivelVentasPrestatario]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[nivelVentasPrestatario]"
+                      name="nivelVentasPrestatario" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[numerocreditosvigentes]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[numerocreditosvigentes]"
+                      name="numerocreditosvigentes" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[saldocreditosvigentes]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[saldocreditosvigentes]"
+                      name="saldocreditosvigentes" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[clasificacionCinc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[clasificacionCinc]"
+                      name="clasificacionCinc" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[destinoFinancieroCredito]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[destinoFinancieroCredito]"
+                      name="destinoFinancieroCredito" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[destinoCreditoHipotecario]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[destinoCreditoHipotecario]"
+                      name="destinoCreditoHipotecario" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[tiposComsumo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[tiposComsumo]"
+                      name="tiposComsumo" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[tipoGarantia]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[tipoGarantia]"
+                      name="tipoGarantia" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[valorComercialVivienda]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[valorComercialVivienda]"
+                      name="valorComercialVivienda" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[valorMetroCuadradoVivienda]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[valorMetroCuadradoVivienda]"
+                      name="valorMetroCuadradoVivienda" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[intrumentada]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[intrumentada]"
+                      name="intrumentada" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[identificacionPrestarioDep]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[identificacionPrestarioDep]"
+                      name="identificacionPrestarioDep" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[tipoIdentificacionPrestario]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[tipoIdentificacionPrestario]"
+                      name="tipoIdentificacionPrestario" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[clasePrestario]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[clasePrestario]"
+                      name="clasePrestario" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[tasaReferencialAjuste]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[tasaReferencialAjuste]"
+                      name="tasaReferencialAjuste" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[cupoTatalTarjetaCre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[cupoTatalTarjetaCre]"
+                      name="cupoTatalTarjetaCre" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[provincia]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[provincia]"
+                      name="provincia" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[canton]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[canton]"
+                      name="canton" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[aniosAntiguedadVivienda]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[aniosAntiguedadVivienda]"
+                      name="aniosAntiguedadVivienda" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[valorEncaje]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[valorEncaje]"
+                      name="valorEncaje" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[genero]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[genero]"
+                      name="genero" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[edad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[edad]"
+                      name="edad" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[valorasociado]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[valorasociado]"
+                      name="valorasociado" />
+                    <outputColumn
+                      refId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[valoradicional]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Error Output].Columns[valoradicional]"
+                      name="valoradicional" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Datos Detalle\Destino Origen Detalle"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Flat File Destination"
+              localeId="1033"
+              name="Destino Origen Detalle">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">false</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Datos Detalle\Destino Origen Detalle.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Carga Datos Detalle]"
+                  connectionManagerRefId="Package.ConnectionManagers[Carga Datos Detalle]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[segmentoCredito]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="segmentoCredito"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[segmentoCredito]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[segmentoCredito]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[codCatalogoCtas]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="codCatalogoCtas"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[codCatalogoCtas]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[codCatalogoCtas]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[codOperacionCredito]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="codOperacionCredito"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[codOperacionCredito]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[codOperacionCredito]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[fechaConcesionOperacion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="fechaConcesionOperacion"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[fechaConcesionOperacion]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[fechaConcesionOperacion]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[codMomeda]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="codMomeda"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[codMomeda]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[codMomeda]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[plazo]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="plazo"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[plazo]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[plazo]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[tirNominalAnual]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="tirNominalAnual"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[tirNominalAnual]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[tirNominalAnual]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[tasaEfectivaAnual]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="tasaEfectivaAnual"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[tasaEfectivaAnual]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[tasaEfectivaAnual]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[cantidadOperaciones]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="cantidadOperaciones"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[cantidadOperaciones]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[cantidadOperaciones]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[frecuenciaPago]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="frecuenciaPago"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[frecuenciaPago]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[frecuenciaPago]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[periodoAjuste]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="periodoAjuste"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[periodoAjuste]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[periodoAjuste]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[valorPrincipal]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="valorPrincipal"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[valorPrincipal]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[valorPrincipal]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[nivelVentasPrestatario]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="nivelVentasPrestatario"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[nivelVentasPrestatario]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[nivelVentasPrestatario]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[clasificacionCinc]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="clasificacionCinc"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[clasificacionCinc]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[clasificacionCinc]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[destinoFinancieroCredito]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="destinoFinancieroCredito"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[destinoFinancieroCredito]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[destinoFinancieroCredito]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[destinoCreditoHipotecario]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="destinoCreditoHipotecario"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[destinoCreditoHipotecario]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[destinoCreditoHipotecario]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[tiposComsumo]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="tiposComsumo"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[tiposComsumo]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[tiposComsumo]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[tipoGarantia]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="tipoGarantia"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[tipoGarantia]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[tipoGarantia]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[valorComercialVivienda]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="valorComercialVivienda"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[valorComercialVivienda]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[valorComercialVivienda]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[valorMetroCuadradoVivienda]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="valorMetroCuadradoVivienda"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[valorMetroCuadradoVivienda]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[valorMetroCuadradoVivienda]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[intrumentada]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="intrumentada"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[intrumentada]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[intrumentada]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[identificacionPrestarioDep]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="identificacionPrestarioDep"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[identificacionPrestarioDep]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[identificacionPrestarioDep]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[tipoIdentificacionPrestario]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="tipoIdentificacionPrestario"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[tipoIdentificacionPrestario]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[tipoIdentificacionPrestario]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[clasePrestario]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="clasePrestario"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[clasePrestario]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[clasePrestario]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[tasaReferencialAjuste]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="tasaReferencialAjuste"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[tasaReferencialAjuste]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[tasaReferencialAjuste]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[cupoTatalTarjetaCre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="cupoTatalTarjetaCre"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[cupoTatalTarjetaCre]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[cupoTatalTarjetaCre]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[provincia]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="provincia"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[provincia]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[provincia]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[canton]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="canton"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[canton]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[canton]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[aniosAntiguedadVivienda]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="aniosAntiguedadVivienda"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[aniosAntiguedadVivienda]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[aniosAntiguedadVivienda]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[valorEncaje]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="valorEncaje"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[valorEncaje]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[valorEncaje]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[genero]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="genero"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[genero]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[genero]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[edad]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="edad"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[edad]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[edad]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[valorasociado]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="valorasociado"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[valorasociado]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[valorasociado]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[valoradicional]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="valoradicional"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[valoradicional]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[valoradicional]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[numerocreditosvigentes]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="numerocreditosvigentes"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[numerocreditosvigentes]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[numerocreditosvigentes]" />
+                    <inputColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].Columns[saldocreditosvigentes]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="saldocreditosvigentes"
+                      externalMetadataColumnId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[saldocreditosvigentes]"
+                      lineageId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output].Columns[saldocreditosvigentes]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[segmentoCredito]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="segmentoCredito" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[codCatalogoCtas]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="codCatalogoCtas" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[codOperacionCredito]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="codOperacionCredito" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[fechaConcesionOperacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="fechaConcesionOperacion" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[codMomeda]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="codMomeda" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[plazo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="plazo" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[tirNominalAnual]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="tirNominalAnual" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[tasaEfectivaAnual]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="tasaEfectivaAnual" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[cantidadOperaciones]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="cantidadOperaciones" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[frecuenciaPago]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="frecuenciaPago" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[periodoAjuste]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="periodoAjuste" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[valorPrincipal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="valorPrincipal" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[nivelVentasPrestatario]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="nivelVentasPrestatario" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[clasificacionCinc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="clasificacionCinc" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[destinoFinancieroCredito]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="destinoFinancieroCredito" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[destinoCreditoHipotecario]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="destinoCreditoHipotecario" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[tiposComsumo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="tiposComsumo" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[tipoGarantia]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="tipoGarantia" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[valorComercialVivienda]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="valorComercialVivienda" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[valorMetroCuadradoVivienda]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="valorMetroCuadradoVivienda" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[intrumentada]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="intrumentada" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[identificacionPrestarioDep]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="identificacionPrestarioDep" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[tipoIdentificacionPrestario]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="tipoIdentificacionPrestario" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[clasePrestario]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="clasePrestario" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[tasaReferencialAjuste]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="tasaReferencialAjuste" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[cupoTatalTarjetaCre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="cupoTatalTarjetaCre" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[provincia]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="provincia" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[canton]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="canton" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[aniosAntiguedadVivienda]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="aniosAntiguedadVivienda" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[valorEncaje]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="valorEncaje" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[genero]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="genero" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[edad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="edad" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[valorasociado]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="valorasociado" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[valoradicional]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="valoradicional" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[numerocreditosvigentes]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="numerocreditosvigentes" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input].ExternalColumns[saldocreditosvigentes]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="saldocreditosvigentes" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carga Datos Detalle.Paths[OLE DB Source Output]"
+              endId="Package\Carga Datos Detalle\Destino Origen Detalle.Inputs[Flat File Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Carga Datos Detalle\Carga Origen Detalle.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Cargar Datos Cabecera"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{AB8948FC-9DAF-4B34-8DCA-809E767C91E9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="12298"
+      DTS:ObjectName="Cargar Datos Cabecera"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Cargar Datos Cabecera\Carga Destino Cabecera"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Flat File Destination"
+              localeId="1033"
+              name="Carga Destino Cabecera">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Cargar Datos Cabecera\Carga Destino Cabecera.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Carga Datos Cabecera]"
+                  connectionManagerRefId="Package.ConnectionManagers[Carga Datos Cabecera]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Cargar Datos Cabecera\Carga Destino Cabecera.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargar Datos Cabecera\Carga Destino Cabecera.Inputs[Flat File Destination Input].Columns[fecha]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="fecha"
+                      externalMetadataColumnId="Package\Cargar Datos Cabecera\Carga Destino Cabecera.Inputs[Flat File Destination Input].ExternalColumns[Fecha]"
+                      lineageId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Output].Columns[fecha]" />
+                    <inputColumn
+                      refId="Package\Cargar Datos Cabecera\Carga Destino Cabecera.Inputs[Flat File Destination Input].Columns[codigo]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="codigo"
+                      externalMetadataColumnId="Package\Cargar Datos Cabecera\Carga Destino Cabecera.Inputs[Flat File Destination Input].ExternalColumns[Codigo]"
+                      lineageId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Output].Columns[codigo]" />
+                    <inputColumn
+                      refId="Package\Cargar Datos Cabecera\Carga Destino Cabecera.Inputs[Flat File Destination Input].Columns[registros]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="registros"
+                      externalMetadataColumnId="Package\Cargar Datos Cabecera\Carga Destino Cabecera.Inputs[Flat File Destination Input].ExternalColumns[Registros]"
+                      lineageId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Output].Columns[registros]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Cargar Datos Cabecera\Carga Destino Cabecera.Inputs[Flat File Destination Input].ExternalColumns[Fecha]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Fecha" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Datos Cabecera\Carga Destino Cabecera.Inputs[Flat File Destination Input].ExternalColumns[Codigo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="Codigo" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Datos Cabecera\Carga Destino Cabecera.Inputs[Flat File Destination Input].ExternalColumns[Registros]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Registros" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Cargar Datos Cabecera\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">DECLARE @miTenant varchar(5),
+@fecha varchar(10),
+@codigoSib varchar(10)
+
+SET @miTenant = ?
+SET @fecha = ?
+SET @codigoSib =?
+
+
+SELECT TOP 1 Convert(varchar(10),ce_fecha_periodo,103) AS 'fecha', 
+@codigoSib AS 'codigo',
+ Convert(varchar, ce_numero_registros) AS 'registros' 
+FROM cumplimiento.cabeceraestructura
+WHERE ce_codigo_estructura = 'TINS' 
+AND ce_fecha_periodo = @fecha</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"Parameter0:Input",{9E3D043D-9005-4DFD-AAA2-072D8256C496};"Parameter1:Input",{8AE6FA10-B644-438E-85B4-366C1AFAE304};"Parameter2:Input",{64A960A3-7DDB-430E-87F3-7B01DC6AB122};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Cargar Datos Cabecera\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ConexionBdd]"
+                  connectionManagerRefId="Package.ConnectionManagers[ConexionBdd]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Output].Columns[fecha]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fecha]"
+                      length="10"
+                      lineageId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Output].Columns[fecha]"
+                      name="fecha"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Output].Columns[codigo]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[codigo]"
+                      length="10"
+                      lineageId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Output].Columns[codigo]"
+                      name="codigo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Output].Columns[registros]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[registros]"
+                      length="30"
+                      lineageId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Output].Columns[registros]"
+                      name="registros"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fecha]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="fecha" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[codigo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="codigo" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[registros]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="registros" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fecha]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fecha]"
+                      name="fecha" />
+                    <outputColumn
+                      refId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[codigo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[codigo]"
+                      name="codigo" />
+                    <outputColumn
+                      refId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[registros]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[registros]"
+                      name="registros" />
+                    <outputColumn
+                      refId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Cargar Datos Cabecera.Paths[OLE DB Source Output]"
+              endId="Package\Cargar Datos Cabecera\Carga Destino Cabecera.Inputs[Flat File Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Cargar Datos Cabecera\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{67975FAE-909F-4A53-8F1A-60123F046AD1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3C32CA8F-395B-48EE-AE12-0355451158CA}"
+          SQLTask:SqlStatementSource="DELETE FROM cumplimiento.DetalleEstructuraTINS WHERE dr_id_cabecera_estructura = (SELECT ce_id_cabecera_estructura FROM cumplimiento.cabeceraestructura&#xA;WHERE ce_codigo_estructura = 'TINS'  AND ce_fecha_periodo = ?)&#xA;&#xA;DELETE FROM cumplimiento.CabeceraEstructura WHERE ce_codigo_estructura = 'TINS' AND ce_fecha_periodo = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::vgStrFechaGeneracion"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::vgStrFechaGeneracion"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Generar Datos Estuctura"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{8772F7AE-60BF-46DD-A1ED-823179A726DF}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Generar Datos Estuctura"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3C32CA8F-395B-48EE-AE12-0355451158CA}"
+          SQLTask:SqlStatementSource="EXEC cumplimiento.GenerarEstructuraTINS &#xA;@i_fecha = ?, @i_login = 'BATCH'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::vgStrFechaGeneracion"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Generar Datos Estuctura AV"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{9B6D78A8-AD27-4044-96B6-967D8F3F993E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Generar Datos Estuctura AV"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3C32CA8F-395B-48EE-AE12-0355451158CA}"
+          SQLTask:SqlStatementSource="EXEC cumplimiento.GenerarEstructuraTINS_AV&#xA;@i_fecha = ?, @i_login = 'BATCH'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::vgStrFechaGeneracion"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="0" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Generar Datos Estuctura MQ"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{EE538A27-71C5-4BB4-BBCC-86FC922921A1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Generar Datos Estuctura MQ"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3C32CA8F-395B-48EE-AE12-0355451158CA}"
+          SQLTask:SqlStatementSource="EXEC cumplimiento.GenerarEstructuraTINS_MQ&#xA;@i_fecha = ?, @i_login = 'BATCH'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::vgStrFechaGeneracion"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="0" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Obtencion del CodigoSib"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{95F34F74-D29A-4064-A568-EA26769AE4E8}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Obtencion del CodigoSib"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3C32CA8F-395B-48EE-AE12-0355451158CA}"
+          SQLTask:SqlStatementSource="DECLARE @miTenant varchar(5)&#xA;SET @miTenant = ?&#xA;&#xA;IF @miTenant &lt;&gt;'10'&#xA;BEGIN&#xA;&#x9;select CONVERT(varchar(10),ba_codigo_sib)  from dbo.banco where ba_id_banco in(select te_id_banco from dbo.Tenant where te_id_tenant = @miTenant)&#xA;END&#xA;ELSE&#xA;BEGIN&#xA;&#x9;select 5100&#xA;END"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::vgStrCodigoSib" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::vgStrTenant"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="131"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Obtener Fecha Consulta Estructura"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{B2D02EE8-4B17-4ED1-B3EF-09C8A29FDE34}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Obtener Fecha Consulta Estructura"
+      DTS:ThreadHint="3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3C32CA8F-395B-48EE-AE12-0355451158CA}"
+          SQLTask:SqlStatementSource="DECLARE @w_fecha_consulta DATE&#xA;&#xA;SELECT @w_fecha_consulta = DATEADD(DAY, -7, MAX(pa_valor))&#xA;FROM Parametro&#xA;WHERE pa_codigo_negocio = 'FPROC'&#xA;&#xA;SELECT @w_fecha_consulta"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::vgStrFechaConsulta" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Obtener Fecha Generación Estructura"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{6350288B-5A65-4E63-A9D4-EEB529470D2B}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Obtener Fecha Generación Estructura"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3C32CA8F-395B-48EE-AE12-0355451158CA}"
+          SQLTask:SqlStatementSource="DECLARE @w_fecha_estructura DATE&#xA;&#xA;SELECT @w_fecha_estructura = DATEADD(DAY, -1, MAX(pa_valor))&#xA;FROM Parametro&#xA;WHERE pa_codigo_negocio = 'FPROC'&#xA;&#xA;SELECT @w_fecha_estructura&#xA;&#xA;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::vgStrFechaGeneracion" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Obtiene path del archivo"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{22F71D05-5F20-4C41-8FFD-0E01514317C5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Obtiene path del archivo"
+      DTS:ThreadHint="3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3C32CA8F-395B-48EE-AE12-0355451158CA}"
+          SQLTask:SqlStatementSource="SELECT pa_valor FROM dbo.Parametro WHERE pa_codigo_negocio = 'PATHESTR'"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::vgStrPath" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{34EAAE0D-4AF5-4990-99A8-328F703439CD}"
+      DTS:From="Package\Obtener Fecha Generación Estructura"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Execute SQL Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{BE3D6E4F-35A1-4CE0-A2FD-B2614E52A170}"
+      DTS:EvalOp="1"
+      DTS:Expression="@[User::vgStrTenant] == 7"
+      DTS:From="Package\Execute SQL Task"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Generar Datos Estuctura AV" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 10]"
+      DTS:CreationName=""
+      DTS:DTSID="{22F3A5F6-751F-4D2B-907F-7576A7342D07}"
+      DTS:From="Package\Generar Datos Estuctura MQ"
+      DTS:ObjectName="Constraint 10"
+      DTS:To="Package\Obtiene path del archivo" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{B9771296-8740-464C-826D-0E88216F719A}"
+      DTS:From="Package\Generar Datos Estuctura AV"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Obtiene path del archivo" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{7D522E14-96AB-4787-AD30-7E8915002105}"
+      DTS:From="Package\Generar Datos Estuctura"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Obtiene path del archivo" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{26043A78-45A2-422A-B445-06511D9CAD98}"
+      DTS:From="Package\Obtiene path del archivo"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Obtener Fecha Consulta Estructura" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{CB3437E1-3BF1-489F-8586-7387158EB338}"
+      DTS:From="Package\Cargar Datos Cabecera"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Carga Datos Detalle" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{3357AABE-9FF3-48CF-9D74-347380B04D4F}"
+      DTS:From="Package\Obtener Fecha Consulta Estructura"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\Obtencion del CodigoSib" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{ADC7E44C-6802-42DE-ADE9-8B7F9A511E60}"
+      DTS:EvalOp="1"
+      DTS:Expression="@[User::vgStrTenant] == 5"
+      DTS:From="Package\Execute SQL Task"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\Generar Datos Estuctura"
+      DTS:Value="2" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
+      DTS:CreationName=""
+      DTS:DTSID="{C724B9F7-D712-4590-8788-FA8B48B022C3}"
+      DTS:From="Package\Obtencion del CodigoSib"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 8"
+      DTS:To="Package\Cargar Datos Cabecera" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 9]"
+      DTS:CreationName=""
+      DTS:DTSID="{3439699E-F46E-403C-9343-212CFF6D7DD4}"
+      DTS:EvalOp="1"
+      DTS:Expression="@[User::vgStrTenant] == 10"
+      DTS:From="Package\Execute SQL Task"
+      DTS:ObjectName="Constraint 9"
+      DTS:To="Package\Generar Datos Estuctura MQ" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Carga Datos Detalle"
+          TopLeft="311,588" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Cargar Datos Cabecera"
+          TopLeft="299,507" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="316,84" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\Generar Datos Estuctura"
+          TopLeft="295,180" />
+        <NodeLayout
+          Size="210,42"
+          Id="Package\Generar Datos Estuctura AV"
+          TopLeft="5,182" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\Generar Datos Estuctura MQ"
+          TopLeft="562,185" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\Obtencion del CodigoSib"
+          TopLeft="296,434" />
+        <NodeLayout
+          Size="243,42"
+          Id="Package\Obtener Fecha Consulta Estructura"
+          TopLeft="273,358" />
+        <NodeLayout
+          Size="255,42"
+          Id="Package\Obtener Fecha Generación Estructura"
+          TopLeft="273,19" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\Obtiene path del archivo"
+          TopLeft="301,278" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="399,61">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23"
+              Start="0,0"
+              End="0,15.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="358.75,126">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-248.75,56"
+              Start="0,0"
+              End="-248.75,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.2676056338028" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.2676056338028"
+                    Point2="0,19.2676056338028"
+                    Point3="-4,19.2676056338028" />
+                  <mssgle:LineSegment
+                    End="-244.75,19.2676056338028" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-244.75,19.2676056338028"
+                    Point2="-248.75,19.2676056338028"
+                    Point3="-248.75,23.2676056338028" />
+                  <mssgle:LineSegment
+                    End="-248.75,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-132.375,24.2676056338028,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 10]"
+          TopLeft="668.5,227">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-224,51"
+              Start="0,0"
+              End="-224,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5389830508475" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.5389830508475"
+                    Point2="0,33.5389830508475"
+                    Point3="-4,33.5389830508475" />
+                  <mssgle:LineSegment
+                    End="-220,33.5389830508475" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-220,33.5389830508475"
+                    Point2="-224,33.5389830508475"
+                    Point3="-224,37.5389830508475" />
+                  <mssgle:LineSegment
+                    End="-224,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="110,224">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="241.5,54"
+              Start="0,0"
+              End="241.5,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5118644067797" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5118644067797"
+                    Point2="0,35.5118644067797"
+                    Point3="4,35.5118644067797" />
+                  <mssgle:LineSegment
+                    End="237.5,35.5118644067797" />
+                  <mssgle:CubicBezierSegment
+                    Point1="237.5,35.5118644067797"
+                    Point2="241.5,35.5118644067797"
+                    Point3="241.5,39.5118644067797" />
+                  <mssgle:LineSegment
+                    End="241.5,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="395,222">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56"
+              Start="0,0"
+              End="0,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="396.25,320">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="394.75,549">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="393.75,400">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="394.75,126">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54"
+              Start="0,0"
+              End="0,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,15.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 8]"
+          TopLeft="392.75,476">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31"
+              Start="0,0"
+              End="0,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 9]"
+          TopLeft="436.25,126">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="232.25,59"
+              Start="0,0"
+              End="232.25,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.2997987927565" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.2997987927565"
+                    Point2="0,20.2997987927565"
+                    Point3="4,20.2997987927565" />
+                  <mssgle:LineSegment
+                    End="228.25,20.2997987927565" />
+                  <mssgle:CubicBezierSegment
+                    Point1="228.25,20.2997987927565"
+                    Point2="232.25,20.2997987927565"
+                    Point3="232.25,24.2997987927565" />
+                  <mssgle:LineSegment
+                    End="232.25,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="108.125,25.2997987927565,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Carga Datos Detalle">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Carga Datos Detalle\Destino Origen Detalle"
+          TopLeft="216,304" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Carga Datos Detalle\Carga Origen Detalle"
+          TopLeft="220,200" />
+        <EdgeLayout
+          Id="Package\Carga Datos Detalle.Paths[OLE DB Source Output]"
+          TopLeft="308.5,242">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62"
+              Start="0,0"
+              End="0,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Datos Detalle\Carga Origen Detalle">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Cargar Datos Cabecera">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Cargar Datos Cabecera\OLE DB Source"
+          TopLeft="282,82" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\Cargar Datos Cabecera\Carga Destino Cabecera"
+          TopLeft="257,200" />
+        <EdgeLayout
+          Id="Package\Cargar Datos Cabecera.Paths[OLE DB Source Output]"
+          TopLeft="355,124">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76"
+              Start="0,0"
+              End="0,68.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargar Datos Cabecera\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

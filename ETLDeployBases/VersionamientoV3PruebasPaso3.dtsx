@@ -1,0 +1,1744 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/19/2017 12:34:21 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="STAFFUIO-LAPT17"
+  DTS:CreatorName="STAFF\tapiaf"
+  DTS:DelayValidation="True"
+  DTS:DTSID="{FB82C575-DD2A-4253-B750-0CFB05DDFC20}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="12298"
+  DTS:ObjectName="VersionamientoV3PruebasPaso3"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3665"
+  DTS:VersionGUID="{4571CBD1-98A9-433E-A700-F5EE7F733CC5}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cartera.CambioEstado.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{617971C3-D7E4-4A10-A5DD-A0B42513FA68}"
+      DTS:ObjectName="cartera.CambioEstado.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"cartera.CambioEstado.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\cartera.CambioEstado.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cartera.ContabilidadTipoOperacionCooprogreso.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{397AC83A-3694-42C9-8624-515017FDEB32}"
+      DTS:ObjectName="cartera.ContabilidadTipoOperacionCooprogreso.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"cartera.ContabilidadTipoOperacionCooprogreso.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\cartera.ContabilidadTipoOperacionCooprogreso.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cartera.DetalleTasaAplicar.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{450A5385-0441-48A7-8569-E2A3F1660B93}"
+      DTS:ObjectName="cartera.DetalleTasaAplicar.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"cartera.DetalleTasaAplicar.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\cartera.DetalleTasaAplicar.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cartera.DetalleTasaAplicarCooprogreso.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{87209826-788F-4586-A89A-B45FA6B4A0A9}"
+      DTS:ObjectName="cartera.DetalleTasaAplicarCooprogreso.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"cartera.DetalleTasaAplicarCooprogreso.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\cartera.DetalleTasaAplicarCooprogreso.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cartera.EstadoTipoPlazo.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{6B6533F5-ED99-4A00-8942-B39A85404490}"
+      DTS:ObjectName="cartera.EstadoTipoPlazo.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"cartera.EstadoTipoPlazo.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\cartera.EstadoTipoPlazo.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cartera.PerfilTipoOperacion.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{529CCB4A-0017-42F2-A6D8-77A3E333F8FC}"
+      DTS:ObjectName="cartera.PerfilTipoOperacion.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"cartera.PerfilTipoOperacion.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\cartera.PerfilTipoOperacion.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cartera.TipoTransaccion.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{3504EB61-FF76-4801-BBA3-BE69C105ABE2}"
+      DTS:ObjectName="cartera.TipoTransaccion.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"cartera.TipoTransaccion.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\cartera.TipoTransaccion.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[clientes.ControlFormularioHis.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{563BD606-FD22-4D88-ABFF-336A4EE56526}"
+      DTS:ObjectName="clientes.ControlFormularioHis.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"clientes.ControlFormularioHis.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\clientes.ControlFormularioHis.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[clientes.EntidadesExternasInversiones.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{A725E763-F44D-4F61-9B36-53B87D60B282}"
+      DTS:ObjectName="clientes.EntidadesExternasInversiones.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"clientes.EntidadesExternasInversiones.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\clientes.EntidadesExternasInversiones.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[contabilidad.CodigoValor.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{AC584A1A-4801-43DB-BF3C-8F1380A690B9}"
+      DTS:ObjectName="contabilidad.CodigoValor.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"contabilidad.CodigoValor.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\contabilidad.CodigoValor.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[contabilidad.CodigoValorCooprogreso.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{3FCD9FDF-0451-4F50-93E1-F8EE96FA1A14}"
+      DTS:ObjectName="contabilidad.CodigoValorCooprogreso.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"contabilidad.CodigoValorCooprogreso.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\contabilidad.CodigoValorCooprogreso.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[contabilidad.CuentaModulo.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{DD62D4EB-1058-4726-A9AF-C4CCDACB6858}"
+      DTS:ObjectName="contabilidad.CuentaModulo.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"contabilidad.CuentaModulo.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\contabilidad.CuentaModulo.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[contabilidad.CuentaParametro.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{BE024C9F-27AE-4FE3-B68C-8FB07DB399AF}"
+      DTS:ObjectName="contabilidad.CuentaParametro.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"contabilidad.CuentaParametro.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\contabilidad.CuentaParametro.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[contabilidad.CuentaProceso.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{455B53D8-3140-4931-A57F-8E49C9177E68}"
+      DTS:ObjectName="contabilidad.CuentaProceso.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"contabilidad.CuentaProceso.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\contabilidad.CuentaProceso.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[contabilidad.CuentasAutorizadas.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{F3630A6D-A199-46CB-A348-14E2E777F099}"
+      DTS:ObjectName="contabilidad.CuentasAutorizadas.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"contabilidad.CuentasAutorizadas.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\contabilidad.CuentasAutorizadas.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[contabilidad.CuentasCooprogreso.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{9C3D99A7-F753-409D-AA07-D5B901AB230C}"
+      DTS:ObjectName="contabilidad.CuentasCooprogreso.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"contabilidad.CuentasCooprogreso.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\contabilidad.CuentasCooprogreso.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[contabilidad.CuentasDenariuservis.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{2CEFE374-813E-4377-A3A5-5117AF7809A1}"
+      DTS:ObjectName="contabilidad.CuentasDenariuservis.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"contabilidad.CuentasDenariuservis.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\contabilidad.CuentasDenariuservis.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[contabilidad.DetallePerfil.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{95AB5BB7-96F9-4009-847D-7F684E58EF3D}"
+      DTS:ObjectName="contabilidad.DetallePerfil.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"contabilidad.DetallePerfil.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\contabilidad.DetallePerfil.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[contabilidad.EquivalenciaCuenta.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{62EBF519-831C-4718-A535-F75224F4CB5D}"
+      DTS:ObjectName="contabilidad.EquivalenciaCuenta.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"contabilidad.EquivalenciaCuenta.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\contabilidad.EquivalenciaCuenta.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[contabilidad.EstadoPerfil.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{022E6D88-B952-4601-B2DC-BD760A57BE21}"
+      DTS:ObjectName="contabilidad.EstadoPerfil.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"contabilidad.EstadoPerfil.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\contabilidad.EstadoPerfil.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[contabilidad.GrupoCuenta.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{4AD70DBF-2236-4E86-8CA1-B860FDA6E21C}"
+      DTS:ObjectName="contabilidad.GrupoCuenta.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"contabilidad.GrupoCuenta.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\contabilidad.GrupoCuenta.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[contabilidad.OficinaArea.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{C3BD4CDE-1A75-4CFF-AE4E-B3157AF6F81C}"
+      DTS:ObjectName="contabilidad.OficinaArea.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"contabilidad.OficinaArea.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\contabilidad.OficinaArea.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[contabilidad.Parametro.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{6F501198-59F5-4D12-863F-D13C0B420B2E}"
+      DTS:ObjectName="contabilidad.Parametro.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"contabilidad.Parametro.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\contabilidad.Parametro.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[contabilidad.Perfil.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{47CA1933-768D-458F-B418-E7FC720B3EA6}"
+      DTS:ObjectName="contabilidad.Perfil.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"contabilidad.Perfil.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\contabilidad.Perfil.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[contabilidad.Proceso.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{85D85DF8-49CD-4D01-BFF7-FF98BBF7F5EF}"
+      DTS:ObjectName="contabilidad.Proceso.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"contabilidad.Proceso.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\contabilidad.Proceso.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[credito.RangoMorosidad.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{68D045B3-67EA-4AC4-BD67-F20D9923914F}"
+      DTS:ObjectName="credito.RangoMorosidad.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"credito.RangoMorosidad.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\credito.RangoMorosidad.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[credito.RangoProvision.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{BC820152-42E7-420F-B821-87EAC0AEA87D}"
+      DTS:ObjectName="credito.RangoProvision.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"credito.RangoProvision.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\credito.RangoProvision.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cuentas.Causalndnc.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{B7F83F31-8ECC-455A-A774-43C7AA348E63}"
+      DTS:ObjectName="cuentas.Causalndnc.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"cuentas.Causalndnc.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\cuentas.Causalndnc.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cuentas.CausalServicio.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{1CBE2208-2893-45B0-BF24-9B717DC69EF4}"
+      DTS:ObjectName="cuentas.CausalServicio.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"cuentas.CausalServicio.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\cuentas.CausalServicio.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cuentas.CausalTransaccion.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{DB8FC005-9403-4F7E-B74E-1A925725C133}"
+      DTS:ObjectName="cuentas.CausalTransaccion.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"cuentas.CausalTransaccion.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\cuentas.CausalTransaccion.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cuentas.CausasNdDevolucion.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{5AD6A0C8-D9B8-4F2B-81CA-5691ED010C4B}"
+      DTS:ObjectName="cuentas.CausasNdDevolucion.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"cuentas.CausasNdDevolucion.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\cuentas.CausasNdDevolucion.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cuentas.HojaValor.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{036A4F77-5C04-4A8E-BA5A-C79532FEA3D3}"
+      DTS:ObjectName="cuentas.HojaValor.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"cuentas.HojaValor.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\cuentas.HojaValor.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cuentas.RelacionTransaccionPerfilCoop.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{B3AC62FD-4DA0-4327-A0DC-1020691B25C9}"
+      DTS:ObjectName="cuentas.RelacionTransaccionPerfilCoop.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"cuentas.RelacionTransaccionPerfilCoop.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\cuentas.RelacionTransaccionPerfilCoop.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cuentas.Rubro.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{7F2D853D-C426-4363-B8D3-3FD6F00FDA61}"
+      DTS:ObjectName="cuentas.Rubro.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"cuentas.Rubro.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\cuentas.Rubro.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cuentas.RubroSubproducto.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{74638764-3803-4A60-8F9E-CFD445E2AC69}"
+      DTS:ObjectName="cuentas.RubroSubproducto.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"cuentas.RubroSubproducto.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\cuentas.RubroSubproducto.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cuentas.Servicio.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{13A9DFA7-A252-458F-A0F4-5EB6DB5F188F}"
+      DTS:ObjectName="cuentas.Servicio.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"cuentas.Servicio.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\cuentas.Servicio.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cuentas.TransaccionCausaEntidad.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{44950B84-3454-4ED1-8F14-A3FB1049C92C}"
+      DTS:ObjectName="cuentas.TransaccionCausaEntidad.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"cuentas.TransaccionCausaEntidad.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\cuentas.TransaccionCausaEntidad.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cuentas.TransaccionCausaFilial.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{25757E10-C028-4E69-89B8-A952418886F2}"
+      DTS:ObjectName="cuentas.TransaccionCausaFilial.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"cuentas.TransaccionCausaFilial.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\cuentas.TransaccionCausaFilial.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cuentas.TransaccionCodigoValor.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{9E9EFCD3-2BB9-4EBD-8CD8-C68C3FE52A8C}"
+      DTS:ObjectName="cuentas.TransaccionCodigoValor.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"cuentas.TransaccionCodigoValor.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\cuentas.TransaccionCodigoValor.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cuentas.TransaccionMonetaria.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{DFEE403C-C00A-4878-8199-8C27B0654DB4}"
+      DTS:ObjectName="cuentas.TransaccionMonetaria.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"cuentas.TransaccionMonetaria.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\cuentas.TransaccionMonetaria.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cuentas.TransaccionPerfil.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{846FD51B-4BBC-40B1-89C7-1C338A0CFBEB}"
+      DTS:ObjectName="cuentas.TransaccionPerfil.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"cuentas.TransaccionPerfil.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\cuentas.TransaccionPerfil.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cuentas.TransaccionPerfilCoop.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{40BEF998-E64B-41C8-A1FE-DDE9835609FE}"
+      DTS:ObjectName="cuentas.TransaccionPerfilCoop.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"cuentas.TransaccionPerfilCoop.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\cuentas.TransaccionPerfilCoop.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cumplimiento.CuentasSectorizacion.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{FEE20E7E-C26D-4827-86C8-6C3448E8AF4E}"
+      DTS:ObjectName="cumplimiento.CuentasSectorizacion.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"cumplimiento.CuentasSectorizacion.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\cumplimiento.CuentasSectorizacion.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cumplimiento.FactoresPonderacion.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{87E4A4F7-FFD0-4F5C-854E-99ACA72BB114}"
+      DTS:ObjectName="cumplimiento.FactoresPonderacion.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"cumplimiento.FactoresPonderacion.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\cumplimiento.FactoresPonderacion.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[dbo.DivisionUnidadCooprogreso.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{15A3370C-D1EB-4EA4-9920-7F0366602CD7}"
+      DTS:ObjectName="dbo.DivisionUnidadCooprogreso.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"dbo.DivisionUnidadCooprogreso.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\dbo.DivisionUnidadCooprogreso.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[dbo.DocumentacionRequerida.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{767DF318-28F6-4396-AD2A-B70F7F74F385}"
+      DTS:ObjectName="dbo.DocumentacionRequerida.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"dbo.DocumentacionRequerida.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\dbo.DocumentacionRequerida.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[facturacion.TransaccionCausalServicio.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{D5FA1F1B-B896-4A10-97C6-EFD658AE9A5E}"
+      DTS:ObjectName="facturacion.TransaccionCausalServicio.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"facturacion.TransaccionCausalServicio.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\facturacion.TransaccionCausalServicio.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[garantias.CamposTipoBien.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{836D41BD-07F5-42DE-BD41-5FDDC6EF3F0A}"
+      DTS:ObjectName="garantias.CamposTipoBien.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"garantias.CamposTipoBien.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\garantias.CamposTipoBien.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[garantias.CodigosSib.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{017DE46D-40C2-409E-AE6E-00F6693CA6B4}"
+      DTS:ObjectName="garantias.CodigosSib.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"garantias.CodigosSib.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\garantias.CodigosSib.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[garantias.PerfilesContables.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{A3664B83-D51F-4F93-B34C-179BF8BEF270}"
+      DTS:ObjectName="garantias.PerfilesContables.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"garantias.PerfilesContables.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\garantias.PerfilesContables.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[garantias.PorcentajeCobertura.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{74A380F4-FF43-4F75-A93F-8BADDE7B8F3C}"
+      DTS:ObjectName="garantias.PorcentajeCobertura.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"garantias.PorcentajeCobertura.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\garantias.PorcentajeCobertura.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[garantias.PorcentajeCoberturaGarantia.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{74B9BE3A-2579-43A0-8237-BBAD71184D71}"
+      DTS:ObjectName="garantias.PorcentajeCoberturaGarantia.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"garantias.PorcentajeCoberturaGarantia.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\garantias.PorcentajeCoberturaGarantia.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[garantias.Requisitos.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{5A023D96-BC77-4E03-9765-4CCC74737334}"
+      DTS:ObjectName="garantias.Requisitos.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"garantias.Requisitos.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\garantias.Requisitos.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[garantias.TipoCobertura.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{D5773925-767B-4C4B-AA7D-DE2042870F3F}"
+      DTS:ObjectName="garantias.TipoCobertura.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"garantias.TipoCobertura.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\garantias.TipoCobertura.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[garantias.TipoExcepcion.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{4052A179-0609-4A52-B3C0-A84FD49559A3}"
+      DTS:ObjectName="garantias.TipoExcepcion.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"garantias.TipoExcepcion.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\garantias.TipoExcepcion.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[garantias.TipoGarantia.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{12887506-8774-4DA9-BD39-46A1DB5436E9}"
+      DTS:ObjectName="garantias.TipoGarantia.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"garantias.TipoGarantia.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\garantias.TipoGarantia.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[inversiones.ContabilidadRubros.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{94AEA8B2-5296-446A-8350-F37DBACF3E88}"
+      DTS:ObjectName="inversiones.ContabilidadRubros.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"inversiones.ContabilidadRubros.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\inversiones.ContabilidadRubros.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[inversiones.TasaRentaFija.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{26BD50E7-1C8A-4A93-9974-EDC936DCD123}"
+      DTS:ObjectName="inversiones.TasaRentaFija.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"inversiones.TasaRentaFija.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\inversiones.TasaRentaFija.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[inversiones.TasaRentaFijaCooprogreso.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{225486A8-8468-459B-B7B2-DB11BE0B62AD}"
+      DTS:ObjectName="inversiones.TasaRentaFijaCooprogreso.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"inversiones.TasaRentaFijaCooprogreso.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\inversiones.TasaRentaFijaCooprogreso.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ServidorBddDestino]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2F48AA59-1369-43BB-8DA1-2CFD467EDD49}"
+      DTS:ObjectName="ServidorBddDestino">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[User::vgStrBaseDatosDestino]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[User::vgStrPassword]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::vgStrServidorBddDestino]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="UserName">@[User::vgStrLogin]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=cloudazu-sqlcp1.database.windows.net,1433;User ID=denariusapp_usr;Initial Catalog=NexCar;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA6DUa/4pC2UW7de4KIqeVZAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABD4Vg7pFCeTV5QlsVXHXweAAAAAASAAACgAAAAEAAAAN+LKmla+wK2TEWIqe7s3U8gAAAALHqNbf8nIeNFHYGNIqWnaDJhOXzg+Ee1Ffck8LPi8Y8UAAAAL6Q6OiP0P0n6r03tKWaDZ1PHjpM</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ServidorBddOds]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{DF5FE0E8-FD37-431D-A763-C314EB22C40C}"
+      DTS:ObjectName="ServidorBddOds">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[User::vgStrBaseDatosOds]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[User::vgStrPassword]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::vgStrServidorBddOds]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="UserName">@[User::vgStrLogin]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=cloudazu-mig1;User ID=denariusapp_usr;Initial Catalog=NexCar;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA6DUa/4pC2UW7de4KIqeVZAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAA7e3DSxSWuCn89uQzmJVA5AAAAAASAAACgAAAAEAAAAHHwawBs7+TRvQFzXE8yWGAgAAAArTz9f68JJ/PhfFTWFfTElrzRmCHCOgIVzJVnJnWlhz4UAAAAuMpU1NP+Ap44IHOMHVZD4plX4AE</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[transito.ParametroContaSib.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{747758B1-EBCC-4B54-968F-18FC56573175}"
+      DTS:ObjectName="transito.ParametroContaSib.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"transito.ParametroContaSib.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\transito.ParametroContaSib.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[transito.Ruta.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{9FFB5F01-C2C7-4F8D-BF23-7D34F3C8775C}"
+      DTS:ObjectName="transito.Ruta.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"transito.Ruta.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\transito.Ruta.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[transito.RutaCompensacion.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{362938A9-CA76-4A91-86DA-A86016C372FB}"
+      DTS:ObjectName="transito.RutaCompensacion.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::vgStrPath]+"transito.RutaCompensacion.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Temp\Datos\transito.RutaCompensacion.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{50FAF6C5-38AD-4699-B280-D6FFBAE70A9D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrBaseDatosDestino">
+      <DTS:VariableValue
+        DTS:DataType="8">NexCar</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{244BC496-884F-46B5-A028-E7EB6ECAF2D0}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrBaseDatosOds">
+      <DTS:VariableValue
+        DTS:DataType="8">NexCar</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E92DAB4F-9546-4AD7-9332-1539E668BF31}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrLogin">
+      <DTS:VariableValue
+        DTS:DataType="8">denariusapp_usr</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DFF09C21-DE6B-4C0C-9D5D-6ED620AE9151}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrPassword">
+      <DTS:VariableValue
+        DTS:DataType="8">denARius2017***</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0578BB69-7D0C-4487-9D9A-0FC313E9ED67}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrPath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Temp\Datos\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{77BF90AF-BBF9-45EA-80B6-952EF71E3740}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrServidorBddDestino">
+      <DTS:VariableValue
+        DTS:DataType="8">cloudazu-sqlcp1.database.windows.net,1433</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{12ECB685-C5EE-4BF0-9361-A44F57592687}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrServidorBddOds">
+      <DTS:VariableValue
+        DTS:DataType="8">cloudazu-mig1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{64199102-DF23-40F0-9835-09C10C6F90EE}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrTenant">
+      <DTS:VariableValue
+        DTS:DataType="8">9</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Despues script deploy"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{894D8785-9D85-4CB7-BB59-902CFD8993B7}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Despues script deploy">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Despues script deploy\cartera-PerfilTipoOperacion"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{A1A5D54C-3764-49E9-BBB8-C1F7B8436459}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="cartera-PerfilTipoOperacion"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Destino PerfilTipoOperacion"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Destino PerfilTipoOperacion"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[cartera].[PerfilTipoOperacion]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">true</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Destino PerfilTipoOperacion.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[ServidorBddDestino]"
+                      connectionManagerRefId="Package.ConnectionManagers[ServidorBddDestino]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Destino PerfilTipoOperacion.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Destino PerfilTipoOperacion.Inputs[OLE DB Destination Input].Columns[pt_id_parametro_tipo_operacion]"
+                          cachedDataType="i4"
+                          cachedName="pt_id_parametro_tipo_operacion"
+                          externalMetadataColumnId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Destino PerfilTipoOperacion.Inputs[OLE DB Destination Input].ExternalColumns[pt_id_parametro_tipo_operacion]"
+                          lineageId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Output].Columns[pt_id_parametro_tipo_operacion]" />
+                        <inputColumn
+                          refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Destino PerfilTipoOperacion.Inputs[OLE DB Destination Input].Columns[pt_id_tipo_transaccion]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="pt_id_tipo_transaccion"
+                          externalMetadataColumnId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Destino PerfilTipoOperacion.Inputs[OLE DB Destination Input].ExternalColumns[pt_id_tipo_transaccion]"
+                          lineageId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Output].Columns[pt_id_tipo_transaccion]" />
+                        <inputColumn
+                          refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Destino PerfilTipoOperacion.Inputs[OLE DB Destination Input].Columns[pt_perfil]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="25"
+                          cachedName="pt_perfil"
+                          externalMetadataColumnId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Destino PerfilTipoOperacion.Inputs[OLE DB Destination Input].ExternalColumns[pt_perfil]"
+                          lineageId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Output].Columns[pt_perfil]" />
+                        <inputColumn
+                          refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Destino PerfilTipoOperacion.Inputs[OLE DB Destination Input].Columns[pt_filial]"
+                          cachedDataType="ui1"
+                          cachedName="pt_filial"
+                          externalMetadataColumnId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Destino PerfilTipoOperacion.Inputs[OLE DB Destination Input].ExternalColumns[pt_filial]"
+                          lineageId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Output].Columns[pt_filial]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Destino PerfilTipoOperacion.Inputs[OLE DB Destination Input].ExternalColumns[pt_id_parametro_tipo_operacion]"
+                          dataType="i4"
+                          name="pt_id_parametro_tipo_operacion" />
+                        <externalMetadataColumn
+                          refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Destino PerfilTipoOperacion.Inputs[OLE DB Destination Input].ExternalColumns[pt_id_tipo_transaccion]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="pt_id_tipo_transaccion" />
+                        <externalMetadataColumn
+                          refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Destino PerfilTipoOperacion.Inputs[OLE DB Destination Input].ExternalColumns[pt_perfil]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          name="pt_perfil" />
+                        <externalMetadataColumn
+                          refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Destino PerfilTipoOperacion.Inputs[OLE DB Destination Input].ExternalColumns[pt_filial]"
+                          dataType="ui1"
+                          name="pt_filial" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Destino PerfilTipoOperacion.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Destino PerfilTipoOperacion.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Destino PerfilTipoOperacion.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Destino PerfilTipoOperacion.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Destino PerfilTipoOperacion.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Destino PerfilTipoOperacion.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Origen PerfilTipoOperacion"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[cartera].[PerfilTipoOperacion]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[ServidorBddOds]"
+                      connectionManagerRefId="Package.ConnectionManagers[ServidorBddOds]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Output].Columns[pt_id_parametro_tipo_operacion]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Output].ExternalColumns[pt_id_parametro_tipo_operacion]"
+                          lineageId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Output].Columns[pt_id_parametro_tipo_operacion]"
+                          name="pt_id_parametro_tipo_operacion"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Output].Columns[pt_id_tipo_transaccion]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Output].ExternalColumns[pt_id_tipo_transaccion]"
+                          length="5"
+                          lineageId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Output].Columns[pt_id_tipo_transaccion]"
+                          name="pt_id_tipo_transaccion"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Output].Columns[pt_perfil]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Output].ExternalColumns[pt_perfil]"
+                          length="25"
+                          lineageId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Output].Columns[pt_perfil]"
+                          name="pt_perfil"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Output].Columns[pt_filial]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Output].ExternalColumns[pt_filial]"
+                          lineageId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Output].Columns[pt_filial]"
+                          name="pt_filial"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Output].ExternalColumns[pt_id_parametro_tipo_operacion]"
+                          dataType="i4"
+                          name="pt_id_parametro_tipo_operacion" />
+                        <externalMetadataColumn
+                          refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Output].ExternalColumns[pt_id_tipo_transaccion]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="pt_id_tipo_transaccion" />
+                        <externalMetadataColumn
+                          refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Output].ExternalColumns[pt_perfil]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          name="pt_perfil" />
+                        <externalMetadataColumn
+                          refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Output].ExternalColumns[pt_filial]"
+                          dataType="ui1"
+                          name="pt_filial" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Error Output].Columns[pt_id_parametro_tipo_operacion]"
+                          dataType="i4"
+                          lineageId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Error Output].Columns[pt_id_parametro_tipo_operacion]"
+                          name="pt_id_parametro_tipo_operacion" />
+                        <outputColumn
+                          refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Error Output].Columns[pt_id_tipo_transaccion]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          lineageId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Error Output].Columns[pt_id_tipo_transaccion]"
+                          name="pt_id_tipo_transaccion" />
+                        <outputColumn
+                          refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Error Output].Columns[pt_perfil]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          lineageId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Error Output].Columns[pt_perfil]"
+                          name="pt_perfil" />
+                        <outputColumn
+                          refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Error Output].Columns[pt_filial]"
+                          dataType="ui1"
+                          lineageId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Error Output].Columns[pt_filial]"
+                          name="pt_filial" />
+                        <outputColumn
+                          refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Despues script deploy\cartera-PerfilTipoOperacion.Paths[OLE DB Source Output]"
+                  endId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Destino PerfilTipoOperacion.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Despues script deploy\dbo - DivisionUnidad"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{F48848A4-87AC-4386-8A79-D74C671BDE57}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="dbo - DivisionUnidad"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Despues script deploy\dbo - DivisionUnidad\Destino DivisionUnidad"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Destino DivisionUnidad"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DivisionUnidad]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">true</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Despues script deploy\dbo - DivisionUnidad\Destino DivisionUnidad.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[ServidorBddDestino]"
+                      connectionManagerRefId="Package.ConnectionManagers[ServidorBddDestino]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Despues script deploy\dbo - DivisionUnidad\Destino DivisionUnidad.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Despues script deploy\dbo - DivisionUnidad\Destino DivisionUnidad.Inputs[OLE DB Destination Input].Columns[du_id_division_empresarial]"
+                          cachedDataType="i2"
+                          cachedName="du_id_division_empresarial"
+                          externalMetadataColumnId="Package\Despues script deploy\dbo - DivisionUnidad\Destino DivisionUnidad.Inputs[OLE DB Destination Input].ExternalColumns[du_id_division_empresarial]"
+                          lineageId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Output].Columns[du_id_division_empresarial]" />
+                        <inputColumn
+                          refId="Package\Despues script deploy\dbo - DivisionUnidad\Destino DivisionUnidad.Inputs[OLE DB Destination Input].Columns[du_id_unidad]"
+                          cachedDataType="i2"
+                          cachedName="du_id_unidad"
+                          externalMetadataColumnId="Package\Despues script deploy\dbo - DivisionUnidad\Destino DivisionUnidad.Inputs[OLE DB Destination Input].ExternalColumns[du_id_unidad]"
+                          lineageId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Output].Columns[du_id_unidad]" />
+                        <inputColumn
+                          refId="Package\Despues script deploy\dbo - DivisionUnidad\Destino DivisionUnidad.Inputs[OLE DB Destination Input].Columns[du_centro_costo]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="15"
+                          cachedName="du_centro_costo"
+                          externalMetadataColumnId="Package\Despues script deploy\dbo - DivisionUnidad\Destino DivisionUnidad.Inputs[OLE DB Destination Input].ExternalColumns[du_centro_costo]"
+                          lineageId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Output].Columns[du_centro_costo]" />
+                        <inputColumn
+                          refId="Package\Despues script deploy\dbo - DivisionUnidad\Destino DivisionUnidad.Inputs[OLE DB Destination Input].Columns[du_area_seguridad]"
+                          cachedDataType="i4"
+                          cachedName="du_area_seguridad"
+                          externalMetadataColumnId="Package\Despues script deploy\dbo - DivisionUnidad\Destino DivisionUnidad.Inputs[OLE DB Destination Input].ExternalColumns[du_area_seguridad]"
+                          lineageId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Output].Columns[du_area_seguridad]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Despues script deploy\dbo - DivisionUnidad\Destino DivisionUnidad.Inputs[OLE DB Destination Input].ExternalColumns[du_id_division_empresarial]"
+                          dataType="i2"
+                          name="du_id_division_empresarial" />
+                        <externalMetadataColumn
+                          refId="Package\Despues script deploy\dbo - DivisionUnidad\Destino DivisionUnidad.Inputs[OLE DB Destination Input].ExternalColumns[du_id_unidad]"
+                          dataType="i2"
+                          name="du_id_unidad" />
+                        <externalMetadataColumn
+                          refId="Package\Despues script deploy\dbo - DivisionUnidad\Destino DivisionUnidad.Inputs[OLE DB Destination Input].ExternalColumns[du_centro_costo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="du_centro_costo" />
+                        <externalMetadataColumn
+                          refId="Package\Despues script deploy\dbo - DivisionUnidad\Destino DivisionUnidad.Inputs[OLE DB Destination Input].ExternalColumns[du_area_seguridad]"
+                          dataType="i4"
+                          name="du_area_seguridad" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Despues script deploy\dbo - DivisionUnidad\Destino DivisionUnidad.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Despues script deploy\dbo - DivisionUnidad\Destino DivisionUnidad.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Despues script deploy\dbo - DivisionUnidad\Destino DivisionUnidad.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Despues script deploy\dbo - DivisionUnidad\Destino DivisionUnidad.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Despues script deploy\dbo - DivisionUnidad\Destino DivisionUnidad.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Despues script deploy\dbo - DivisionUnidad\Destino DivisionUnidad.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Origen DivisionUnidad"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DivisionUnidad]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[ServidorBddOds]"
+                      connectionManagerRefId="Package.ConnectionManagers[ServidorBddOds]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Output].Columns[du_id_division_empresarial]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Output].ExternalColumns[du_id_division_empresarial]"
+                          lineageId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Output].Columns[du_id_division_empresarial]"
+                          name="du_id_division_empresarial"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Output].Columns[du_id_unidad]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Output].ExternalColumns[du_id_unidad]"
+                          lineageId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Output].Columns[du_id_unidad]"
+                          name="du_id_unidad"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Output].Columns[du_centro_costo]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Output].ExternalColumns[du_centro_costo]"
+                          length="15"
+                          lineageId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Output].Columns[du_centro_costo]"
+                          name="du_centro_costo"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Output].Columns[du_area_seguridad]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Output].ExternalColumns[du_area_seguridad]"
+                          lineageId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Output].Columns[du_area_seguridad]"
+                          name="du_area_seguridad"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Output].ExternalColumns[du_id_division_empresarial]"
+                          dataType="i2"
+                          name="du_id_division_empresarial" />
+                        <externalMetadataColumn
+                          refId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Output].ExternalColumns[du_id_unidad]"
+                          dataType="i2"
+                          name="du_id_unidad" />
+                        <externalMetadataColumn
+                          refId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Output].ExternalColumns[du_centro_costo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="du_centro_costo" />
+                        <externalMetadataColumn
+                          refId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Output].ExternalColumns[du_area_seguridad]"
+                          dataType="i4"
+                          name="du_area_seguridad" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Error Output].Columns[du_id_division_empresarial]"
+                          dataType="i2"
+                          lineageId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Error Output].Columns[du_id_division_empresarial]"
+                          name="du_id_division_empresarial" />
+                        <outputColumn
+                          refId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Error Output].Columns[du_id_unidad]"
+                          dataType="i2"
+                          lineageId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Error Output].Columns[du_id_unidad]"
+                          name="du_id_unidad" />
+                        <outputColumn
+                          refId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Error Output].Columns[du_centro_costo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          lineageId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Error Output].Columns[du_centro_costo]"
+                          name="du_centro_costo" />
+                        <outputColumn
+                          refId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Error Output].Columns[du_area_seguridad]"
+                          dataType="i4"
+                          lineageId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Error Output].Columns[du_area_seguridad]"
+                          name="du_area_seguridad" />
+                        <outputColumn
+                          refId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Despues script deploy\dbo - DivisionUnidad.Paths[OLE DB Source Output]"
+                  endId="Package\Despues script deploy\dbo - DivisionUnidad\Destino DivisionUnidad.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Despues script deploy.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{3FC39B68-B7D6-467E-B8DB-57FF2FF8651F}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::vgStrTenant]==&quot;1&quot; || @[User::vgStrTenant]==&quot;5&quot;"
+          DTS:From="Package\Despues script deploy\dbo - DivisionUnidad"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Despues script deploy\cartera-PerfilTipoOperacion" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="207,42"
+          Id="Package\Despues script deploy\cartera-PerfilTipoOperacion"
+          TopLeft="52.75,118.75" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Despues script deploy\dbo - DivisionUnidad"
+          TopLeft="46,29.75" />
+        <EdgeLayout
+          Id="Package\Despues script deploy.PrecedenceConstraints[Constraint]"
+          TopLeft="134,71.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="22.25,47"
+              Start="0,0"
+              End="22.25,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.5"
+                    Point2="0,23.5"
+                    Point3="4,23.5" />
+                  <mssgle:LineSegment
+                    End="18.25,23.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="18.25,23.5"
+                    Point2="22.25,23.5"
+                    Point3="22.25,27.5" />
+                  <mssgle:LineSegment
+                    End="22.25,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="3.125,28.5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="481,250"
+          Size="481,293"
+          Id="Package\Despues script deploy"
+          TopLeft="220.99242424242,103.318181818182" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Despues script deploy\cartera-PerfilTipoOperacion">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Despues script deploy\cartera-PerfilTipoOperacion\Origen PerfilTipoOperacion"
+          TopLeft="401,178" />
+        <NodeLayout
+          Size="209,42"
+          Id="Package\Despues script deploy\cartera-PerfilTipoOperacion\Destino PerfilTipoOperacion"
+          TopLeft="401,279" />
+        <EdgeLayout
+          Id="Package\Despues script deploy\cartera-PerfilTipoOperacion.Paths[OLE DB Source Output]"
+          TopLeft="504.5,220">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59"
+              Start="0,0"
+              End="0,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Despues script deploy\dbo - DivisionUnidad">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="183,42"
+          Id="Package\Despues script deploy\dbo - DivisionUnidad\Origen DivisionUnidad"
+          TopLeft="401,178" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Despues script deploy\dbo - DivisionUnidad\Destino DivisionUnidad"
+          TopLeft="401,279" />
+        <EdgeLayout
+          Id="Package\Despues script deploy\dbo - DivisionUnidad.Paths[OLE DB Source Output]"
+          TopLeft="493.5,220">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59"
+              Start="0,0"
+              End="0,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

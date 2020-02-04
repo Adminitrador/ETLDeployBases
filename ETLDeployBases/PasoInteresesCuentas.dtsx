@@ -1,0 +1,1607 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/22/2018 11:22:55 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CLOUDAZU-DEV1"
+  DTS:CreatorName="STAFF\rivadeneiram"
+  DTS:DTSID="{F2B1314A-28A0-4876-9F34-4F8E580690AD}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="PasoInteresesCuentas"
+  DTS:PackageType="5"
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{7716F928-8D86-4F62-94ED-EF0F19621284}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Destino]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{01779E8D-C6B0-4D7B-82EB-C8CAA15B941B}"
+      DTS:ObjectName="Destino">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=cloudazu-sqlcc.database.windows.net,1433;User ID=denarius_adm;Initial Catalog=Cooprogreso;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAFkSg6wXBy0m4Ca+fyqNCHwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABkwihrJpdi6G0JjbxT4g7LAAAAAASAAACgAAAAEAAAAIvtG9SJVYNiwZD+vU0jSb0gAAAAJgDk67lgobuo43PRBsrRD4plWcyRCVRqEKh7hk6SIy0UAAAAEYf9EQ/wkamCE6ab4Lh6ZIyYoK0</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Origen]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{49F95EAD-96C3-44B0-8C96-18EFFACC4332}"
+      DTS:ObjectName="Origen">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=cloudazu-sqlcc.database.windows.net,1433;User ID=denarius_adm;Initial Catalog=CooprogresoEr0521;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAFkSg6wXBy0m4Ca+fyqNCHwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAA6qzmBJY5kxT9nV9ZxnDl/AAAAAASAAACgAAAAEAAAAMGhiLR0CIkvEIN3JMpd/lUgAAAAELSOoZQphZOOr2VAnYLunntw5t1+s3XqZlVlootFQV4UAAAAQJPr5PMJRe+FTRwjO4aHl+0bCGk</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\BorrarTablas"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{F61CCA90-B52A-4F15-A75A-2F38E049385A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="BorrarTablas"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{01779E8D-C6B0-4D7B-82EB-C8CAA15B941B}"
+          SQLTask:SqlStatementSource="Truncate table  cuentas.InteresDiario&#xA;&#xA;&#xA;&#xA;DELETE FROM cuentas.CambioInteresDiario&#xA;WHERE ci_fecha_hasta = '20180521'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\CambioInteresModulo"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{07C9125D-A7DF-47C5-B06C-6ED14BD53B61}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CambioInteresModulo"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\CambioInteresModulo\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[cuentas].[CambioInteresDiario]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\CambioInteresModulo\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Destino]"
+                  connectionManagerRefId="Package.ConnectionManagers[Destino]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ci_id_cuenta]"
+                      cachedDataType="i4"
+                      cachedName="ci_id_cuenta"
+                      externalMetadataColumnId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ci_id_cuenta]"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].Columns[ci_id_cuenta]" />
+                    <inputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ci_fecha_desde]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="ci_fecha_desde"
+                      externalMetadataColumnId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ci_fecha_desde]"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].Columns[ci_fecha_desde]" />
+                    <inputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ci_fecha_hasta]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="ci_fecha_hasta"
+                      externalMetadataColumnId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ci_fecha_hasta]"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].Columns[ci_fecha_hasta]" />
+                    <inputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ci_monto_interes]"
+                      cachedDataType="cy"
+                      cachedName="ci_monto_interes"
+                      externalMetadataColumnId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ci_monto_interes]"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].Columns[ci_monto_interes]" />
+                    <inputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ci_tasa]"
+                      cachedDataType="numeric"
+                      cachedName="ci_tasa"
+                      cachedPrecision="10"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ci_tasa]"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].Columns[ci_tasa]" />
+                    <inputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ci_saldo]"
+                      cachedDataType="cy"
+                      cachedName="ci_saldo"
+                      externalMetadataColumnId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ci_saldo]"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].Columns[ci_saldo]" />
+                    <inputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ci_tasa_encaje]"
+                      cachedDataType="numeric"
+                      cachedName="ci_tasa_encaje"
+                      cachedPrecision="10"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ci_tasa_encaje]"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].Columns[ci_tasa_encaje]" />
+                    <inputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ci_saldo_encaje]"
+                      cachedDataType="cy"
+                      cachedName="ci_saldo_encaje"
+                      externalMetadataColumnId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ci_saldo_encaje]"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].Columns[ci_saldo_encaje]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ci_id_cuenta]"
+                      dataType="i4"
+                      name="ci_id_cuenta" />
+                    <externalMetadataColumn
+                      refId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ci_fecha_desde]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="ci_fecha_desde" />
+                    <externalMetadataColumn
+                      refId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ci_fecha_hasta]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="ci_fecha_hasta" />
+                    <externalMetadataColumn
+                      refId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ci_monto_interes]"
+                      dataType="cy"
+                      name="ci_monto_interes" />
+                    <externalMetadataColumn
+                      refId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ci_tasa]"
+                      dataType="numeric"
+                      name="ci_tasa"
+                      precision="10"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ci_saldo]"
+                      dataType="cy"
+                      name="ci_saldo" />
+                    <externalMetadataColumn
+                      refId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ci_tasa_encaje]"
+                      dataType="numeric"
+                      name="ci_tasa_encaje"
+                      precision="10"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ci_saldo_encaje]"
+                      dataType="cy"
+                      name="ci_saldo_encaje" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\CambioInteresModulo\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CambioInteresModulo\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CambioInteresModulo\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\CambioInteresModulo\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT  * FROM cuentas.CambioInteresDiario
+WHERE ci_fecha_hasta = '20180521'</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\CambioInteresModulo\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Origen]"
+                  connectionManagerRefId="Package.ConnectionManagers[Origen]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].Columns[ci_id_cuenta]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ci_id_cuenta]"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].Columns[ci_id_cuenta]"
+                      name="ci_id_cuenta"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].Columns[ci_fecha_desde]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ci_fecha_desde]"
+                      length="8"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].Columns[ci_fecha_desde]"
+                      name="ci_fecha_desde"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].Columns[ci_fecha_hasta]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ci_fecha_hasta]"
+                      length="8"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].Columns[ci_fecha_hasta]"
+                      name="ci_fecha_hasta"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].Columns[ci_monto_interes]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ci_monto_interes]"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].Columns[ci_monto_interes]"
+                      name="ci_monto_interes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].Columns[ci_tasa]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ci_tasa]"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].Columns[ci_tasa]"
+                      name="ci_tasa"
+                      precision="10"
+                      scale="5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].Columns[ci_saldo]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ci_saldo]"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].Columns[ci_saldo]"
+                      name="ci_saldo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].Columns[ci_tasa_encaje]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ci_tasa_encaje]"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].Columns[ci_tasa_encaje]"
+                      name="ci_tasa_encaje"
+                      precision="10"
+                      scale="5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].Columns[ci_saldo_encaje]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ci_saldo_encaje]"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].Columns[ci_saldo_encaje]"
+                      name="ci_saldo_encaje"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ci_id_cuenta]"
+                      dataType="i4"
+                      name="ci_id_cuenta" />
+                    <externalMetadataColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ci_fecha_desde]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="ci_fecha_desde" />
+                    <externalMetadataColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ci_fecha_hasta]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="ci_fecha_hasta" />
+                    <externalMetadataColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ci_monto_interes]"
+                      dataType="cy"
+                      name="ci_monto_interes" />
+                    <externalMetadataColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ci_tasa]"
+                      dataType="numeric"
+                      name="ci_tasa"
+                      precision="10"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ci_saldo]"
+                      dataType="cy"
+                      name="ci_saldo" />
+                    <externalMetadataColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ci_tasa_encaje]"
+                      dataType="numeric"
+                      name="ci_tasa_encaje"
+                      precision="10"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ci_saldo_encaje]"
+                      dataType="cy"
+                      name="ci_saldo_encaje" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ci_id_cuenta]"
+                      dataType="i4"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ci_id_cuenta]"
+                      name="ci_id_cuenta" />
+                    <outputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ci_fecha_desde]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ci_fecha_desde]"
+                      name="ci_fecha_desde" />
+                    <outputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ci_fecha_hasta]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ci_fecha_hasta]"
+                      name="ci_fecha_hasta" />
+                    <outputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ci_monto_interes]"
+                      dataType="cy"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ci_monto_interes]"
+                      name="ci_monto_interes" />
+                    <outputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ci_tasa]"
+                      dataType="numeric"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ci_tasa]"
+                      name="ci_tasa"
+                      precision="10"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ci_saldo]"
+                      dataType="cy"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ci_saldo]"
+                      name="ci_saldo" />
+                    <outputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ci_tasa_encaje]"
+                      dataType="numeric"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ci_tasa_encaje]"
+                      name="ci_tasa_encaje"
+                      precision="10"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ci_saldo_encaje]"
+                      dataType="cy"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ci_saldo_encaje]"
+                      name="ci_saldo_encaje" />
+                    <outputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\CambioInteresModulo.Paths[OLE DB Source Output]"
+              endId="Package\CambioInteresModulo\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\CambioInteresModulo\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\InteresDiario"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{922DF080-1087-4D08-892A-690D717343F2}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="InteresDiario"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\InteresDiario\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[cuentas].[InteresDiario]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\InteresDiario\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Destino]"
+                  connectionManagerRefId="Package.ConnectionManagers[Destino]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id_id_filial]"
+                      cachedDataType="ui1"
+                      cachedName="id_id_filial"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_id_filial]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_id_filial]" />
+                    <inputColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id_id_cuenta]"
+                      cachedDataType="i4"
+                      cachedName="id_id_cuenta"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_id_cuenta]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_id_cuenta]" />
+                    <inputColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id_interes_acumulado]"
+                      cachedDataType="cy"
+                      cachedName="id_interes_acumulado"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_interes_acumulado]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_interes_acumulado]" />
+                    <inputColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id_interes_hoy]"
+                      cachedDataType="cy"
+                      cachedName="id_interes_hoy"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_interes_hoy]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_interes_hoy]" />
+                    <inputColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id_monto_irf]"
+                      cachedDataType="cy"
+                      cachedName="id_monto_irf"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_monto_irf]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_monto_irf]" />
+                    <inputColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id_excento]"
+                      cachedDataType="bool"
+                      cachedName="id_excento"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_excento]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_excento]" />
+                    <inputColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id_id_oficina_oficial]"
+                      cachedDataType="i2"
+                      cachedName="id_id_oficina_oficial"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_id_oficina_oficial]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_id_oficina_oficial]" />
+                    <inputColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id_id_area_oficial]"
+                      cachedDataType="i2"
+                      cachedName="id_id_area_oficial"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_id_area_oficial]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_id_area_oficial]" />
+                    <inputColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id_id_moneda]"
+                      cachedDataType="ui1"
+                      cachedName="id_id_moneda"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_id_moneda]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_id_moneda]" />
+                    <inputColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id_id_producto]"
+                      cachedDataType="ui1"
+                      cachedName="id_id_producto"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_id_producto]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_id_producto]" />
+                    <inputColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id_id_subproducto]"
+                      cachedDataType="i2"
+                      cachedName="id_id_subproducto"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_id_subproducto]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_id_subproducto]" />
+                    <inputColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id_ncredito]"
+                      cachedDataType="bool"
+                      cachedName="id_ncredito"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_ncredito]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_ncredito]" />
+                    <inputColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id_fecha_desde]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="id_fecha_desde"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_fecha_desde]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_fecha_desde]" />
+                    <inputColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id_fecha_ultima]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="id_fecha_ultima"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_fecha_ultima]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_fecha_ultima]" />
+                    <inputColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id_error_capitalizacion]"
+                      cachedDataType="i4"
+                      cachedName="id_error_capitalizacion"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_error_capitalizacion]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_error_capitalizacion]" />
+                    <inputColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id_tasa]"
+                      cachedDataType="numeric"
+                      cachedName="id_tasa"
+                      cachedPrecision="10"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_tasa]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_tasa]" />
+                    <inputColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id_interes_no_acreditado]"
+                      cachedDataType="cy"
+                      cachedName="id_interes_no_acreditado"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_interes_no_acreditado]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_interes_no_acreditado]" />
+                    <inputColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id_interes_acumulado_encaje]"
+                      cachedDataType="cy"
+                      cachedName="id_interes_acumulado_encaje"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_interes_acumulado_encaje]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_interes_acumulado_encaje]" />
+                    <inputColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id_interes_hoy_encaje]"
+                      cachedDataType="cy"
+                      cachedName="id_interes_hoy_encaje"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_interes_hoy_encaje]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_interes_hoy_encaje]" />
+                    <inputColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id_tasa_encaje]"
+                      cachedDataType="numeric"
+                      cachedName="id_tasa_encaje"
+                      cachedPrecision="10"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_tasa_encaje]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_tasa_encaje]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_id_filial]"
+                      dataType="ui1"
+                      name="id_id_filial" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_id_cuenta]"
+                      dataType="i4"
+                      name="id_id_cuenta" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_interes_acumulado]"
+                      dataType="cy"
+                      name="id_interes_acumulado" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_interes_hoy]"
+                      dataType="cy"
+                      name="id_interes_hoy" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_monto_irf]"
+                      dataType="cy"
+                      name="id_monto_irf" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_excento]"
+                      dataType="bool"
+                      name="id_excento" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_id_oficina_oficial]"
+                      dataType="i2"
+                      name="id_id_oficina_oficial" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_id_area_oficial]"
+                      dataType="i2"
+                      name="id_id_area_oficial" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_id_moneda]"
+                      dataType="ui1"
+                      name="id_id_moneda" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_id_producto]"
+                      dataType="ui1"
+                      name="id_id_producto" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_id_subproducto]"
+                      dataType="i2"
+                      name="id_id_subproducto" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_ncredito]"
+                      dataType="bool"
+                      name="id_ncredito" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_fecha_desde]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="id_fecha_desde" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_fecha_ultima]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="id_fecha_ultima" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_error_capitalizacion]"
+                      dataType="i4"
+                      name="id_error_capitalizacion" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_tasa]"
+                      dataType="numeric"
+                      name="id_tasa"
+                      precision="10"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_interes_no_acreditado]"
+                      dataType="cy"
+                      name="id_interes_no_acreditado" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_interes_acumulado_encaje]"
+                      dataType="cy"
+                      name="id_interes_acumulado_encaje" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_interes_hoy_encaje]"
+                      dataType="cy"
+                      name="id_interes_hoy_encaje" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_tasa_encaje]"
+                      dataType="numeric"
+                      name="id_tasa_encaje"
+                      precision="10"
+                      scale="5" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\InteresDiario\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\InteresDiario\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\InteresDiario\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\InteresDiario\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[cuentas].[InteresDiario]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT * FROM contabilidad.CabeceraModulo
+WHERE cm_fecha_contable = '05/21/2018'
+AND cm_modulo = 8008
+AND cm_fecha_creacion != '05/19/2018'</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\InteresDiario\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Origen]"
+                  connectionManagerRefId="Package.ConnectionManagers[Origen]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_id_filial]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_id_filial]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_id_filial]"
+                      name="id_id_filial"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_id_cuenta]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_id_cuenta]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_id_cuenta]"
+                      name="id_id_cuenta"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_interes_acumulado]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_interes_acumulado]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_interes_acumulado]"
+                      name="id_interes_acumulado"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_interes_hoy]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_interes_hoy]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_interes_hoy]"
+                      name="id_interes_hoy"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_monto_irf]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_monto_irf]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_monto_irf]"
+                      name="id_monto_irf"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_excento]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_excento]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_excento]"
+                      name="id_excento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_id_oficina_oficial]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_id_oficina_oficial]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_id_oficina_oficial]"
+                      name="id_id_oficina_oficial"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_id_area_oficial]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_id_area_oficial]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_id_area_oficial]"
+                      name="id_id_area_oficial"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_id_moneda]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_id_moneda]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_id_moneda]"
+                      name="id_id_moneda"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_id_producto]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_id_producto]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_id_producto]"
+                      name="id_id_producto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_id_subproducto]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_id_subproducto]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_id_subproducto]"
+                      name="id_id_subproducto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_ncredito]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_ncredito]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_ncredito]"
+                      name="id_ncredito"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_fecha_desde]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_fecha_desde]"
+                      length="8"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_fecha_desde]"
+                      name="id_fecha_desde"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_fecha_ultima]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_fecha_ultima]"
+                      length="8"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_fecha_ultima]"
+                      name="id_fecha_ultima"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_error_capitalizacion]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_error_capitalizacion]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_error_capitalizacion]"
+                      name="id_error_capitalizacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_tasa]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_tasa]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_tasa]"
+                      name="id_tasa"
+                      precision="10"
+                      scale="5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_interes_no_acreditado]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_interes_no_acreditado]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_interes_no_acreditado]"
+                      name="id_interes_no_acreditado"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_interes_acumulado_encaje]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_interes_acumulado_encaje]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_interes_acumulado_encaje]"
+                      name="id_interes_acumulado_encaje"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_interes_hoy_encaje]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_interes_hoy_encaje]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_interes_hoy_encaje]"
+                      name="id_interes_hoy_encaje"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_tasa_encaje]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_tasa_encaje]"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].Columns[id_tasa_encaje]"
+                      name="id_tasa_encaje"
+                      precision="10"
+                      scale="5"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_id_filial]"
+                      dataType="ui1"
+                      name="id_id_filial" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_id_cuenta]"
+                      dataType="i4"
+                      name="id_id_cuenta" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_interes_acumulado]"
+                      dataType="cy"
+                      name="id_interes_acumulado" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_interes_hoy]"
+                      dataType="cy"
+                      name="id_interes_hoy" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_monto_irf]"
+                      dataType="cy"
+                      name="id_monto_irf" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_excento]"
+                      dataType="bool"
+                      name="id_excento" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_id_oficina_oficial]"
+                      dataType="i2"
+                      name="id_id_oficina_oficial" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_id_area_oficial]"
+                      dataType="i2"
+                      name="id_id_area_oficial" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_id_moneda]"
+                      dataType="ui1"
+                      name="id_id_moneda" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_id_producto]"
+                      dataType="ui1"
+                      name="id_id_producto" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_id_subproducto]"
+                      dataType="i2"
+                      name="id_id_subproducto" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_ncredito]"
+                      dataType="bool"
+                      name="id_ncredito" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_fecha_desde]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="id_fecha_desde" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_fecha_ultima]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="id_fecha_ultima" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_error_capitalizacion]"
+                      dataType="i4"
+                      name="id_error_capitalizacion" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_tasa]"
+                      dataType="numeric"
+                      name="id_tasa"
+                      precision="10"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_interes_no_acreditado]"
+                      dataType="cy"
+                      name="id_interes_no_acreditado" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_interes_acumulado_encaje]"
+                      dataType="cy"
+                      name="id_interes_acumulado_encaje" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_interes_hoy_encaje]"
+                      dataType="cy"
+                      name="id_interes_hoy_encaje" />
+                    <externalMetadataColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id_tasa_encaje]"
+                      dataType="numeric"
+                      name="id_tasa_encaje"
+                      precision="10"
+                      scale="5" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_id_filial]"
+                      dataType="ui1"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_id_filial]"
+                      name="id_id_filial" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_id_cuenta]"
+                      dataType="i4"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_id_cuenta]"
+                      name="id_id_cuenta" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_interes_acumulado]"
+                      dataType="cy"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_interes_acumulado]"
+                      name="id_interes_acumulado" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_interes_hoy]"
+                      dataType="cy"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_interes_hoy]"
+                      name="id_interes_hoy" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_monto_irf]"
+                      dataType="cy"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_monto_irf]"
+                      name="id_monto_irf" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_excento]"
+                      dataType="bool"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_excento]"
+                      name="id_excento" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_id_oficina_oficial]"
+                      dataType="i2"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_id_oficina_oficial]"
+                      name="id_id_oficina_oficial" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_id_area_oficial]"
+                      dataType="i2"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_id_area_oficial]"
+                      name="id_id_area_oficial" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_id_moneda]"
+                      dataType="ui1"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_id_moneda]"
+                      name="id_id_moneda" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_id_producto]"
+                      dataType="ui1"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_id_producto]"
+                      name="id_id_producto" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_id_subproducto]"
+                      dataType="i2"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_id_subproducto]"
+                      name="id_id_subproducto" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_ncredito]"
+                      dataType="bool"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_ncredito]"
+                      name="id_ncredito" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_fecha_desde]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_fecha_desde]"
+                      name="id_fecha_desde" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_fecha_ultima]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_fecha_ultima]"
+                      name="id_fecha_ultima" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_error_capitalizacion]"
+                      dataType="i4"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_error_capitalizacion]"
+                      name="id_error_capitalizacion" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_tasa]"
+                      dataType="numeric"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_tasa]"
+                      name="id_tasa"
+                      precision="10"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_interes_no_acreditado]"
+                      dataType="cy"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_interes_no_acreditado]"
+                      name="id_interes_no_acreditado" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_interes_acumulado_encaje]"
+                      dataType="cy"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_interes_acumulado_encaje]"
+                      name="id_interes_acumulado_encaje" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_interes_hoy_encaje]"
+                      dataType="cy"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_interes_hoy_encaje]"
+                      name="id_interes_hoy_encaje" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_tasa_encaje]"
+                      dataType="numeric"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id_tasa_encaje]"
+                      name="id_tasa_encaje"
+                      precision="10"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\InteresDiario.Paths[OLE DB Source Output]"
+              endId="Package\InteresDiario\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\InteresDiario\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{138B1EA0-DD63-417B-B42F-73D3FA2A820E}"
+      DTS:From="Package\BorrarTablas"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\InteresDiario" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{B5EC23BC-E146-43E0-BD30-FAED0CA0B9F8}"
+      DTS:From="Package\InteresDiario"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\CambioInteresModulo" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="139,42"
+          Id="Package\BorrarTablas"
+          TopLeft="410,37" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\CambioInteresModulo"
+          TopLeft="386,235" />
+        <NodeLayout
+          Size="140,42"
+          Id="Package\InteresDiario"
+          TopLeft="409,135" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="479.25,79">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56"
+              Start="0,0"
+              End="0,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="478,177">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\CambioInteresModulo">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\CambioInteresModulo\OLE DB Source"
+          TopLeft="338,62" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\CambioInteresModulo\OLE DB Destination"
+          TopLeft="351,177" />
+        <EdgeLayout
+          Id="Package\CambioInteresModulo.Paths[OLE DB Source Output]"
+          TopLeft="413,104">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23.5,73"
+              Start="0,0"
+              End="23.5,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.5"
+                    Point2="0,36.5"
+                    Point3="4,36.5" />
+                  <mssgle:LineSegment
+                    End="19.5,36.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19.5,36.5"
+                    Point2="23.5,36.5"
+                    Point3="23.5,40.5" />
+                  <mssgle:LineSegment
+                    End="23.5,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\CambioInteresModulo\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\CambioInteresModulo\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\InteresDiario">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\InteresDiario\OLE DB Destination"
+          TopLeft="329,176" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\InteresDiario\OLE DB Source"
+          TopLeft="352,70" />
+        <EdgeLayout
+          Id="Package\InteresDiario.Paths[OLE DB Source Output]"
+          TopLeft="427,112">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12.5,64"
+              Start="0,0"
+              End="-12.5,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28"
+                    Point2="0,32"
+                    Point3="-4,32" />
+                  <mssgle:LineSegment
+                    End="-8.5,32" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8.5,32"
+                    Point2="-12.5,32"
+                    Point3="-12.5,36" />
+                  <mssgle:LineSegment
+                    End="-12.5,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\InteresDiario\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\InteresDiario\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

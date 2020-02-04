@@ -1,0 +1,1184 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/5/2017 7:50:30 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CLOUDAZU-BUILD1"
+  DTS:CreatorName="DENARIUS\adminutil"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{3F9935A8-6633-4174-91C7-27281422471B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="12298"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="CatalogoUnicoCuentas"
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{81555D10-4BDD-40B7-A174-6BE63BF33CC4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9EAF0574-5CDA-4C6F-BA14-A981ABA220D1}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[User::vgStrBaseDatosDestino]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[User::vgStrPassword]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::vgStrServidorBddDestino]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="UserName">@[User::vgStrLogin]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=cloudazu-sqlcp1.database.windows.net,1433;User ID=denariusapp_usr;Initial Catalog=DenariusCore;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=false;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAFkSg6wXBy0m4Ca+fyqNCHwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADGyxDFiU2OQI1LGlhnBN5pAAAAAASAAACgAAAAEAAAAMTA/1a2pGMIXyLqJbu87WMgAAAAOOp9Ss7uW6N8u6WojSUYVKggN4dFL183enaIQWdS0ZYUAAAAIP8GnObcFNwNkXMslpGLfiQ4tME</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{95420AC8-7F3E-4914-B76D-6CEF8CB9EA99}"
+      DTS:ObjectName="SourceConnectionOLEDB">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[User::vgStrBaseDatosOds]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[User::vgStrPassword]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::vgStrServidorBddOds]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="UserName">@[User::vgStrLogin]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=cloudazu-mig1;User ID=denariusapp_usr;Initial Catalog=DenariusCore;Provider=SQLNCLI11.1;Auto Translate=false;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAFkSg6wXBy0m4Ca+fyqNCHwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACH+O6OiIin+0kMPbVg8OdQAAAAAASAAACgAAAAEAAAAPLFd8F2ZlP/MerL2WsipQYgAAAAkc7Yo6pD6ozz5jr1Z8JEmZg9u/TJn3tFclF1tezPwhEUAAAAFJjTIusYN5m0zgM1haDMohcIyUU</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F75DDD5D-36E3-45DE-92A8-7EC94F4220BA}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrBaseDatosDestino">
+      <DTS:VariableValue
+        DTS:DataType="8">DenariusCore</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{534C5FA9-47C4-4D64-B886-A8DBE9CC051D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrBaseDatosOds">
+      <DTS:VariableValue
+        DTS:DataType="8">DenariusCore</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DF538E9A-458C-4A5C-824E-BE2A9287060D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrLogin">
+      <DTS:VariableValue
+        DTS:DataType="8">denariusapp_usr</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A956F968-B49D-4DA4-A616-51428F38C073}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrPassword">
+      <DTS:VariableValue
+        DTS:DataType="8">denARius2017***</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{36C0E913-028B-4A2B-B3DE-7AB33CA04187}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrServidorBddDestino">
+      <DTS:VariableValue
+        DTS:DataType="8">cloudazu-sqlcp1.database.windows.net,1433</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FC6808FC-02A1-4A6F-A8AE-B91B99CF771D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vgStrServidorBddOds">
+      <DTS:VariableValue
+        DTS:DataType="8">cloudazu-mig1</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{C9F86102-D221-44F5-BF5C-4BAC098E4C2E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - CatalogoUnicoCuentas"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[CatalogoUnicoCuentas]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].Columns[cc_filial]"
+                      cachedDataType="ui1"
+                      cachedName="cc_filial"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_filial]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_filial]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].Columns[cc_cuenta]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="cc_cuenta"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_cuenta]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_cuenta]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].Columns[cc_nombre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="cc_nombre"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_nombre]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_nombre]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].Columns[cc_cuenta_padre]"
+                      cachedDataType="i4"
+                      cachedName="cc_cuenta_padre"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_cuenta_padre]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_cuenta_padre]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].Columns[cc_id_moneda]"
+                      cachedDataType="ui1"
+                      cachedName="cc_id_moneda"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_id_moneda]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_id_moneda]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].Columns[cc_movimiento]"
+                      cachedDataType="bool"
+                      cachedName="cc_movimiento"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_movimiento]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_movimiento]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].Columns[cc_id_nivel]"
+                      cachedDataType="i4"
+                      cachedName="cc_id_nivel"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_id_nivel]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_id_nivel]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].Columns[cc_naturaleza]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="cc_naturaleza"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_naturaleza]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_naturaleza]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].Columns[cc_estado]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="cc_estado"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_estado]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_estado]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].Columns[cc_fecha_creacion]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="cc_fecha_creacion"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_fecha_creacion]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_fecha_creacion]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].Columns[cc_fecha_modificacion]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="cc_fecha_modificacion"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_fecha_modificacion]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_fecha_modificacion]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].Columns[cc_fecha_cierre]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="cc_fecha_cierre"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_fecha_cierre]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_fecha_cierre]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].Columns[cc_descripcion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="cc_descripcion"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_descripcion]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_descripcion]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].Columns[cc_dinamica_debito]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1500"
+                      cachedName="cc_dinamica_debito"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_dinamica_debito]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_dinamica_debito]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].Columns[cc_dinamica_credito]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1500"
+                      cachedName="cc_dinamica_credito"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_dinamica_credito]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_dinamica_credito]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].Columns[cc_id_entidad]"
+                      cachedDataType="i4"
+                      cachedName="cc_id_entidad"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_id_entidad]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_id_entidad]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].Columns[cc_modulo]"
+                      cachedDataType="i4"
+                      cachedName="cc_modulo"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_modulo]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_modulo]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].Columns[cc_sigla]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="cc_sigla"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_sigla]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_sigla]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].Columns[cc_tipo]"
+                      cachedDataType="i4"
+                      cachedName="cc_tipo"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_tipo]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_tipo]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].Columns[cc_cuenta_cerrar]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="cc_cuenta_cerrar"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_cuenta_cerrar]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_cuenta_cerrar]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].Columns[cc_visible]"
+                      cachedDataType="bool"
+                      cachedName="cc_visible"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_visible]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_visible]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].Columns[cc_origen_recurso]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="cc_origen_recurso"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_origen_recurso]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_origen_recurso]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_filial]"
+                      dataType="ui1"
+                      name="cc_filial" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_cuenta]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="cc_cuenta" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="cc_nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_cuenta_padre]"
+                      dataType="i4"
+                      name="cc_cuenta_padre" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_id_moneda]"
+                      dataType="ui1"
+                      name="cc_id_moneda" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_movimiento]"
+                      dataType="bool"
+                      name="cc_movimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_id_nivel]"
+                      dataType="i4"
+                      name="cc_id_nivel" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_naturaleza]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="cc_naturaleza" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_estado]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="cc_estado" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_fecha_creacion]"
+                      dataType="dbTimeStamp"
+                      name="cc_fecha_creacion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_fecha_modificacion]"
+                      dataType="dbTimeStamp"
+                      name="cc_fecha_modificacion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_fecha_cierre]"
+                      dataType="dbTimeStamp"
+                      name="cc_fecha_cierre" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="cc_descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_dinamica_debito]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1500"
+                      name="cc_dinamica_debito" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_dinamica_credito]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1500"
+                      name="cc_dinamica_credito" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_id_entidad]"
+                      dataType="i4"
+                      name="cc_id_entidad" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_modulo]"
+                      dataType="i4"
+                      name="cc_modulo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_sigla]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="cc_sigla" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_tipo]"
+                      dataType="i4"
+                      name="cc_tipo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_cuenta_cerrar]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="cc_cuenta_cerrar" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_visible]"
+                      dataType="bool"
+                      name="cc_visible" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input].ExternalColumns[cc_origen_recurso]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="cc_origen_recurso" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source - CatalogoUnicoCuentas"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[CatalogoUnicoCuentas]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_filial]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_filial]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_filial]"
+                      name="cc_filial"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_cuenta]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_cuenta]"
+                      length="20"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_cuenta]"
+                      name="cc_cuenta"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_nombre]"
+                      length="150"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_nombre]"
+                      name="cc_nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_cuenta_padre]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_cuenta_padre]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_cuenta_padre]"
+                      name="cc_cuenta_padre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_id_moneda]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_id_moneda]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_id_moneda]"
+                      name="cc_id_moneda"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_movimiento]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_movimiento]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_movimiento]"
+                      name="cc_movimiento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_id_nivel]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_id_nivel]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_id_nivel]"
+                      name="cc_id_nivel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_naturaleza]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_naturaleza]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_naturaleza]"
+                      name="cc_naturaleza"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_estado]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_estado]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_estado]"
+                      name="cc_estado"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_fecha_creacion]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_fecha_creacion]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_fecha_creacion]"
+                      name="cc_fecha_creacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_fecha_modificacion]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_fecha_modificacion]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_fecha_modificacion]"
+                      name="cc_fecha_modificacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_fecha_cierre]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_fecha_cierre]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_fecha_cierre]"
+                      name="cc_fecha_cierre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_descripcion]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_descripcion]"
+                      name="cc_descripcion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_dinamica_debito]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_dinamica_debito]"
+                      length="1500"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_dinamica_debito]"
+                      name="cc_dinamica_debito"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_dinamica_credito]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_dinamica_credito]"
+                      length="1500"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_dinamica_credito]"
+                      name="cc_dinamica_credito"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_id_entidad]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_id_entidad]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_id_entidad]"
+                      name="cc_id_entidad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_modulo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_modulo]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_modulo]"
+                      name="cc_modulo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_sigla]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_sigla]"
+                      length="15"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_sigla]"
+                      name="cc_sigla"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_tipo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_tipo]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_tipo]"
+                      name="cc_tipo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_cuenta_cerrar]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_cuenta_cerrar]"
+                      length="20"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_cuenta_cerrar]"
+                      name="cc_cuenta_cerrar"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_visible]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_visible]"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_visible]"
+                      name="cc_visible"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_origen_recurso]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_origen_recurso]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].Columns[cc_origen_recurso]"
+                      name="cc_origen_recurso"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_filial]"
+                      dataType="ui1"
+                      name="cc_filial" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_cuenta]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="cc_cuenta" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="cc_nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_cuenta_padre]"
+                      dataType="i4"
+                      name="cc_cuenta_padre" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_id_moneda]"
+                      dataType="ui1"
+                      name="cc_id_moneda" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_movimiento]"
+                      dataType="bool"
+                      name="cc_movimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_id_nivel]"
+                      dataType="i4"
+                      name="cc_id_nivel" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_naturaleza]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="cc_naturaleza" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_estado]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="cc_estado" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_fecha_creacion]"
+                      dataType="dbTimeStamp"
+                      name="cc_fecha_creacion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_fecha_modificacion]"
+                      dataType="dbTimeStamp"
+                      name="cc_fecha_modificacion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_fecha_cierre]"
+                      dataType="dbTimeStamp"
+                      name="cc_fecha_cierre" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="cc_descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_dinamica_debito]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1500"
+                      name="cc_dinamica_debito" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_dinamica_credito]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1500"
+                      name="cc_dinamica_credito" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_id_entidad]"
+                      dataType="i4"
+                      name="cc_id_entidad" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_modulo]"
+                      dataType="i4"
+                      name="cc_modulo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_sigla]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="cc_sigla" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_tipo]"
+                      dataType="i4"
+                      name="cc_tipo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_cuenta_cerrar]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="cc_cuenta_cerrar" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_visible]"
+                      dataType="bool"
+                      name="cc_visible" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output].ExternalColumns[cc_origen_recurso]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="cc_origen_recurso" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_filial]"
+                      dataType="ui1"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_filial]"
+                      name="cc_filial" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_cuenta]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_cuenta]"
+                      name="cc_cuenta" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_nombre]"
+                      name="cc_nombre" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_cuenta_padre]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_cuenta_padre]"
+                      name="cc_cuenta_padre" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_id_moneda]"
+                      dataType="ui1"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_id_moneda]"
+                      name="cc_id_moneda" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_movimiento]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_movimiento]"
+                      name="cc_movimiento" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_id_nivel]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_id_nivel]"
+                      name="cc_id_nivel" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_naturaleza]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_naturaleza]"
+                      name="cc_naturaleza" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_estado]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_estado]"
+                      name="cc_estado" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_fecha_creacion]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_fecha_creacion]"
+                      name="cc_fecha_creacion" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_fecha_modificacion]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_fecha_modificacion]"
+                      name="cc_fecha_modificacion" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_fecha_cierre]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_fecha_cierre]"
+                      name="cc_fecha_cierre" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_descripcion]"
+                      name="cc_descripcion" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_dinamica_debito]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1500"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_dinamica_debito]"
+                      name="cc_dinamica_debito" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_dinamica_credito]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1500"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_dinamica_credito]"
+                      name="cc_dinamica_credito" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_id_entidad]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_id_entidad]"
+                      name="cc_id_entidad" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_modulo]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_modulo]"
+                      name="cc_modulo" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_sigla]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_sigla]"
+                      name="cc_sigla" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_tipo]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_tipo]"
+                      name="cc_tipo" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_cuenta_cerrar]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_cuenta_cerrar]"
+                      name="cc_cuenta_cerrar" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_visible]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_visible]"
+                      name="cc_visible" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_origen_recurso]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[cc_origen_recurso]"
+                      name="cc_origen_recurso" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas.Inputs[Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Limpiar Tablas"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2F1975D3-5A3D-4771-90BD-A9D730C4224A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpiar Tablas"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{9EAF0574-5CDA-4C6F-BA14-A981ABA220D1}"
+          SQLTask:SqlStatementSource="truncate table dbo.catalogounicocuentas" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{0F38BC62-1302-45EE-AE48-4C8FF42443F4}"
+      DTS:From="Package\Limpiar Tablas"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task 1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Data Flow Task 1"
+          TopLeft="55.5,135.5" />
+        <NodeLayout
+          Size="147,42"
+          Id="Package\Limpiar Tablas"
+          TopLeft="54.5,32.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="131.75,74.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61"
+              Start="0,0"
+              End="0,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task 1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="247,42"
+          Id="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas"
+          TopLeft="5.50000000000003,107.5" />
+        <NodeLayout
+          Size="227,42"
+          Id="Package\Data Flow Task 1\Source - CatalogoUnicoCuentas"
+          TopLeft="13.5,5.5" />
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+          TopLeft="128,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task 1\Destination - CatalogoUnicoCuentas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
